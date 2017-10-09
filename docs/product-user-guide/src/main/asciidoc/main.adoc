@@ -74,11 +74,11 @@ include::chap-management-console.adoc[leveloffset=+1]
 include::chap-graphic-resources.adoc[leveloffset=+1]
 
 // Appendices
-include::appe-process-elements.adoc[]
+include::appe-process-elements.adoc[leveloffset=+1]
 
-include::appe-service-tasks.adoc[]
+include::appe-service-tasks.adoc[leveloffset=+1]
 
-include::appe-simulation-data.adoc[]
+include::appe-simulation-data.adoc[leveloffset=+1]
 endif::BPMS[]
 
 ifdef::BRMS[]
