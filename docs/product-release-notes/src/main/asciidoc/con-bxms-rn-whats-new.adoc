@@ -5,7 +5,9 @@
 This section highlights changes between releases of {PRODUCT} {PRODUCT_VERSION} Limited Availability.
 
 [discrete]
-== Limited Availability Release
+== Limited Availability
+OpenShift::
+The OpenShift product images have been removed for this release.
 
 [discrete]
 == Limited Availability Beta Build 1
