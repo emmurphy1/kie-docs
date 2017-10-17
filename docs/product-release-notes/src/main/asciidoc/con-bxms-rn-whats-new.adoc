@@ -1,8 +1,11 @@
 
-[[_bxms_rn_whats_new_con.adoc]]
+[[bxms_rn_whats_new]]
 = What's New
 
 This section highlights changes between releases of {PRODUCT} {PRODUCT_VERSION} Limited Availability.
+
+[discrete]
+== Limited Availability Release
 
 [discrete]
 == Limited Availability Beta Build 1

@@ -1,5 +1,5 @@
 
-[[_bxms_rn_introduction_con.adoc]]
+[[bxms_rn_introduction]]
 [[_jboss_brms]]
 = About {PRODUCT}
 
