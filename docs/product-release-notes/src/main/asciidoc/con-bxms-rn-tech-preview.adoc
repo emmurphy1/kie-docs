@@ -16,5 +16,10 @@ For more information on Red Hat Technology Preview features support scope,
 see https://access.redhat.com/support/offerings/techpreview/
 ====
 
-COMMENT: To be added when list available.
+* Deployments perspective 
++
+This perspective is disabled by default. COMMENT: To enable it.... If you choose to enable the Deployments perspective, be aware that it will only work (provide happy path).
+* Fine-grained security configuration 
+* Guided Decision Trees
+* Guided Score Cards
 

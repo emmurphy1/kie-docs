@@ -20,4 +20,6 @@ include::con-bxms-rn-introduction.adoc[leveloffset=+1]
 
 include::con-bxms-rn-whats-new.adoc[leveloffset=+1]
 
+include::con-bxms-rn-unsupported-features.adoc[leveloffset=+1]
+
 include::con-bxms-rn-tech-preview.adoc[leveloffset=+1]

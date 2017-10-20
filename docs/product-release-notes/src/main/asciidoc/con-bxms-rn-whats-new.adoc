@@ -27,8 +27,8 @@ Guided Decision Table::
 Business Resource Planner::
 The Business Resource Planner execution server now supports real-time planning.
 
-Welcome Page::
-The {PRODUCT} welcome page has been redesigned for easier navigation.
+Home Page::
+The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.
 
 [discrete]
 == Limited Availability Alpha Build 2
