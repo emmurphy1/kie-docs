@@ -9,6 +9,12 @@ This section highlights changes between releases of {PRODUCT} {PRODUCT_VERSION} 
 OpenShift::
 The OpenShift product images have been removed for this release.
 
+Business Resource Planner::
+Multi-threaded partitioned search
++
+Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
+
+
 [discrete]
 == Limited Availability Beta Build 1
 OpenShift::

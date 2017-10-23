@@ -1,9 +1,0 @@
-
-[[bxms_rn_unsupported_features]]
-= Unsupported Features
-
-The following features are not supported in this release:
-
-* "New" jBPM Designer (IDK)
-* Provisioning Perspective (IDK)
-* Embedding Perspectives
