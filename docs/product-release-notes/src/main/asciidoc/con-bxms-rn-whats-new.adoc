@@ -10,10 +10,12 @@ OpenShift::
 The OpenShift product images have been removed for this release.
 
 Business Resource Planner::
-Multi-threaded partitioned search
-+
-Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
-
+* Multi-threaded partitioned search is available. Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
+* The Solution interface is deprecated. Your solution class requires only the `@PlanningSolution` annotation.
+* You no longer need to define the score type in the solver configuration. Business Resource Planner now picks it up automatically from the domain model.
+* The Business Resource Planner Solver editor screen now supports adding all termination types, including composite termination. The phase configuration section enables you to tweak Construction Heuristic settings and select Local Search algorithm to optimize your planning problem.
+* Examples are now part of the Workbench and they work offline as well. Leverage tag-based filtering to quickly access projects from the field you are interested in.
+* The Business Resource Planner domain editor can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several Construction Heuristic algorithms use this information to construct a better initial solution.
 
 [discrete]
 == Limited Availability Beta Build 1
