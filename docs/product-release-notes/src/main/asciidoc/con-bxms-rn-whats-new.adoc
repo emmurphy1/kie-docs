@@ -2,7 +2,7 @@
 [[bxms_rn_whats_new]]
 = What's New
 
-This section highlights changes between releases of {PRODUCT} {PRODUCT_VERSION} Limited Availability.
+This section highlights changes between {PRODUCT} {PRODUCT_VERSION} Limited Availability and {PRODUCT} 6.4.
 
 Business Central Home Page::
 The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.

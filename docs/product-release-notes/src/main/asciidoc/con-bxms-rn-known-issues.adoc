@@ -2,7 +2,7 @@
 [[bxms_rn_known_issues]]
 = Known Issues
 
-This section lists known issues with {PRODUCT}{VERSION}.
+This section lists known issues with {PRODUCT} {PRODUCT_VERSION} {RELEASE}.
 
 COMMENT: To be addded.
 

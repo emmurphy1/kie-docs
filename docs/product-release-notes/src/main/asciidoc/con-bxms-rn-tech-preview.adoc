@@ -2,7 +2,7 @@
 [[bxms_rn_tech_preview]]
 = Technical Preview
 
-This section lists features that are technical previews in {PRODUCT} {PRODUCT_VERSION} Limited Availability. Where they are listed in the documentation these features also have a note similar to the following:
+This section lists features that are in technical preview in {PRODUCT} {PRODUCT_VERSION} Limited Availability. Where they are listed in the documentation these features also have a note similar to the following:
 
 [IMPORTANT]
 ====
@@ -18,7 +18,7 @@ see https://access.redhat.com/support/offerings/techpreview/
 
 * Deployments perspective 
 +
-This perspective is disabled by default. Perform the following steps to enable it.
+This perspective is disabled by default. Perform the following steps to enable it:
 +
 . Go to *Settings* -> *Roles*.
 . Select the *admin* role.
