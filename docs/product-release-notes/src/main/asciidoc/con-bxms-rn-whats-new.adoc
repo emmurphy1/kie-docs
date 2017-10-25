@@ -4,10 +4,12 @@
 
 This section highlights changes between releases of {PRODUCT} {PRODUCT_VERSION} Limited Availability.
 
-[discrete]
-== Limited Availability
+Business Central Home Page::
+The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.
+
 OpenShift::
-The OpenShift product images have been removed for this release.
+* The OpenShift product images have been removed for this release.
+* OpenShift Source-To-Image (S2I) is available.
 
 Business Resource Planner::
 * Multi-threaded partitioned search is available. Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
@@ -16,13 +18,8 @@ Business Resource Planner::
 * The Business Resource Planner Solver editor screen now supports adding all termination types, including composite termination. The phase configuration section enables you to tweak Construction Heuristic settings and select Local Search algorithm to optimize your planning problem.
 * Examples are now part of the Workbench and they work offline as well. Leverage tag-based filtering to quickly access projects from the field you are interested in.
 * The Business Resource Planner domain editor can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several Construction Heuristic algorithms use this information to construct a better initial solution.
+* The Business Resource Planner execution server now supports real-time planning.
 
-[discrete]
-== Limited Availability Beta Build 1
-OpenShift::
-* Business Central and Runtime Monitoring are now available as separate OpenShift images.
-* An image for the standalone controller is available.
-* OpenShift Source-To-Image (S2I) is available.
 
 Aliases::
 You can now use aliases instead of container IDs in the remote REST APIs of the execution server.
@@ -32,32 +29,19 @@ Guided Decision Table::
 * Hit policies are now available. Hit policies determine the order in which rules (rows) in a guided decision table are applied.
 * New support to display multiple linked guided decision tables in the Guided Decision Table Editor has been added.
 
-Business Resource Planner::
-The Business Resource Planner execution server now supports real-time planning.
-
-Home Page::
-The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.
-
-[discrete]
-== Limited Availability Alpha Build 2
 Project Metrics Dashboard::
 A new dashboard is now available for every project listed in the authoring library. When the project details page is opened, a metrics card appears on the right side of the screen. The card shows the history of contributions (commits) made to that specific project over time. Click the *View All* link to access the full dashboard which shows several metrics about the project’s contributions. Different filter controls are available for selecting the contributions made either by a specific user or in a specified time frame.
 
 Teams Metrics Dashboard::
-A  new dashboard has been added to the *Teams* page. A metrics card on the right side shows the history of all contributions (commits). Click the *View All* link to access a full dashboard showing overall contributions metrics. You can filter the contributions by specifying the following criteria:
+A  new dashboard has been added to the *Teams* perspective. A metrics card on the right side shows the history of all contributions (commits). Click *View All* to access a full dashboard showing overall contributions metrics. You can filter the contributions by specifying the following criteria:
 
 * User
 * Time frame
 * Team
 * Project
 
-This dashboard replaces  the former *Authoring->Contributors* dashboard, which is no longer available at the workbench’s top menu bar.
+This dashboard replaces the former *Authoring->Contributors* dashboard, which is no longer available at the workbench’s top menu bar.
 
-Improved Features::
-The existing features have been stabilized with several bug fixes and usability related enhancements. 
-
-[discrete]
-== Limited Availability Alpha Build 1
 Improved Navigation::
 You can now navigate:
 * From a process instance to the associated jobs
@@ -66,10 +50,6 @@ You can now navigate:
 
 Improved Process Status Reporting::
 The process status now reports when a process has errors associated with it.
-
-Latest Improvements:: Feature development and bug fixes.
-[discrete]
-== Limited Availability CAP Build 2
 
 ifdef::BPMS[]
 Improved Search::
@@ -152,11 +132,6 @@ class.
 You can also create filters manually and submit them through the REST API.
 --
 endif::[]
-
-Latest Improvements:: Feature development and bug fixes.
-
-[discrete]
-== Limited Availability CAP Build 1
 
 * Process Admin Console improvements:
 +

@@ -18,8 +18,18 @@ see https://access.redhat.com/support/offerings/techpreview/
 
 * Deployments perspective 
 +
-This perspective is disabled by default. COMMENT: To enable it.... If you choose to enable the Deployments perspective, be aware that it will only work (provide happy path).
+This perspective is disabled by default. Perform the following steps to enable it.
++
+. Go to *Settings* -> *Roles*.
+. Select the *admin* role.
+. In the Permissions section, click the arrow next to Perspectives.
+. Click the trash icon next to Deployments. The DevOps -> *Deployments* link is now available on the Home page.
+
 * Fine-grained security configuration 
 * Guided Decision Trees
 * Guided Score Cards
+* XLS Score Cards
+* New jBPM Designer (IDK)
+* Provisioning perspective (IDK)
+* Ability to embed perspectives
 

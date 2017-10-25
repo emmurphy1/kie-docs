@@ -22,5 +22,5 @@ include::con-bxms-rn-whats-new.adoc[leveloffset=+1]
 
 include::con-bxms-rn-tech-preview.adoc[leveloffset=+1]
 
-include::con-bxms-rn-knows-issues.adoc[leveloffset=+1]
+include::con-bxms-rn-known-issues.adoc[leveloffset=+1]
 

@@ -1,5 +1,5 @@
 
-[[bxms_rn_known_issues]
+[[bxms_rn_known_issues]]
 = Known Issues
 
 This section lists known issues with {PRODUCT}{VERSION}.
