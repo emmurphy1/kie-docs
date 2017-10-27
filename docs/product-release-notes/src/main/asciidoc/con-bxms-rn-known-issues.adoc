@@ -4,5 +4,7 @@
 
 This section lists known issues with {PRODUCT} {PRODUCT_VERSION} {RELEASE}.
 
-COMMENT: To be addded.
+== OpenShift
+* The OpenShift product images have been removed for this release.
+
 

@@ -28,6 +28,7 @@ This perspective is disabled by default. Perform the following steps to enable i
 * Fine-grained security configuration 
 * Guided Decision Trees
 * Guided Score Cards
+* Case Modeler
 * XLS Score Cards
 * New jBPM Designer (IDK)
 * Provisioning perspective (IDK)

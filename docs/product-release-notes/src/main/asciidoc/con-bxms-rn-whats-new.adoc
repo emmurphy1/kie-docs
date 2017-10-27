@@ -2,9 +2,10 @@
 [[bxms_rn_whats_new]]
 = What's New
 
-This section highlights changes between {PRODUCT} {PRODUCT_VERSION} Limited Availability and {PRODUCT} 6.4.
+This section highlights new features in {PRODUCT} {PRODUCT_VERSION} Limited Availability.
 
 == Business Central
+
 === Improved Navigation
 
 .Navigation between views
@@ -14,7 +15,7 @@ You can now navigate as follows:
 * From a job to the associated process instance
 * From a process instance to the associated tasks
 
-.Business Central Home Page
+.Business Central home page
 The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.
 
 === Guided Decision Table
@@ -22,130 +23,26 @@ The Business Central Home page has been redesigned for easier navigation. For mo
 * Hit policies are now available. Hit policies determine the order in which rules (rows) in a guided decision table are applied.
 * New support to display multiple linked guided decision tables in the Guided Decision Table Editor has been added.
 
-== Project Metrics Dashboard
-A new dashboard is now available for every project listed in the authoring library. When the project details page is opened, a metrics card appears on the right side of the screen. The card shows the history of contributions (commits) made to that specific project over time. Click the *View All* link to access the full dashboard which shows several metrics about the project’s contributions. Different filter controls are available for selecting the contributions made either by a specific user or in a specified time frame.
+=== Project Metrics Dashboard
+A new dashboard is now available for every project listed in the authoring library. 
 
-=== Teams Metrics Dashboard
-A  new dashboard has been added to the *Teams* perspective. A metrics card on the right side shows the history of all contributions (commits). Click *View All* to access a full dashboard showing overall contributions metrics. 
+=== Teams metrics dashboard
+A  new dashboard has been added to the *Teams* perspective. 
 
-=== Improved Process Status Reporting
+=== Improved process status reporting
 The process status now reports when a process has errors associated with it.
 
-=== New columns available on process instances, tasks and jobs
+=== New columns available on process instances, tasks, and jobs
 The following columns have been added to the corresponding perspectives:
 
 * Process instance list perspective: Last update and correlation key.
 * Task list: Last update, correlation key (of the associated process instance ID), process instance description (of the associated process instance).
 * Jobs perspective: Name of the associated process (if any), ID of the associated process instance (if any), Description of the associated process instance (if any).
-These columns are sometimes optional so some of them aren’t displayed by default. In order to show them it’s necessary to select them in the column picker of the corresponding table.
-
-=== Quick search filters for runtime data
-To enable you to quickly find data related to Process Instances, Jobs, Tasks and Errors, a new set of pre defined filters has been introduced into the related views. These filters are always available in the "Search" tab when you first access any of the pages related to the domain mentioned above. By default, you will notice that at least one filter is defined. That is done so that only the most relevant data is shown. You’re free to restrict the data even further by adding new filters. This can be done by either selecting values from the dropdown list or proving values to the different attributes in the input box. You will notice that the data is filtered as you add or remove any of the active filters.
-
-=== New task admin perspective and actions
-The former task list perspective has been divided into two:
-
-* Tasks List perspective: used by task operators to work with their assigned (or potentially assigned) tasks.
-* Task Administration perspective: used by administrators to manage tasks belonging to other users. This perspective is only available for users with roles admin and process-admin. It is similar to the former "Admin" filter tab on the former Task List perspective.
-
-=== Improved validation in deployment descriptor editor
-
-Deployment descriptor editor in workbench has been improved to validate content of entered data for the following:
-
-* work item handlers
-* event listeners
-* marshalling strategies
-* globals
-* environment entries
-* configuration
-Validation is performed automatically when build is invoked or manually when user clicks on Validate button
-
-=== Error Handling
-.New error handling
-The system now detects and stores execution errors, such as exceptions while running a process instance or a job after the maximum retry number has been exceeded. The process instance list includes a new column that displays the number of errors per process instance which are not marked as acknowledged. When the column is clicked a popup is displayed, which will allow users to navigate to the new error perspective.
-
-.New Execution Errors View
-A new view to explore and acknowledge the new generated execution error has been added.
-
-== Configurable Error Handling
-+
-If an error happens, an event is generated that holds the following data:
-+
---
-[cols="1,2",options="header"]
-|===
-| Data
-| Fields
-
-.3+| Process model
-| processModelID
-| processModelVersion
-| processModelName
-
-.2+| Process instance that has failed
-| processInstanceID
-| customProcessID
-
-.5+| Activity that has failed
-| activityID
-| activityName
-| activityType
-| iteration
-| status
-
-.2+| Error data
-| errorMessage: Message with the error that has occurred.
-| errorStack: Stack with error detail.
-|===
---
-
-
-
-== Process Engine
-.Process and task administration API
-
-A process administration API and task administration API have been introduced to simplify some of the more complex administrator use cases.
-
-.Advanced task routing
-
-When tasks are assigned to a group of users, you can use pluggable task assignment strategies to automatically assign tasks to a suitable individual immediately (when the task is being created or later released for example). This enables more efficient task allocation, based on all properties associated with the task (for example potential owners and task priority but also task data that includes information such as geography, required skills, and so forth). You can use business rules to define the assignment logic, making it easy to customize this to your needs.
-
-== Process Execution Server
-The process execution server (also known as kie-server) has been extended to support core engine features and offers a remote API for these operations. 
-
-== Separate workbench from execution server
-
- The workbench now delegates all of its requests to the execution server as well. The main advantage is that the workbench can now be used to monitor any set of execution servers. By linking the execution server to the workbench, the process and task monitoring UIs in the workbench can now connect to this execution server and show all relevant information. When multiple independent execution servers are used, you can either connect to a specific one or use the smart router to aggregate information across multiple servers. 
-
-== Smart router
-
-The smart router (also known as kie-server-router) can be used as a proxy to help manage multiple independent process execution servers:
-
-* Requests can be sent to the smart router. It will be able to figure out which of the known execution server instances the request should be sent to.
-* When trying to retrieve information, the smart router can collect information from different servers and aggregate that information for you.
-
-== OpenShift
-* The OpenShift product images have been removed for this release.
-* OpenShift Source-To-Image (S2I) is available.
-
-== Business Resource Planner
-* Multi-threaded partitioned search is available. Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
-* The Solution interface is deprecated. Your solution class requires only the `@PlanningSolution` annotation.
-* You no longer need to define the score type in the solver configuration. Business Resource Planner now picks it up automatically from the domain model.
-* The Business Resource Planner Solver editor screen now supports adding all termination types, including composite termination. The phase configuration section enables you to tweak Construction Heuristic settings and select Local Search algorithm to optimize your planning problem.
-* Examples are now part of the Workbench and they work offline as well. Leverage tag-based filtering to quickly access projects from the field you are interested in.
-* The Business Resource Planner domain editor can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several Construction Heuristic algorithms use this information to construct a better initial solution.
-* The Business Resource Planner execution server now supports real-time planning.
-
-== Aliases
-You can now use aliases instead of container IDs in the remote REST APIs of the execution server.
-
-
 
 
 ifdef::BPMS[]
-Improved Search::
-+
+=== Improved Search
+
 --
 You can now search the following instances by the following fields:
 
@@ -182,42 +79,102 @@ You can now search the following instances by the following fields:
 |===
 --
 
+=== Quick search filters for runtime data
+To enable you to quickly find data related to process instances, jobs, tasks, and errors, a new set of predefined filters has been introduced into the related views. 
 
-== Advanced queries decoupled from the database model
-With this new API, you can make advanced queries using filters on process instances or tasks, independently of the instance field names. The API is accessible in the `org.kie.server.client.impl.SearchServicesClientImpl` class,
-endif::[]
+=== New task admin perspective and actions
+The former task list perspective has been divided into the Tasks List and Task Administration perspectives.
 
-== KIE Workbench monitoring web application
-A new distribution `war` file has been added to the project in this release. The goal is for the KIE Monitoring Web Application to be used along with Kie Server instances, managing all runtime capabilities. This includes managing containers, process instances, tasks, dashboards and more. As opposed to the standard Kie Workbench distribution, no authoring capabilities are offered.
+=== Improved validation in deployment descriptor editor
 
+The deployment descriptor editor in Workbench has been improved to validate content of entered data for the following:
 
+* work item handlers
+* event listeners
+* marshalling strategies
+* globals
+* environment entries
+* configuration
+Validation is performed automatically when a build is invoked or manually when user clicks on Validate button.
 
-== Websocket based KIE Server communication with KIE Controller
-The default communication mechanism for KIE Server to connect to KIE Controller is HTTP/REST based. This fits well in non-restricted environments where both components can freely talk to each other. Though it requires both components to know how to access and authorize itself when sending requests. That does not play well in cloud based environments or environments that utilize load balancer.
+=== Error Handling
+.New error handling
+The system now detects and stores execution errors, such as exceptions while running a process instance or a job after the maximum retry number has been exceeded. 
 
-== KIE Server
-=== KIE Server Maven Plugins
-With {PRODUCT} {RELEASE} KIE Server has been enhanced with additional Maven plugins that enable interaction with KIE Server and KIE Controller REST API directly from within a build. This facilitates easier integration with CI/CD pipelines when building KJars so they can be directly deployed to the execution environment (both managed and unmanaged KIE Servers).
+.New Execution Errors View
+A new view to explore and acknowledge the new generated execution error has been added.
 
+.Configurable Error Handling
+If an error occurs, an event is generated that contains the following data:
+
+--
+[cols="1,2",options="header"]
+|===
+| Data
+| Fields
+
+.3+| Process model
+| processModelID
+| processModelVersion
+| processModelName
+
+.2+| Process instance that has failed
+| processInstanceID
+| customProcessID
+
+.5+| Activity that has failed
+| activityID
+| activityName
+| activityType
+| iteration
+| status
+
+.2+| Error data
+| errorMessage: Message with the error that has occurred.
+| errorStack: Stack with error detail.
+|===
+--
+
+== Process Engine
+=== Process and task administration API
+
+A process administration API and task administration API have been introduced to simplify some of the more complex administrator use cases.
+
+=== Advanced task routing
+When tasks are assigned to a group of users, you can use pluggable task assignment strategies to automatically assign tasks to a suitable individual immediately (when the task is being created or later released for example). This enables more efficient task allocation, based on all properties associated with the task (for example potential owners and task priority but also task data that includes information such as geography, required skills, and so forth). You can use business rules to define the assignment logic, making it easy to customize this to your needs.
+
+=== Process Execution Server
+The process execution server (also known as kie-server) has been extended to support core engine features and offers a remote API for these operations. 
+
+=== Separate workbench from execution server
+The workbench now delegates all of its requests to the execution server as well. The main advantage is that the workbench can now be used to monitor any set of execution servers. By linking the execution server to the workbench, the process and task monitoring UIs in the workbench can now connect to this execution server and show all relevant information. When multiple independent execution servers are used, you can either connect to a specific one or use the smart router to aggregate information across multiple servers. 
+
+=== Smart router
+The smart router (also known as kie-server-router) can be used as a proxy to help manage multiple independent process execution servers.
+ 
 === KIE Server Router enhancements
-KIE Server Router received a number of enhancements where the majority of them were around connectivity with KIE Servers and Controller. Most of the work was to make it more reliable in case of failures of the other components
-when controller is not available during router start a retry mechanism is in place to connect to it as soon as the controller becomes available when controller is not available when there are updates to be sent to it a retry mechanism is in place when KIE Server that request is sent to does not respond it is removed from the active servers and thus subsequent requests won’t target it any more, at the same time such server is put on a list to be verified if that server was only temporarily unavailable and if so will be put back on the active servers list.
-With these enhancements KIE Server Router is more resilient to failures and thus provides much higher level of reliability, especially important in cloud based environments.
+KIE Server Router received a number of enhancements. Most of these enhancements are associated with connectivity with KIE servers and  controller. 
 
-== Work Item archetype
+=== Aliases
+You can now use aliases instead of container IDs in the remote REST APIs of the execution server.
+ 
+=== KIE Workbench monitoring web application
+A new distribution `war` file has been added in this release. The goal is for the KIE Monitoring Web Application to be used along with Kie Server instances, managing all runtime capabilities. This includes managing containers, process instances, tasks, dashboards and more. As opposed to the standard Kie Workbench distribution, no authoring capabilities are offered.
+ 
+=== Work Item archetype
 
-To help users build custom service tasks (work items) {PRODUCT} comes with Work Item Archetype that aims at generating majority of things required to build a custom service task. It does include:
+To help users build custom service tasks (work items), {PRODUCT} comes with Work Item Archetype that generates the majority of items required to build a custom service task. 
 
-* WID file (work item definition)
-* Work Item Handler implementation class
-* WorkItem handler test class
-* maven assembly (zip) that will package everything on the build time so it can be consumed by Service Repository and thus used from within Web Designer
+=== KIE Server Maven Plugins
+KIE Server has been enhanced with additional Maven plugins that enable interaction with KIE Server and KIE Controller REST API directly from within a build. This facilitates easier integration with CI/CD pipelines when building KJars so they can be directly deployed to the execution environment (both managed and unmanaged KIE Servers).
 
-== Advanced Queries with ORDER BY clause
-The QueryService used in executing advanced queries is only supported sorting with ORDER BY clauses having the following pattern:
-`ORDER BY Column1, Column2, ... ASC|DESC;``
-which limited the sorting to either ascending or descending for all columns.
-The desired behavior, that of a full ORDER BY clause
-1ORDER BY Column1 ASC|DESC, Column2 ASC|DESC, ..., ColumnN ASC|DESC;``
-allowing sort order per column, is now possible. Please see the documentation for examples of how to apply the new full ORDER BY clause when using the QueryService.
+== Business Resource Planner
+* Multi-threaded partitioned search is available. Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
+* The Solution interface is deprecated. Your solution class requires only the `@PlanningSolution` annotation.
+* You no longer need to define the score type in the solver configuration. Business Resource Planner now picks it up automatically from the domain model.
+* The Business Resource Planner Solver editor screen now supports adding all termination types, including composite termination. The phase configuration section enables you to tweak Construction Heuristic settings and select Local Search algorithm to optimize your planning problem.
+* Examples are now part of the Workbench and they work offline as well. Leverage tag-based filtering to quickly access projects from the field you are interested in.
+* The Business Resource Planner domain editor can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several Construction Heuristic algorithms use this information to construct a better initial solution.
+* The Business Resource Planner execution server now supports real-time planning.
+
 
