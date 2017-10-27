@@ -4,14 +4,65 @@
 
 This section highlights changes between {PRODUCT} {PRODUCT_VERSION} Limited Availability and {PRODUCT} 6.4.
 
-Business Central Home Page::
+== Improved Navigation
+
+
+
+. Navigation between views
+You can now navigate as follows:
+
+* From a process instance to the associated jobs
+* From a job to the associated process instance
+* From a process instance to the associated tasks
+
+.Business Central Home Page
 The Business Central Home page has been redesigned for easier navigation. For more information, see the "Business Central" chapter of the _{PRODUCT} User Guide_.
 
-OpenShift::
+== Process Engine
+.Process and Task Administration API
+
+A Process and task administration API has been introduced to simplify some of the more complex administrator use cases.
+
+The process administration API enables you to do the following:
+
+* Retrieve all process definition nodes
+* Cancel a node instance
+* Retrigger a node instance
+* Update timer (absolute or relative)
+* List timer instances
+* Trigger node
+
+The task administration API enables you to do the following:
+
+* Add and remove potential owners, excluded owners, and business administrators
+* Add and remove task inputs and outputs
+* List, create, and cancel escalations and notifications
+
+.Advanced task routing
+
+When tasks are assigned to a group of users, you can use pluggable task assignment strategies to automatically assign tasks to a suitable individual immediately (when the task is being created or later released for example). This enables more efficient task allocation, based on basically all properties associated with the task (for example potential owners and task priority but also task data that could include information such as geography, required skills, and so forth). You can use business rules to define the assignment logic, making it easy to customize this to your needs.
+
+== Process Execution Server
+The process execution server (also known as kie-server) has been extended to support core engine features and to offer a remote API for these operations. 
+
+== Separate workbench from execution server
+
+In {PRODUCT} 6.x the workbench came with an embedded execution server to execute all of the process and task requests that users were performing in the web-based UI. In {PRODUCT} 7.0 this embedded execution server has been removed and the workbench delegates all of its requests to the kie-server as well. The main advantage is that the workbench can now be used to monitor any set of kie-server. By linking the kie-server to the workbench, the process and task monitoring UIs in the workbench can now connect to this kie-server and show all relevant information. When multiple independent kie-servers are used, you can either connect to a specific one or use the smart router to aggregate information across multiple servers. As a result, a few missing features that were not yet available in 6.x on kie-server but only on the remote API of the workbench have also been migrated to the kie-server.
+
+== Smart router
+
+When managing multiple independent process execution servers (for example each only having a few projects deployed, with persistence configured to a separate data source), it might be difficult to keep track of where all these servers are and to collect information from all of these. The smart router (also known as kie-server-router) can be used as a proxy:
+
+* Requests can be sent to the smart router, it will be able to figure out which of the known kie-server instances the request should be sent to.
+* When trying to retrieve information, the smart router can collect information from different servers and aggregate that information for you.
++
+So if you have an architecture where you might end up with a lot of independent process execution servers (for example in a cloud environment), the smart router will try to hide some of this complexity for you again.
+
+== OpenShift
 * The OpenShift product images have been removed for this release.
 * OpenShift Source-To-Image (S2I) is available.
 
-Business Resource Planner::
+== Business Resource Planner
 * Multi-threaded partitioned search is available. Business Resource Planner now has out-of-the box support for solving a single dataset by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned Search can implement geo-fencing for Vehicle Routing use cases. 
 * The Solution interface is deprecated. Your solution class requires only the `@PlanningSolution` annotation.
 * You no longer need to define the score type in the solver configuration. Business Resource Planner now picks it up automatically from the domain model.
@@ -20,19 +71,18 @@ Business Resource Planner::
 * The Business Resource Planner domain editor can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several Construction Heuristic algorithms use this information to construct a better initial solution.
 * The Business Resource Planner execution server now supports real-time planning.
 
-
-Aliases::
+== Aliases
 You can now use aliases instead of container IDs in the remote REST APIs of the execution server.
 
-Guided Decision Table::
+== Guided Decision Table
 * Guided Decision Table has a new wizard for creating and editing columns.
 * Hit policies are now available. Hit policies determine the order in which rules (rows) in a guided decision table are applied.
 * New support to display multiple linked guided decision tables in the Guided Decision Table Editor has been added.
 
-Project Metrics Dashboard::
+== Project Metrics Dashboard
 A new dashboard is now available for every project listed in the authoring library. When the project details page is opened, a metrics card appears on the right side of the screen. The card shows the history of contributions (commits) made to that specific project over time. Click the *View All* link to access the full dashboard which shows several metrics about the project’s contributions. Different filter controls are available for selecting the contributions made either by a specific user or in a specified time frame.
 
-Teams Metrics Dashboard::
+== Teams Metrics Dashboard
 A  new dashboard has been added to the *Teams* perspective. A metrics card on the right side shows the history of all contributions (commits). Click *View All* to access a full dashboard showing overall contributions metrics. You can filter the contributions by specifying the following criteria:
 
 * User
@@ -42,13 +92,7 @@ A  new dashboard has been added to the *Teams* perspective. A metrics card on th
 
 This dashboard replaces the former *Authoring->Contributors* dashboard, which is no longer available at the workbench’s top menu bar.
 
-Improved Navigation::
-You can now navigate:
-* From a process instance to the associated jobs
-* From a job to the associated process instance
-* From a process instance to the associated tasks
-
-Improved Process Status Reporting::
+== Improved Process Status Reporting
 The process status now reports when a process has errors associated with it.
 
 ifdef::BPMS[]
@@ -90,7 +134,7 @@ You can now search the following instances by the following fields:
 |===
 --
 
-Configurable Error Handling::
+== Configurable Error Handling
 +
 If an error happens, an event is generated that holds the following data:
 +
@@ -122,7 +166,8 @@ If an error happens, an event is generated that holds the following data:
 |===
 --
 
-Advanced Queries Decoupled from the Database Model:: With this new API, you can make advanced queries using filters on process instances or tasks, independently of the instance field names. The API is accessible in the `org.kie.server.client.impl.SearchServicesClientImpl` class, which has the following methods:
+== Advanced Queries Decoupled from the Database Model
+With this new API, you can make advanced queries using filters on process instances or tasks, independently of the instance field names. The API is accessible in the `org.kie.server.client.impl.SearchServicesClientImpl` class, which has the following methods:
 +
 --
 * `findProcessInstanceWithFilters`: Accepts a filter created with the `org.kie.server.api.util.ProcessInstanceQueryFilterSpecBuilder` class.
@@ -133,32 +178,29 @@ You can also create filters manually and submit them through the REST API.
 --
 endif::[]
 
-* Process Admin Console improvements:
-+
---
-ifdef::BPMS[]
-* New fields in the process instance list:
-** *Last Modified:* The date of the last modification of the process instance.
-** *Correlation Key:* The business correlation key of the process instance.
-endif::[]
+== KIE Workbench Monitoring Web Application
+A new distribution `war` file has been added to the project in this release. The goal for the KIE Monitoring Web Application is to be used along with Kie Server instances, managing all runtime capabilities. This includes managing containers, process instances, tasks, dashboards and more. As opposed to the standard Kie Workbench distribution, no authoring capabilities are offered.
 
-ifdef::BPMS[]
-* New fields in the task list:
-** *Modification Date:* The date of the last modification of the task.
-** *Correlation ID:* The process instance business correlation key of the task.
-** *Assigned to:* The actual owner of the task.
-** *Process Description:* The process instance description.
-endif::[]
+== New columns available on process instances, tasks and jobs
+The following columns have been added to the corresponding perspectives:
 
-ifdef::BPMS[]
-* New fields in the jobs list:
-** *Process Name:* The name of the process definition.
-** *Task ID:* The job business key, that is the combination of the process instance ID and the work item ID. This field can be empty.
-** *Process Description:* The process instance description.
-endif::[]
+* Process instance list perspective: Last update and correlation key.
+* Task list: Last update, correlation key (of the associated process instance ID), process instance description (of the associated process instance).
+* Jobs perspective: Name of the associated process (if any), ID of the associated process instance (if any), Description of the associated process instance (if any).
+These columns are sometimes optional so some of them aren’t displayed by default. In order to show them it’s necessary to select them in the column picker of the corresponding table.
 
-* A unified management console for managing multiple KIE servers that contain different sets of containers.
---
-* Latest feature development and bug fixes.
-* Pre-alpha installation issues stabilized.
+== Quick search filters for runtime data
+To enable you to quickly find data related to Process Instances, Jobs, Tasks and Errors, a new set of pre defined filters has been introduced into the related views. These filters are always available in the "Search" tab when you first access any of the pages related to the domain mentioned above. By default, you will notice that at least one filter is defined. That is done so that only the most relevant data is shown. You’re free to restrict the data even further by adding new filters. This can be done by either selecting values from the dropdown list or proving values to the different attributes in the input box. You will notice that the data is filtered as you add or remove any of the active filters.
+
+== New error handling
+The system now detects and stores execution errors, such as exceptions while running a process instance or a job after the maximum retry number has been exceeded. The process instance list includes a new column that displays the number of errors per process instance which are not marked as acknowledged. When the column is clicked a popup is displayed, which will allow users to navigate to the new error perspective.
+
+== New Execution Errors View
+A new view to explore and acknowledge the new generated execution error has been added.
+
+== New task admin perspective and actions
+The former task list perspective has been divided into two:
+
+* Tasks List perspective: used by task operators to work with their assigned (or potentially assigned) tasks.
+* Task Administration perspective: used by administrators to manage tasks belonging to other users. This perspective is only available for users with roles admin and process-admin. It is similar to the former "Admin" filter tab on the former Task List perspective.
 
