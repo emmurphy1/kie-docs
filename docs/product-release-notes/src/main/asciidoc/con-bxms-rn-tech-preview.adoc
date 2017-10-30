@@ -25,12 +25,10 @@ This perspective is disabled by default. Perform the following steps to enable i
 . In the Permissions section, click the arrow next to Perspectives.
 . Click the trash icon next to Deployments. The DevOps -> *Deployments* link is now available on the Home page.
 
-* Fine-grained security configuration 
 * Guided Decision Trees
 * Guided Score Cards
-* Case Modeler
 * XLS Score Cards
-* New jBPM Designer (IDK)
-* Provisioning perspective (IDK)
+* New jBPM Designer
+* Provisioning perspective
 * Ability to embed perspectives
 
