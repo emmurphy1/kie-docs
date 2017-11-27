@@ -1,4 +1,4 @@
-[id='openshift_int_reg_create_proc']
+[#openshift_int_reg_create_proc]
 
 = Uploading the Product Image to the OpenShift Internal Registry
 If you do not have access to an external Docker registry, you can upload the product image directly to the OpenShift registry. However, you must upload the product image again if you want to use it in another OpenShift registry.
@@ -16,7 +16,7 @@ $ oc adm policy add-role-to-user system:registry <os-user>
 ----
 
 .Procedure
-. Enter the following command where `<product-image-path>` is the path to the product image TAR file in the top-level directory of the unzipped `jboss-bpmsuite-7.0.0.LA-openshift.zip` file:
+. Enter the following command where `<product-image-path>` is the path to the product image TAR file in the top-level directory of the unzipped `jboss-bpmsuite-7.0.0.LA.openshift.zip` file:
 +
 [source,bash]
 ----

@@ -6,7 +6,7 @@
 .Supported Maven Artifact Versions
 [cols="2,1", options="header"]
 |===
-| {PRODUCT} Version
+| {PRODUCT} version
 | Maven Artifact Version
 
 | {ENTERPRISE_VERSION} {RELEASE}

@@ -1,11 +1,11 @@
-[id='openshift_temp_businesscentral_monitoring_smart_router_install_proc']
+[#openshift_temp_businesscentral_monitoring_smart_router_install_proc]
 
 = Using the OpenShift Application Template for Business Central Monitoring and Smart Router
 Use this template to install {PRODUCT} {PRODUCT_VERSION} {RELEASE} Business Central Monitoring and Smart Router in your OpenShift project. 
 
 .Prerequisites
 * An OpenShift product image installed as described in <<openshift_image_install_proc>>.
-* The `jboss-bpmsuite-7.0.0.LA-openshift.zip` file, available from the site that contains this document, extracted to your hard drive.
+* The `jboss-bpmsuite-7.0.0.LA.openshift.zip` file, available from the site that contains this document, extracted to your hard drive.
 
 .Procedure
 . Change directory to the `jboss-bpmsuite-7.0.0.Beta02-openshift/application-template` directory.
