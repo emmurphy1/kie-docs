@@ -1,15 +1,8 @@
 [id='_chap_maven_dependencies']
-= Apache Maven
 
-http://maven.apache.org/[Apache Maven] is a distributed build automation tool used in Java application development to build and manage software projects. Apart from building, publishing, and deploying capabilities, using Maven for your Red Hat JBoss BRMS and Red Hat JBoss BPM suite projects ensures the following:
+include::product-development-guide/maven-con.adoc[leveloffset=+1]
+include::product-development-guide/maven_repositories-con.adoc[leveloffset=+1]
 
-* The build process is easy and a uniform build system is implemented across projects.
-* All of the required JAR files for a project are made available at compile time.
-* A proper project structure is configured.
-* Dependencies and versions are well managed.
-* No need for additional build processing, as Maven builds output into a number of predefined types, such as JAR and WAR.
-
-[id='_maven_repositories']
 == Maven Repositories
 
 Maven uses repositories to store Java libraries, plug-ins, and other build artifacts. These repositories can be local or remote. Red Hat JBoss BRMS and Red Hat JBoss BPM Suite products maintain local and remote maven repositories that you can add to your project for accessing the rules, processes, events, and other project dependencies. You must configure Maven to use these repositories and the Maven Central Repository to provide correct build functionality.
