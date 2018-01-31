@@ -1,8 +1,8 @@
-[id='assembly_migrating-from BRMS-6.4-to-DM-{PRODUCT_VERSION}']
+[[assembly_migrating-from BRMS-6.4-to-DM-{PRODUCT_VERSION}]]
 
 include::product-shared-docs/document-attributes.adoc[]
 
-= DRAFT Migrating from Red Hat BRMS 6.4 to {PRODUCT} {PRODUCT_VERSION}
+= Migrating from Red Hat BRMS 6.4 to {PRODUCT} {PRODUCT_VERSION}
 // Context attribute is assembly specific and enables module reuse between assemblies.
 :imagesdir: topics/product-shared-docs/images
 :context: installing-dm-on-premise
@@ -19,7 +19,6 @@ You have installed {PRODUCT} {PRODUCT_VERSION}.
 For information about installing {PRODUCT}, see Installing {PRODUCT} on premise or Installing {PRODUCT} on OpenShift. COMMENT: add links.
 
 include::product-migration-guide/migration-steps-proc.adoc[leveloffset=+1]
-include::product-migration-guide/migration-install-dm-proc.adoc[leveloffset=+1]
 include::product-migration-guide/migration-upgrade-api-proc.adoc[leveloffset=+1]
 include::product-migration-guide/migration-add-cdi-depend-proc.adoc[leveloffset=+2]
 include::product-migration-guide/migration-user-data-proc.adoc[leveloffset=+1]
