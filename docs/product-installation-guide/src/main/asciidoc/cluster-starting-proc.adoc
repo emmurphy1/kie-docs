@@ -1,6 +1,6 @@
-[[cluster-starting-proc]]
+[id='cluster-starting-proc']
 
-= Starting a Cluster
+= Starting a cluster
 
 The `startCluster.sh` script in `_EAP_HOME_/jboss-brms-bpmsuite-{PRODUCT_VERSION}-supplementary-tools/helix-core` initializes and starts the cluster. Once initialized, further usage of `startCluster.sh` results in errors. If you installed {PRODUCT} cluster with the installer:
 
@@ -53,7 +53,7 @@ localhost:8080/business-central
 localhost:8230/business-central
 ----
 
-[[_stop_the_cluster]]
+[id='_stop_the_cluster']
 == Stopping a Cluster
 
 To stop your cluster, stop the components in the reversed order from starting it:
