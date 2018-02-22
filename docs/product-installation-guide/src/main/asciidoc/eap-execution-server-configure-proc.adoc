@@ -9,39 +9,60 @@ Only make these changes if {KIE_SERVER} will be managed by {CENTRAL}.
 ====
 
 .Prerequisites
-{PRODUCT} installed in an  `__EAP_HOME__` as described in one of the following sections:
-
-* <<installer-run-proc>>
-* <<installer-run-cli-proc>>
-* <<assembly_installing-on-eap-deployable>>
+* {PRODUCT} installed in an  `__EAP_HOME__` as described in one of the following sections:
++
+** <<installer-run-proc>>
+** <<installer-run-cli-proc>>
+** <<assembly_installing-on-eap-deployable>>
 +
 [NOTE]
 ====
 Red Hat recommends that you install {KIE_SERVER} and {CENTRAL} on different servers in production environments. However, if you install {KIE_SERVER} and {CENTRAL} on the same server, for example in a development environment, make these changes in the shared `standalone.xml` file. 
 ====
+* On all {KIE_SERVER} nodes, a user with the `kie-server` role
+* On the {CENTRAL} server node, a user with the `rest-all` role
++
+For more information, see <<eap-users-create-proc>>.
 
 .Procedure
-. In the {CENTRAL}  `__EAP_HOME__/standalone/configuration/standalone.xml` file, uncomment the following properties in the `<system-properties>` section and replace `<USERNAME>` and `<USER_PWD>` with the credentials of a user with the `admin` role:
+. In the {CENTRAL}  `__EAP_HOME__/standalone/configuration/standalone.xml` file, uncomment the following properties in the `<system-properties>` section and replace `<USERNAME>` and `<USER_PWD>` with the credentials of a user with the `kie-server` or `admin` role:
 +
 [source,xml]
 ----
    <property name="org.kie.server.user" value="<USERNAME>"/>
-   <property name="org.kie.server.pwd" value="<USER_PWD>;"/>
+   <property name="org.kie.server.pwd" value="<USER_PWD>"/>
 ----
 . In the {KIE_SERVER}  `__EAP_HOME__/standalone/configuration/standalone.xml` file, uncomment the following properties in the `<system-properties>` section.  
 +
 [source,xml]
 ----
   <property name="org.kie.server.controller.user" value="<CONTROLLER_USER>"/>
-  <property name="org.kie.server.controller.pwd" value="<CONTROLLER_PWD;"/>
+  <property name="org.kie.server.controller.pwd" value="<CONTROLLER_PWD"/>
   <property name="org.kie.server.id" value="<KIE_SERVER_ID>"/>
-  <property name="org.kie.server.location" value="http://localhost:8280/kie-server/services/rest/server"/>
-  <property name="org.kie.server.controller" value="http://localhost:8080/decision-central/rest/controller"/>
+  <property name="org.kie.server.location" value="http://<HOST>_<PORT>/kie-server/services/rest/server"/>
+  <property name="org.kie.server.controller" value="<DECISION_CENTRAL_URL>"/>
 ----
 . In this file, replace the following values:
-* Replace `<CONTROLLER_USER>` and `<CONTROLLER_PWD>` with the credentials of a user with the `admin` role.
+* Replace `<CONTROLLER_USER>` and `<CONTROLLER_PWD>` with the credentials of a user with the `rest-all` or `admin` role.
 * Replace `<KIE_SERVER_ID>` with the ID or name of the {KIE_SERVER} installation, for example, `rhdm700-decision-server-1`.
-. Uncomment the line with `controllerUser` in the following files:
-** `__EAP_HOME__/standalone/configuration/application-users.properties`
-** `__EAP_HOME__/standalone/configuration/application-roles.properties`
+* Replace `<HOST>` with the ID or name of the {KIE_SERVER} host, for example, `localhost` or `192.7.8.9`.
+* Replace `<PORT>` with the port of the {KIE_SERVER} host, for example, `8080`.
++ 
+[NOTE]
+====
+The `org.kie.server.location` property specifies the location of {KIE_SERVER}.
+====
+
+* Replace `<DECISION_CENTRAL_URL>` with the URL of {CENTRAL}. Decision Server connects to this URL during startup.
++
+** If you installed {CENTRAL} using the installer or {EAP} zip installations, `<DECISION_CENTRAL_URL>` has this format:
++
+`http://<HOST>:<PORT>/decision-central/rest/controller`
+** If you installed {CENTRAL} in standalone mode, `<DECISION_CENTRAL_URL>` has this format:
++
+`http://<HOST>:<PORT>/rest/controller`
+
+
+
+
 
