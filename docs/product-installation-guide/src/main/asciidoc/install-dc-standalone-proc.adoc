@@ -1,8 +1,7 @@
 [id='install-dc-standalone-proc']
 = Installing standalone {CENTRAL} 
 
-You can use the {CENTRAL} standalone JAR file to install {CENTRAL} on an application server other than {EAP}. This installation method does not require a separate server installation.
-
+You can use the {CENTRAL} standalone JAR file to run {CENTRAL} without needing to deploy it to an application server, for example {EAP}. 
 [NOTE]
 ====
 Red Hat only supports this installation type when it is installed on premise, on Red Hat Enterprise Linux.
@@ -31,7 +30,25 @@ swarm:
         properties-authorization:
           path: /path/to/application-roles.properties
 ----
-Enter the following command:
+. Create the `application-users.properties` file. Include an adminitrative user and if this {CENTRAL} instance will be a controller for {KIE_SERVER}, include a controller user, for example:
++
+[source]
+----
+rhdmAdmin=password1
+controllerUser=controllerUser1234
+----
++
+. Create the `application-roles.properties` file to assign roles to the users that you included in the `application-users.properties` file, for example:
++
+[source]
+----
+rhdmAdmin=admin
+controllerUser=rest-all
+----
++
+For more information, see <<dm-roles-con>>.
+
+. Enter the following command:
 +
 [source]
 ----

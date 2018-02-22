@@ -1,6 +1,6 @@
 [id='install-standalone-properties-con']
 = Supported properties
-When you install standalone {KIE_SERVER}, you can use the properties listed in this section in the following command:
+When you install standalone {CENTRAL}, you can use the properties listed in this section in the following command:
 [source] 
 ----
 rhdm-7.0.0.GA-decision-central-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
@@ -35,4 +35,6 @@ If you plan to use RSA or any algorithm other than DSA, make sure you setup prop
 * `org.kie.demo`: Enables external clone of a demo application from GitHub.
 * `org.kie.build.disable-project-explorer`: Disable automatic build of selected Project in Project Explorer. Default: false
 * `org.kie.verification.disable-dtable-realtime-verification`: Disables the realtime validation and verification of decision tables. Default: false
-* `org.kie.server.controller`: URL for connecting with a Kie Server Controller, for example: `org.kie.server.controller - ws://localhost:8080/decision-central/websocket/controller.
+* `org.kie.server.controller`: URL for connecting with a Kie Server Controller, for example: `org.kie.server.controller` - `ws://localhost:8080/decision-central/websocket/controller`.
+* `org.kie.server.user`: User name used to connect with the {KIE_SERVER} nodes from the controller. This property is only required when using this {CENTRAL} installation as a controller.
+* `org.kie.server.pwd`: Password used to connect with the {KIE_SERVER} nodes from the controller. This property is only required when using this {CENTRAL} installation as a controller.
