@@ -29,6 +29,10 @@ swarm:
           plain-text: true
         properties-authorization:
           path: /path/to/application-roles.properties
+datasource:
+  management:
+    wildfly:
+      admin: admin
 ----
 . Create the `application-users.properties` file. Include an adminitrative user and if this {CENTRAL} instance will be a controller for {KIE_SERVER}, include a controller user, for example:
 +
