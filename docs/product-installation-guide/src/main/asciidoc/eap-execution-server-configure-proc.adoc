@@ -19,13 +19,13 @@ Only make these changes if {KIE_SERVER} will be managed by {CENTRAL}.
 ====
 Red Hat recommends that you install {KIE_SERVER} and {CENTRAL} on different servers in production environments. However, if you install {KIE_SERVER} and {CENTRAL} on the same server, for example in a development environment, make these changes in the shared `standalone.xml` file. 
 ====
-* On all {KIE_SERVER} nodes, a user with the `kie-server` role
-* On the {CENTRAL} server node, a user with the `rest-all` role
+* On {KIE_SERVER} nodes, a user with the `kie-server` role
+* On {CENTRAL} server nodes, a user with the `rest-all` role
 +
 For more information, see <<eap-users-create-proc>>.
 
 .Procedure
-. In the {CENTRAL}  `__EAP_HOME__/standalone/configuration/standalone.xml` file, uncomment the following properties in the `<system-properties>` section and replace `<USERNAME>` and `<USER_PWD>` with the credentials of a user with the `kie-server` or `admin` role:
+. In the {CENTRAL}  `__EAP_HOME__/standalone/configuration/standalone.xml` file, uncomment the following properties in the `<system-properties>` section and replace `<USERNAME>` and `<USER_PWD>` with the credentials of a user with the `kie-server` role:
 +
 [source,xml]
 ----
@@ -43,7 +43,7 @@ For more information, see <<eap-users-create-proc>>.
   <property name="org.kie.server.controller" value="<DECISION_CENTRAL_URL>"/>
 ----
 . In this file, replace the following values:
-* Replace `<CONTROLLER_USER>` and `<CONTROLLER_PWD>` with the credentials of a user with the `rest-all` or `admin` role.
+* Replace `<CONTROLLER_USER>` and `<CONTROLLER_PWD>` with the credentials of a user with the `rest-all`.
 * Replace `<KIE_SERVER_ID>` with the ID or name of the {KIE_SERVER} installation, for example, `rhdm700-decision-server-1`.
 * Replace `<HOST>` with the ID or name of the {KIE_SERVER} host, for example, `localhost` or `192.7.8.9`.
 * Replace `<PORT>` with the port of the {KIE_SERVER} host, for example, `8080`.
@@ -58,7 +58,7 @@ The `org.kie.server.location` property specifies the location of {KIE_SERVER}.
 ** If you installed {CENTRAL} using the installer or {EAP} zip installations, `<DECISION_CENTRAL_URL>` has this format:
 +
 `http://<HOST>:<PORT>/decision-central/rest/controller`
-** If you installed {CENTRAL} in standalone mode, `<DECISION_CENTRAL_URL>` has this format:
+** If you are running {CENTRAL} using the `standalone.jar` file, `<DECISION_CENTRAL_URL>` has this format:
 +
 `http://<HOST>:<PORT>/rest/controller`
 
