@@ -5,15 +5,15 @@ Now that the basic configuration is done, the Oracle WebLogic Server is set to d
 
 As noted earlier, the {PRODUCT} ZIP file for Oracle WebLogic Server contains the deployable WAR files for
 ifdef::BA[]
-Business Central, {KIE_SERVER}, and Dashbuilder.
+{CENTRAL}, {KIE_SERVER}, and Dashbuilder.
 endif::BA[]
 ifdef::DM[]
-both Business Central and {KIE_SERVER}.
+both {CENTRAL} and {KIE_SERVER}.
 endif::DM[]
 
-== Installing Business Central
+== Installing {CENTRAL}
 
-Business Central is uploaded as a web archive and then accessed by a familiar through a web browser. Start this deployment by installing the Business Central exploded WAR as a WebLogic Application.
+{CENTRAL} is uploaded as a web archive and then accessed by a familiar through a web browser. Start this deployment by installing the {CENTRAL} exploded WAR as a WebLogic Application.
 
 . In your Oracle WebLogic Server administrative console, click *Deployments*. This will show you all the existing applications in the system and allow you to install a new one.
 . Click *Install* to start the process.
@@ -23,7 +23,7 @@ Business Central is uploaded as a web archive and then accessed by a familiar th
 . In the *Additional Configuration* section, choose *No, I will review the configuration later* and click *Finish*.
 . To ensure correct functionality of process diagram visualization, copy `xercesImpl.jar` to the server libraries, which is in `/_DOMAIN_HOME_/lib/` by default.
 
-You have now successfully installed Business Central on Oracle WebLogic Server. To access the application, navigate to `http://_TARGET_SERVER_:7001/business-central`.
+You have now successfully installed {CENTRAL} on Oracle WebLogic Server. To access the application, navigate to `http://_TARGET_SERVER_:7001/business-central`.
 
 ifdef::BA[]
 [id='_install_dashbuilder']
