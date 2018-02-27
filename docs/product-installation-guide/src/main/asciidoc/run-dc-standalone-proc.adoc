@@ -1,5 +1,5 @@
-[id='install-dc-standalone-proc']
-= Installing standalone {CENTRAL} 
+[id='run-dc-standalone-proc']
+= Running standalone {CENTRAL} 
 
 You can use the {CENTRAL} standalone JAR file to run {CENTRAL} without needing to deploy it to an application server, for example {EAP}. 
 [NOTE]
@@ -47,7 +47,7 @@ controllerUser=controllerUser1234
 [source]
 ----
 rhdmAdmin=admin
-controllerUser=rest-all
+controllerUser=kie-server
 ----
 +
 For more information, see <<dm-roles-con>>.
@@ -59,14 +59,15 @@ For more information, see <<dm-roles-con>>.
 java -jar rhdm-7.0.0.GA-decision-central-standalone.jar -s
 application-config.yaml
 ----
-
-In addition, you can set any properties supported by {CENTRAL} by including the `-D<property>=<value>` parameter in the installation command, for example:
++
+In addition, you can set any properties supported by {CENTRAL} by including the `-D<property>=<value>` parameter in this command, for example:
++
 [source]
 ----
 java -jar rhdm-7.0.0.GA-decision-central-standalone.jar -s
 application-config.yaml -D<property>=<value> -D<property>=<value>
 ----
-
++
 //For example:
 //* To run {CENTRAL} and connect to {KIE_SERVER} as the user `controllerUser`, enter:
 //+
@@ -79,6 +80,6 @@ application-config.yaml -D<property>=<value> -D<property>=<value>
 //----
 //+
 //Doing this enables you to deploy containers to {KIE_SERVER}.
-See <<install-standalone-properties-con>> for more information.
+See <<run-standalone-properties-con>> for more information.
 
 
