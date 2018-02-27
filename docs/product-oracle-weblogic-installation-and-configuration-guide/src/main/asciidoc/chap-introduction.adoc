@@ -10,12 +10,7 @@
 [id='_about_dm_for_wls']
 == About {PRODUCT} for Oracle WebLogic Server
 
-You can install {PRODUCT} {KIE_SERVER} and the {KIE_SERVER} controller on Oracle Weblogic Server. The deployable ZIP file installation consists of two ZIP files, one for {KIE_SERVER} and one for {KIE_SERVER} controller.
+This document explains how to install {KIE_SERVER} and the {KIE_SERVER} controller on Oracle Weblogic Server by using ZIP files available from the https://access.redhat.com[Red Hat Customer Portal].
 
-This guide explains how to install {KIE_SERVER} on a full profile version of Oracle WebLogic Server.
+ use the deployable ZIP files to install {KIE_SERVER} on a full profile version of Oracle WebLogic Server. 
 
-Before installation, several configuration steps have to be performed to enable a successful setup. This guide will outline these steps.
-
-Before you proceed, make sure you have access to the server on Oracle WebLogic Server and that you are able to successfully access Oracle WebLogic Server's administrative console through a web browser (usually at `http://_TARGET_SERVER_:7001/console`).
-
-{PRODUCT} for Oracle WebLogic Server is distributed as a WAR file. It is then deployed as an exploded archive and configured as any other web application.
