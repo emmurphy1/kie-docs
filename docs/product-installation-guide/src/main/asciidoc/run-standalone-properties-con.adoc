@@ -3,7 +3,7 @@
 When you install standalone {CENTRAL}, you can use the properties listed in this section in the following command:
 [source] 
 ----
-rhdm-7.0.0.GA-decision-central-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
+java -jar rhdm-7.0.0.GA-decision-central-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
 ----
 In this command, `<property>` is a property from the following list and `<value>` is a value that you assign to that property.
 
