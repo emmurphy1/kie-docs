@@ -21,7 +21,7 @@ include::product-oracle-weblogic-installation-and-configuration-guide/chap-confi
 
 include::product-oracle-weblogic-installation-and-configuration-guide/chap-install.adoc[leveloffset=+1]
 
-include::product-oracle-weblogic-installation-and-configuration-guide/chap-next-steps.adoc[leveloffset=+1]
+//include::product-oracle-weblogic-installation-and-configuration-guide/chap-next-steps.adoc[leveloffset=+1]
 
 
 
