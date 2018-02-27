@@ -1,10 +1,10 @@
 [id='run-dc-standalone-proc']
 = Running standalone {CENTRAL} 
 
-You can use the {CENTRAL} standalone JAR file to run {CENTRAL} without needing to deploy it to an application server, for example {EAP}. 
+You can use the {CENTRAL} standalone JAR file to run {CENTRAL} without needing to deploy it to an application server such as {EAP}. 
 [NOTE]
 ====
-Red Hat only supports this installation type when it is installed on premise, on Red Hat Enterprise Linux.
+Red Hat supports this installation type only when it is installed on premise, on Red Hat Enterprise Linux.
 //Any particular version of RHEL?
 ====
 
