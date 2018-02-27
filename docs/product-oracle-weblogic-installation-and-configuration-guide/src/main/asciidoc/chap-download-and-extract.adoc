@@ -10,7 +10,7 @@
 [id='_download_red_hat_jboss_bpm_suite_for_oracle_weblogic_server']
 == Download {PRODUCT} for Oracle WebLogic Server
 
-You can download the deployable {PRODUCT} package file for Oracle WebLogic Server from Red Hat Customer Portal:
+You can download the deployable {PRODUCT} package file for Oracle WebLogic Server from the Red Hat Customer Portal:
 
 . Log in to the https://access.redhat.com[Red Hat Customer Portal].
 . Click *DOWNLOADS* at the top of the page.

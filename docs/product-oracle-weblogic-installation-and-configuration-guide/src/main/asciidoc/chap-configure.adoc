@@ -20,7 +20,7 @@ USER_MEM_ARGS=-Xms512m -Xmx1024m -XX:MaxPermSize=512m
 
 The following custom properties require configuration on the WebLogic Server:
 
-*Properties Required {KIE_SERVER}*
+*Properties Required for {KIE_SERVER}*
 
 * `com.sun.jersey.server.impl.cdi.lookupExtensionInBeanManager`:
 Uses `BeanManager` to look up extensions. This avoids conflicts across multiple instances. Set to `true`.
@@ -76,9 +76,8 @@ ifdef::BA[]
 . Click *New* to create a new group. Create the `kie-server` group.
 endif::BA[]
 ifdef::DM[]
-. Click *New* to create a new group. Create the following groups: `admin`, `analyst`, and `kie-server`. Also create the REST API groups if you will use API. 
-
-. Click the *Users* tab and click *New* to create a new user. Provide this new user with a name (for example `decision-server-admin`) and a password. Click *OK* to save.
+. Click *New* to create the `kie-server` group.
+. Click the *Users* tab and click *New* to create a new user. Provide this new user with a name (for example `kie-server`) and a password. Click *OK* to save.
 
 +
 [IMPORTANT]
@@ -237,7 +236,6 @@ Default value: `jms/KIE.SERVER.REQUEST`.
 * `KIE.SERVER.RESPONSE`: for the {KIE_SERVER} responses.
 +
 Default value: `jms/KIE.SERVER.RESPONSE`.
-
 
 Use the following procedure to create each queue:
 

@@ -32,7 +32,7 @@ ifdef::BA[]
 [id='_installing_intelligent_process_server']
 == Installing {KIE_SERVER}
 
-The {KIE_SERVER} is distributed as a deployable WAR. Follow the steps below to install the server:
+{KIE_SERVER} is distributed as a deployable WAR. Follow the steps below to install the server:
 
 . Navigate to *Deployments*. This will show you all the existing applications in the system and allow you to install a new one.
 . Click *Install* to start the process.

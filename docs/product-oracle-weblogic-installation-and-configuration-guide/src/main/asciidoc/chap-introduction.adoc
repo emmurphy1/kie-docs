@@ -10,7 +10,10 @@
 [id='_about_dm_for_wls']
 == About {PRODUCT} for Oracle WebLogic Server
 
-This document explains how to install {KIE_SERVER} and the {KIE_SERVER} controller on Oracle Weblogic Server by using ZIP files available from the https://access.redhat.com[Red Hat Customer Portal].
+You can install {KIE_SERVER} and the {KIE_SERVER} controller on Oracle Weblogic Server. The deployable ZIP file installation consists of two ZIP files, one for {KIE_SERVER} and one for the {KIE_SERVER} controller.
 
- use the deployable ZIP files to install {KIE_SERVER} on a full profile version of Oracle WebLogic Server. 
+This guide explains how to install Decision Server on a full profile version of Oracle WebLogic Server.
+
+For information about running the {CENTRAL} standalone JAR file, see {URL_INSTALLING_DM_ON_PREMISE}[_{INSTALLING_DM_ON_PREMISE}_].
+ 
 
