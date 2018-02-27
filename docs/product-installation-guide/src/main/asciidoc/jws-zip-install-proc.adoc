@@ -23,7 +23,7 @@ To use the installer JAR file to install {KIE_SERVER}, see <<assembly_installing
 . Copy the `__TEMP_DIR__/rhdm-7.0-kie-server-jws/kie-server.war` directory to the `_JWS_HOME_/tomcat8/webapps` directory.
 +
 WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the Red Hat JBoss Web Server instance.
-. Remove the `.war` extensions from the `kie-server.war` folders.
+. Remove the `.war` extensions from the `kie-server.war` folder.
 . Open the `_JWS_HOME_/tomcat8/conf/tomcat-users.xml` file in a text editor.
 . Add users and roles to the `_JWS_HOME_/tomcat8/conf/tomcat-users.xml` file. In the following example, `<ROLE_NAME>` is a role supported by {PRODUCT}. For a list of supported roles, see <<dm-roles-con>>.  `<USERNAME>` and `<PASSWORD>` is a user and password combination of your choice:
 +
@@ -38,8 +38,8 @@ If a user has more than one role, as shown in the following example, separate th
 [source]
 ----
 <role rolename="admin"
-<role rolename="analyst"
-<user username="rhdmUser" password="user1234" roles="admin,analyst"/>
+<role rolename="kie-server"
+<user username="rhdmUser" password="user1234" roles="admin,kie-server"/>
 ----
 . In the `_JWS_HOME_/tomcat8/bin` directory, create a readable `setenv.sh` file with the following content:
 +
@@ -58,3 +58,4 @@ On Microsoft Windows, add the following values to the `setenv.bat` file:
 . Correct any errors.
 . Enter `http://localhost:8080/decision-central` in a web browser.
 . Log in with the user name and password that you defined in the `tomcat-users.xml` file.
+
