@@ -1,0 +1,23 @@
+[id='assembly_integrating']
+
+include::product-shared-docs/document-attributes.adoc[]
+
+= Designing a decision service using guided decision tables
+// Context attribute is assembly specific and enables module reuse between assemblies.
+:imagesdir: topics/product-shared-docs/images
+:context: guided-decision-tables
+include::product-shared-docs/author-group.adoc[]
+
+// Purpose statement for the assembly
+As a business analyst or business rules developer, you can use guided decision tables to define business rules in a wizard-led tabular format. These rules are compiled into Drools Rule Language (DRL) and form the core of the decision service for your project.
+
+.Prerequisite
+The team and project for the guided decision tables have been created in {CENTRAL}. Each asset is associated with a project assigned to a team. For details, see {URL_GETTING_STARTED_DECISION_SERVICE}[_{GETTING_STARTED_DECISION_SERVICE}_].
+
+include::product-administration-and-configuration-guide/chap-integrating-red-hat-jboss-bxms-with-red-hat-sso.adoc[leveloffset=+1]
+
+== Next steps
+
+
+// Versioning info
+include::product-shared-docs/versioning-information.adoc[]
