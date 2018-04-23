@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Installing and configuring Red Hat Process Automation Manager in a Red Hat JBoss Enterprise Application Platform clustered environment</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.3"/><meta name="description" content="This document describes how to create a Red Hat Process Automation Manager clustered environment on Red Hat JBoss Enterprise Application Platform 7.1."/><link rel="next" href="#idm140272717954912" title="Preface"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140272723037840"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Process Automation Manager</span> <span class="productnumber">7.0</span></div><div><h1 class="title">Installing and configuring Red Hat Process Automation Manager in a Red Hat JBoss Enterprise Application Platform clustered environment</h1></div><div><h2 class="subtitle"> For Red Hat Process Automation Manager 7.0 </h2></div><div><div xml:lang="en-US" class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Red Hat</span> <span class="surname">Customer Content Services</span></h3><code class="email"><a class="email" href="mailto:brms-docs@redhat.com">brms-docs@redhat.com</a></code></div></div></div><div><a href="#idm140272723055184">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This document describes how to create a Red Hat Process Automation Manager clustered environment on Red Hat JBoss Enterprise Application Platform 7.1.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#idm140272717954912">Preface</a></span></li><li><span class="chapter"><a href="#clustering-con">1. Clustering with Red Hat Process Automation Manager</a></span><ul><li><span class="section"><a href="#clustering-elasticsearch-proc_assembly_clustering-eap">1.1. Setting up Elasticsearch</a></span></li><li><span class="section"><a href="#clustering-artemis-activate-proc_assembly_clustering-eap">1.2. Installing AMQ Broker 7.0</a></span></li></ul></li><li><span class="chapter"><a href="#clustering_business_central">2. Clustering Business Central</a></span><ul><li><span class="section"><a href="#clustering-dm-install-proc_assembly_clustering-eap">2.1. Installing Business Central on cluster nodes</a></span></li></ul></li><li><span class="chapter"><a href="#clustering_process_server">3. Clustering Process Server</a></span><ul><li><span class="section"><a href="#clustering-kie-server-install-proc_assembly_clustering-eap">3.1. Installing Process Server on cluster nodes</a></span></li><li><span class="section"><a href="#clustering_the_controller_optional">3.2. Clustering the Controller (Optional)</a></span></li><li><span class="section"><a href="#clustering_smart_router_optional">3.3. Clustering Smart Router (Optional)</a></span></li></ul></li><li><span class="chapter"><a href="#next_steps">4. Next steps</a></span></li><li><span class="appendix"><a href="#versioning_information">A. Versioning information</a></span></li></ul></div><section class="preface" id="idm140272717954912"><div class="titlepage"><div><div><h1 class="title">Preface</h1></div></div></div><p>
+			As a system engineer, you can create a Red Hat Process Automation Manager clustered environment to provide high availability and load balancing.
+		</p></section><section class="chapter" id="clustering-con"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Clustering with Red Hat Process Automation Manager</h1></div></div></div><p>
+			By clustering two or more computers, you have the benefits of high availability, enhanced collaboration, and load balancing. High availability decreases the chance of a loss of data when a single computer fails because data on all of the computers (nodes) of the cluster is replicated on each node of the cluster. When a computer fails, another computer fills the gap by providing a copy of the data that was on the failed computer. When the failed computer comes online again, it resumes its place in the cluster. Load balancing shares the computing load across the nodes of the cluster. Doing this improves the overall performance of the cluster.
+		</p><p>
+			Developers use Red Hat Process Automation Manager in a development environment to create rules and processes that users then run in a runtime environment to assist with decision making. The primary benefit of clustering Red Hat Process Automation Manager development environments is high availability and enhanced collaboration. For example, if clustering is configured and Developer X is authoring rules on Business Central Node1 then Developer Y, who is working on Business Central Node2, can see the rules authored by Developer X as they are created. Furthermore, all of the developers working on individual nodes of the cluster will see the same synchronized content. In addition, clustering provides high availability in the rules development environment. If Developer X is working on Node1 and that node fails, Developer X’s work is preserved and visible on any other node of the cluster.
+		</p><p>
+			The primary benefit of clustering Red Hat Process Automation Manager runtime environments is load balancing. If activity on one node of the cluster increases, that activity can be shared among the other nodes of the cluster to improve performance.
+		</p><p>
+			Red Hat supports clustering Red Hat Process Automation Manager on Red Hat JBoss EAP 7.1. To create a Red Hat Process Automation Manager cluster, set up a Red Hat JBoss EAP 7.1 cluster as described in <a class="link" href="https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/configuring_a_red_hat_jboss_eap_7_cluster/"><span class="emphasis"><em>Configuring a Red Hat JBoss EAP 7 Cluster</em></span></a>, then following the instructions in this document.
+		</p><section class="section" id="clustering-elasticsearch-proc_assembly_clustering-eap"><div class="titlepage"><div><div><h2 class="title">1.1. Setting up Elasticsearch</h2></div></div></div><p>
+				Elasticsearch is a highly scalable open source full-text search and analytics engine. It enables you to store, search, and analyze high volumes of data quickly and in near real time. In a Red Hat Process Automation Manager clustered environment, it enables you to perform complex and efficient searches across cluster nodes. Set up Elasticsearch on one node of the cluster.
+			</p><div class="formalpara"><p class="title"><strong>Prerequisite</strong></p><p>
+					A Red Hat JBoss EAP 7.1 cluster is configured as described in <a class="link" href="https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/configuring_a_red_hat_jboss_eap_7_cluster/"><span class="emphasis"><em>Configuring a Red Hat JBoss EAP 7 Cluster</em></span></a>.
+				</p></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Download and unzip the <a class="link" href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.5.zip">Elasticsearch</a> installation file on one node of the cluster.
+					</li><li class="listitem"><p class="simpara">
+						Replace the contents of the <code class="literal">elasticsearch/config/elasticsearch.yml</code> file as follows, where <code class="literal">&lt;MAIN_NODE_IP&gt;</code> is the IP address of the node of the cluster where you unzipped the Elasticsearch file:
+					</p><pre class="screen">cluster.name: kie-cluster
+transport.host: &lt;MAIN_NODE_IP&gt;
+http.host: &lt;MAIN_NODE_IP&gt;
+transport.tcp.port: 9300
+xpack.security.enabled: false
+discovery.zen.minimum_master_nodes: 1</pre></li><li class="listitem"><p class="simpara">
+						Install the following plug-in, where <code class="literal"><span class="emphasis"><em>ELASTICSEARCH_HOME</em></span></code> is the directory where you unzipped the Elasticsearch file:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								On Linux or UNIX-based systems, enter:
+							</p><p class="simpara">
+								<code class="literal"><span class="emphasis"><em>ELASTICSEARCH_HOME</em></span>/bin/elasticsearch-plugin install x-pack</code>
+							</p></li><li class="listitem"><p class="simpara">
+								On Windows, enter:
+							</p><p class="simpara">
+								<code class="literal"><span class="emphasis"><em>ELASTICSEARCH_HOME</em></span>\bin\elasticsearch-plugin.bat install x-pack</code>
+							</p></li></ul></div></li><li class="listitem"><p class="simpara">
+						Run Elasticsearch:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								On Linux or UNIX-based systems, enter:
+							</p><p class="simpara">
+								<code class="literal"><span class="emphasis"><em>ELASTICSEARCH_HOME</em></span>/bin/elasticsearch</code>
+							</p><p class="simpara">
+								On Windows, enter:
+							</p><p class="simpara">
+								<code class="literal"><span class="emphasis"><em>ELASTICSEARCH_HOME</em></span>\bin\elasticsearch.bat</code>
+							</p></li></ul></div></li></ol></div></section><section class="section" id="clustering-artemis-activate-proc_assembly_clustering-eap"><div class="titlepage"><div><div><h2 class="title">1.2. Installing AMQ Broker 7.0</h2></div></div></div><p>
+				You must install and configure Red Hat AMQ Broker on the cluster node where you installed Elasticseach. AMQ Broker is a full-featured, message-oriented middleware broker based on ActiveMQ Artemis. It offers specialized queueing behaviors, message persistence, and manageability. Core messaging is provided by Apache ActiveMQ Artemis with support for different messaging styles such as publish-subscribe, point-to-point, and store-and-forward. It supports multiple protocols and client languages. AMQ Broker supports clustering and high availability through shared store or shared nothing state replication.
+			</p><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+						A Red Hat JBoss EAP 7.1 cluster is configured.
+					</li><li class="listitem">
+						Elasticsearch is installed on one node of the cluster.
+					</li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						Download Red Hat AMQ Broker 7.0 on the node where you installed Elasticsearch:
+					</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+								Log in to the <a class="link" href="https://access.redhat.com">Red Hat Customer Portal</a>.
+							</li><li class="listitem">
+								Click <span class="strong strong"><strong>DOWNLOADS</strong></span> at the top of the page.
+							</li><li class="listitem">
+								On the <span class="strong strong"><strong>Product Downloads</strong></span> page that opens, navigate to the JBOSS INTEGRATION AND AUTOMATION section, and click <span class="strong strong"><strong>Red Hat JBoss AMQ Broker</strong></span>.
+							</li><li class="listitem">
+								On the <span class="strong strong"><strong>Software Downloads</strong></span> page, download <span class="strong strong"><strong>Red Hat JBoss AMQ Broker 7.0.0</strong></span> (<code class="literal">amq-broker-7.0.0-bin.zip</code>).
+							</li></ol></div></li><li class="listitem">
+						Unzip the <code class="literal">amq-broker-7.0.0-bin.zip</code> archive.
+					</li><li class="listitem"><p class="simpara">
+						Enter the following command to create and run an AMQ Broker instance, where <code class="literal">&lt;AMQ_HOME&gt;</code> is the top-level directory of the unzipped the <code class="literal">amq-broker-7.1.0-bin.zip</code> archive and <code class="literal">&lt;AMQ_BROKER_USER&gt;</code> and <code class="literal">&lt;AMQ_BROKER_PWD&gt;</code> is a user name and password combination of your choice:
+					</p><pre class="screen">$ &lt;AMQ_HOME&gt;/bin/artemis create --user &lt;AMQ_BROKER_USER&gt; --password &lt;AMQ_BROKER_PWD&gt; --role admin --allow-anonymous y &lt;AMQ_HOME&gt;/instances/mybroker</pre><p class="simpara">
+						This command creates an AMQ Broker user with the <code class="literal">admin</code> role and a broker in the <code class="literal">&lt;AMQ_HOME&gt;/instances/mybroker</code> folder. This broker allows anonymous users to connect to the broker from <code class="literal">localhost</code>.
+					</p></li><li class="listitem"><p class="simpara">
+						Add the following properties to the <code class="literal">EAP_HOME/standalone/configuration/standalone.xml</code> file:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Add <code class="literal">&lt;socket-binding name="activemq" port="61616"/&gt;</code> to the socket-binding-group element.
+							</li><li class="listitem">
+								Add <code class="literal">&lt;remote-acceptor name="activemq-acceptor" socket-binding="activemq"/&gt;</code> in <code class="literal">&lt;server name="default"&gt;</code> of the messaging-activemq subsytem element.
+							</li></ul></div></li><li class="listitem"><p class="simpara">
+						Enter one of the following commands to start AMQ Broker:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								On Linux or UNIX-based systems, enter:
+							</p><pre class="screen">&lt;AMQ_INSTANCE&gt;/bin/artemis run</pre></li><li class="listitem"><p class="simpara">
+								On Windows, enter:
+							</p><pre class="screen">&lt;AMQ_INSTANCE&gt;\bin\artemisbat run</pre></li></ul></div></li></ol></div><p>
+				For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_broker/index"><span class="emphasis"><em>Using AMQ Broker</em></span></a>.
+			</p><div class="formalpara"><p class="title"><strong>Next steps</strong></p><p>
+					Complete the steps in one of the following sections:
+				</p></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						<a class="xref" href="#clustering_business_central" title="Chapter 2. Clustering Business Central">Chapter 2, <em>Clustering Business Central</em></a>
+					</li><li class="listitem">
+						<a class="xref" href="#clustering_process_server" title="Chapter 3. Clustering Process Server">Chapter 3, <em>Clustering Process Server</em></a>
+					</li></ul></div></section></section><section class="chapter" id="clustering_business_central"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Clustering Business Central</h1></div></div></div><section class="section" id="clustering-dm-install-proc_assembly_clustering-eap"><div class="titlepage"><div><div><h2 class="title">2.1. Installing Business Central on cluster nodes</h2></div></div></div><p>
+				Complete the steps in this section to install and run Business Central on each node of the cluster.
+			</p><div class="formalpara"><p class="title"><strong>Prerequisite</strong></p><p>
+					A Red Hat JBoss EAP 7.1 cluster is configured and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
+				</p></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Install Business Central on each node of the cluster. See (COMMENT: link to EAP installation story) for information about installing Business Central.
+					</li><li class="listitem"><p class="simpara">
+						On each node of the cluster, edit the following properties in the <code class="literal">&lt;EAP_HOME&gt;/standalone/configuration/standalone.xml</code> file, where:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<code class="literal">&lt;MAIN_NODE&gt;</code> is the IP address of the node where Elasticseach and AMQ Broker are installed
+							</li><li class="listitem">
+								<code class="literal">&lt;AMQ_BROKER_USER&gt;</code> is the AMQ Broker user that you created in <a class="xref" href="#clustering-artemis-activate-proc_assembly_clustering-eap" title="1.2. Installing AMQ Broker 7.0">Section 1.2, “Installing AMQ Broker 7.0”</a>
+							</li><li class="listitem"><p class="simpara">
+								<code class="literal">&lt;AMQ_BROKER_PASSWORD&gt;</code> is the password for the AMQ Broker user
+							</p><pre class="programlisting language-xml">&lt;system-properties&gt;
+  &lt;property name="org.uberfire.nio.git.dir" value="
+      &lt;niogit_dir_on_shared_nfs&gt;"/&gt;
+  &lt;property name="appformer-cluster" value="true"/&gt;
+  &lt;property name="appformer-jms-url" value="tcp://&lt;MAIN_NODE_IP&gt;:61616"/&gt;
+  &lt;property name="appformer-jms-username" value="&lt;AMQ_BROKER_USER&gt;"/&gt;
+  &lt;property name="appformer-jms-password" value="&lt;AMQ_BROKER_PASSWORD&gt;"/&gt;
+  &lt;property name="org.appformer.ext.metadata.index" value="elastic"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.port" value="9300"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.host"
+      value="&lt;MAIN_NODE_IP&gt;"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.cluster"
+      value="kie-cluster"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.retries" value="10"/&gt;
+&lt;/system-properties&gt;</pre></li></ul></div></li><li class="listitem"><p class="simpara">
+						On the node where Elasticseach and AMQ Broker are installed, in Red Hat JBoss EAP create a user with the <code class="literal">admin</code> role and a username and password that matches the values of <code class="literal">&lt;AMQ_BROKER_USER&gt;</code> and <code class="literal">&lt;AMQ_BROKER_PASSWORD&gt;</code>:
+					</p><pre class="programlisting language-bash">$ &lt;MAIN_NODE_EAP_HOME&gt;/bin/./add-user.sh -a --user &lt;AMQ_BROKER_USER&gt; --password &lt;AMQ_BROKER_USER&gt; --role admin</pre></li><li class="listitem"><p class="simpara">
+						To start Business Central, enter one of the following commands on each node of the cluster:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								On Linux or UNIX-based systems:
+							</p><pre class="programlisting language-bash">EAP_HOME/bin/standalone.sh</pre></li><li class="listitem"><p class="simpara">
+								On Windows:
+							</p><pre class="programlisting language-bash">EAP_HOME\bin\standalone.bat</pre></li></ul></div></li></ol></div></section></section><section class="chapter" id="clustering_process_server"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Clustering Process Server</h1></div></div></div><section class="section" id="clustering-kie-server-install-proc_assembly_clustering-eap"><div class="titlepage"><div><div><h2 class="title">3.1. Installing Process Server on cluster nodes</h2></div></div></div><p>
+				Complete the steps in this section to install and run Process Server on each node of the cluster.
+			</p><div class="formalpara"><p class="title"><strong>Prerequisite</strong></p><p>
+					A Red Hat JBoss EAP 7.1 cluster is configured and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
+				</p></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Install Process Server on each node of the cluster. See (COMMENT: link to EAP installation story) for information about installing Process Server.
+					</li><li class="listitem"><p class="simpara">
+						On each node of the cluster, edit the following properties in the <code class="literal">&lt;EAP_HOME&gt;/standalone/configurations/standalone.xml</code> , where:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<code class="literal">&lt;MAIN_NODE&gt;</code> is the IP address of the node where Elasticseach and AMQ Broker are installed
+							</li><li class="listitem">
+								<code class="literal">&lt;AMQ_BROKER_USER&gt;</code> is the AMQ Broker user that you created in <a class="xref" href="#clustering-artemis-activate-proc_assembly_clustering-eap" title="1.2. Installing AMQ Broker 7.0">Section 1.2, “Installing AMQ Broker 7.0”</a>
+							</li><li class="listitem"><p class="simpara">
+								<code class="literal">&lt;AMQ_BROKER_PASSWORD&gt;</code> is the password for the AMQ Broker user
+							</p><pre class="programlisting language-xml">&lt;system-properties&gt;
+  &lt;property name="org.uberfire.nio.git.dir" value="
+      &lt;niogit_dir_on_shared_nfs&gt;"/&gt;
+  &lt;property name="appformer-cluster" value="true"/&gt;
+  &lt;property name="appformer-jms-url" value="tcp://&lt;MAIN_NODE_IP&gt;:61616"/&gt;
+  &lt;property name="appformer-jms-username" value="&lt;AMQ_BROKER_USER&gt;"/&gt;
+  &lt;property name="appformer-jms-password" value="&lt;AMQ_BROKER_PASSWORD&gt;"/&gt;
+  &lt;property name="org.appformer.ext.metadata.index" value="elastic"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.port" value="9300"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.host"
+      value="&lt;MAIN_NODE_IP&gt;"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.cluster"
+      value="kie-cluster"/&gt;
+  &lt;property name="org.appformer.ext.metadata.elastic.retries" value="10"/&gt;
+&lt;/system-properties&gt;</pre></li></ul></div></li><li class="listitem"><p class="simpara">
+						On the node where Elasticseach and AMQ Broker are installed, in Red Hat JBoss EAP create a user with the <code class="literal">admin</code> role and a username and password that matches the values of <code class="literal">&lt;AMQ_BROKER_USER&gt;</code> and <code class="literal">&lt;AMQ_BROKER_PASSWORD&gt;</code>:
+					</p><pre class="programlisting language-bash">$ &lt;MAIN_NODE_EAP_HOME&gt;/bin/./add-user.sh -a --user &lt;AMQ_BROKER_USER&gt; --password &lt;AMQ_BROKER_USER&gt; --role admin</pre></li><li class="listitem"><p class="simpara">
+						To start Process Server, enter one of the following commands on each node of the cluster:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								On Linux or UNIX-based systems:
+							</p><pre class="programlisting language-bash">EAP_HOME/bin/standalone.sh</pre></li><li class="listitem"><p class="simpara">
+								On Windows:
+							</p><pre class="programlisting language-bash">EAP_HOME\bin\standalone.bat</pre></li></ul></div></li></ol></div></section><section class="section" id="clustering_the_controller_optional"><div class="titlepage"><div><div><h2 class="title">3.2. Clustering the Controller (Optional)</h2></div></div></div><p>
+				COMMENT: To be added.
+			</p></section><section class="section" id="clustering_smart_router_optional"><div class="titlepage"><div><div><h2 class="title">3.3. Clustering Smart Router (Optional)</h2></div></div></div><p>
+				COMMENT: To be added.
+			</p></section></section><section class="chapter" id="next_steps"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Next steps</h1></div></div></div><p>
+			COMMENT: To be added
+		</p></section><section class="appendix" id="versioning_information"><div class="titlepage"><div><div><h1 class="title">Appendix A. Versioning information</h1></div></div></div><p>
+			Documentation last updated on: Friday, April 13, 2018.
+		</p></section><div><div xml:lang="en-US" class="legalnotice" id="idm140272723055184"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2018 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat Software Collections is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>

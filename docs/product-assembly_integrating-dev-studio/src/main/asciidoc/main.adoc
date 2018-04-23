@@ -1,0 +1,28 @@
+[id='assembly_integrating-dev-studio']
+
+include::product-shared-docs/document-attributes.adoc[]
+
+= Intgrating JBoss Developer Studio with the {PRODUCT} development environment
+// Context attribute is assembly specific and enables module reuse between assemblies.
+:imagesdir: topics/product-shared-docs/images
+:context: guided-decision-tables
+include::product-shared-docs/author-group.adoc[]
+
+// Purpose statement for the assembly
+As a developer,..
+
+.Prerequisite
+
+include::product-development-guide/dev-studio-install-proc.adoc[leveloffset=+1]
+include::product-development-guide/dev-studio-plug-in-install-proc.adoc[leveloffset=+1]
+include::product-development-guide/dm-server-configure-proc.adoc[leveloffset=+1]
+include::product-development-guide/dev-studio-import-projects-from-git-repo-con.adoc[leveloffset=+1]
+include::product-development-guide/dev-studio-clone-remote-git-repo-proc.adoc[leveloffset=+2]
+include::product-development-guide/dev-studio-import-local-git-repo-proc.adoc[leveloffset=+2]
+
+== Next steps
+*
+* 
+
+// Versioning info
+include::product-shared-docs/versioning-information.adoc[]
