@@ -1,6 +1,6 @@
 [id='sso-user-manage-proc']
-= Enabling user and group management for RH-SSO
-This section describes how you can use {CENTRAL} to manage users and groups stored in RH-SSO.
+= Enable user and group management for RH-SSO
+This section describes how you can configure {CENTRAL} to manage users and groups stored in RH-SSO.
 
 .Procedure
 . Ensure that the following libraries are in the `WEB-INF/lib` directory:

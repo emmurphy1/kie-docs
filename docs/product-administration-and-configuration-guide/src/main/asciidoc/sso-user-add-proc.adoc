@@ -1,5 +1,5 @@
 [id='sso-user-add-proc']
-= Adding a new user
+= Add new users
 
 To add new users and assign them a role to access {PRODUCT}:
 

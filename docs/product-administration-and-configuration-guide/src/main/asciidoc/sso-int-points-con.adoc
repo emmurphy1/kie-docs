@@ -4,7 +4,7 @@ You can integrate RH-SSO with {KIE_SERVER}s using the following integration poin
 
 * *{PRODUCT} authentication through an RH-SSO server*
 +
-Authenticating {PRODUCT} {PRODUCT} through RH-SSO involves securing both {PRODUCT} web client and remote services through RH-SSO. This integration enables you to connect to {PRODUCT} using either the web interface or a remote service consumer through RH-SSO.
+Authenticating {PRODUCT} through RH-SSO involves securing both {PRODUCT} web client and remote services through RH-SSO. This integration enables you to connect to {PRODUCT} using either the web interface or a remote service consumer through RH-SSO.
 
 * *{KIE_SERVER} authentication through an RH-SSO server*
 +

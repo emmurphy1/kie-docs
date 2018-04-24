@@ -1,7 +1,7 @@
 [id='sso-basic-auth-proc']
 = Basic authentication
 
-If you have enabled the basic authentication in the RH-SSO client adapter configuration for both {PRODUCT} and {KIE_SERVER}, you can avoid the token grant/refresh calls and call the services as shown in the examples below:
+If you enabled basic authentication in the RH-SSO client adapter configuration for both {PRODUCT} and {KIE_SERVER}, you can avoid the token grant/refresh calls and call the services as shown in the following examples:
 
 * For web based remote repositories endpoint:
 +

@@ -1,7 +1,7 @@
 [id='sso-realm-proc']
-= Setting up RH-SSO with the realm client for {PRODUCT}
+= Install and configure RH-SSO
 
-Security realms are used to restrict access for different application resources. You should create a new realm whether your RH-SSO instance is private or shared with other products. You can keep the master realm as a place for super administrators to create and manage the realms in your system. If you are integrating with an RH-SSO instance that is shared with other product installations to achieve single sign-on with those applications, all of those applications must use the same realm.
+A realm is a security policy domain defined for a web or application server. Security realms are used to restrict access for different application resources. You should create a new realm whether your RH-SSO instance is private or shared with other products. You can keep the master realm as a place for super administrators to create and manage the realms in your system. If you are integrating with an RH-SSO instance that is shared with other product installations to achieve single sign-on with those applications, all of those applications must use the same realm.
 
 .Procedure
 . Download RH-SSO from the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&product=core.service.rhsso&version=7.0[Downloads] section of the Red Hat Customer Portal.

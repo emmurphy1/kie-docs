@@ -1,0 +1,14 @@
+[id='sso-central-proc']
+= {PRODUCT} authentication through RH-SSO
+
+This chapter describes how to authenticate {PRODUCT} through RH-SSO. It includes the following sections:
+
+* <<sso-realm-proc>>
+* <<sso-client-adapter-proc>>
+* <<sso-user-add-proc>>
+* <<sso-remote-services-proc>>
+* <<sso-remote-services-securing-proc>>
+* <<sso-user-manage-proc>>
+//ifdef::PAM[]
+//. Create an RH-SSO client and configure the RH-SSO client adapter for Dashbuilder (BAM).
+//endif::PAM[]
