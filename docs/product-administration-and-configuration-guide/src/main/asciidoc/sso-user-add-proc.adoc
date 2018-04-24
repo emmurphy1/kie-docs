@@ -1,0 +1,25 @@
+[id='sso-user-add-proc']
+= Adding a new user
+
+To add new users and assign them a role to access {PRODUCT}:
+
+. Log in to the RH-SSO Admin Console and open the realm to which you wish to add a user.
+. Click the *Users* menu item under the *Manage* section.
++
+An empty user list page called *Users* opens.
+
+. Click the *Add User* button on the empty user list to start creating your new user.
++
+The *Add user* page opens.
+
+. Provide user information on the *Add user* page and click *Save*.
+. Set a new password under the *Credentials* tab.
+. Assign the new user one of the roles that allow access to {PRODUCT}. For example, 
+ifdef::DM[the `admin` or `analyst` role.]
+ifdef::PAM[`admin` or `developer` role.]
++
+Define the roles as realm roles in the *Realm Roles* tab under the *Roles* section.
+
+. Click *Role Mappings* tab on the *Users* page to assign roles.
+
+You can now log in to {CENTRAL} after you start {KIE_SERVER}. 

@@ -1,0 +1,19 @@
+[id='sso-kie-server-client-proc']
+= Creating a client for {KIE_SERVER} on RH-SSO
+You can use the RH-SSO Admin Console to create a new client in an exiting realm.
+
+.Procedure
+. In the RH-SSO Admin Console, open the security realm that you created.
+. Click the *Clients* menu item and click *Create*.
++
+The *Add Client* page opens.
+
+. On the *Add Client* page, provide the required information to create a new client for your realm. For example:
+* *Client ID*: kie-execution-server
+* *Root URL*: http://_localhost_:8080/kie-server
+* *Client protocol*: openid-connect
+
+. Click *Save* to save your changes.
++
+The new client *Access Type* is set to `public` by default. Change it to `confidential` and click *Save* again.
+. Navigate to the *Credentials* tab and copy the secret key. The secret key is necessary to configure the kie-execution-server client in the next section. 

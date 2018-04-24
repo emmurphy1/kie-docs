@@ -1,0 +1,1 @@
+[id='sso-client-adapter-con']

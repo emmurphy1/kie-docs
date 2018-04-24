@@ -1,3 +1,19 @@
+[id='assembly_integrating-sso']
+
+include::product-shared-docs/document-attributes.adoc[]
+
+= Integrating {PRODUCT} with Red Hat Single Sign-On
+// Context attribute is assembly specific and enables module reuse between assemblies.
+:imagesdir: topics/product-shared-docs/images
+:context: guided-decision-tables
+include::product-shared-docs/author-group.adoc[]
+
+// Purpose statement for the assembly
+As a ...
+
+.Prerequisite
+
+
 include::product-administration-and-configuration-guide/sso-int-con.adoc[leveloffset=+1]
 include::product-administration-and-configuration-guide/sso-int-points-con.adoc[leveloffset=+1]
 include::product-administration-and-configuration-guide/sso-realm-proc.adoc[leveloffset=+2]
@@ -13,3 +29,8 @@ include::product-administration-and-configuration-guide/sso-kie-server-client-ad
 include::product-administration-and-configuration-guide/sso-third-party-proc.adoc[leveloffset=+2]
 include::product-administration-and-configuration-guide/sso-basic-auth-proc.adoc[leveloffset=+3]
 include::product-administration-and-configuration-guide/sso-token-auth-proc.adoc[leveloffset=+3]
+== Next steps
+
+
+// Versioning info
+include::product-shared-docs/versioning-information.adoc[]

@@ -1,0 +1,61 @@
+[id='sso-realm-proc']
+= Setting up RH-SSO with the realm client for {PRODUCT}
+
+Security realms are used to restrict access for different application resources. You should create a new realm whether your RH-SSO instance is private or shared with other products. You can keep the master realm as a place for super administrators to create and manage the realms in your system. If you are integrating with an RH-SSO instance that is shared with other product installations to achieve single sign-on with those applications, all of those applications must use the same realm.
+
+.Procedure
+. Download RH-SSO from the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&product=core.service.rhsso&version=7.0[Downloads] section of the Red Hat Customer Portal.
+. Install and configure a basic RH-SSO standalone server. To do this, follow the instructions in the https://access.redhat.com/documentation/en/red-hat-single-sign-on/7.0/single/getting-started-guide/#install-boot["Install and Boot"] chapter of the _Red Hat Single Sign On Getting Started Guide_. For production environment settings, consult the _Red Hat Single Sign On_ https://access.redhat.com/documentation/en/red-hat-single-sign-on/7.0/single/server-administration-guide/[Server Administration Guide].
++
+[NOTE]
+====
+If you want to run both RH-SSO and {PRODUCT} servers on the same system, ensure that you avoid port conflicts. by doing one of the following:
+
+* Update the `_RHSSO_HOME_/standalone/configuration/standalone.xml` file and set a port offset to 100. For example:
++
+[source]
+----
+<socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:100}">
+----
+
+* Use an environment variable to run the server:
++
+[source]
+----
+bin/standalone.sh -Djboss.socket.binding.port-offset=100
+----
+====
+
+. Start the RH-SSO server to configure RH-SSO from `_RHSSO_HOME_/bin`:
++
+--
+[source]
+----
+./standalone.sh
+----
+
+After the RH-SSO server starts, open http://localhost:8180/auth/admin in a web browser and log in using the admin credentials that you created while installing RH-SSO. When you login for the first time, you can set up the initial user on the new user registration form.
+--
++
+
+. In the RH-SSO Admin Console, click the *Realm Settings* menu item.
+. On the *Realm Settings* page, click *Add Realm*.
++
+The *Add realm* page opens.
+
+. On the *Add realm* page, provide a name for the realm and click *Create*.
+. Click the *Clients* menu item and click *Create*.
++
+The *Add Client* page opens.
+
+. On the *Add Client* page, provide the required information to create a new client for your realm. For example:
+* *Client ID*: kie
+* *Client protocol*: openid-connect
+* *Root URL*: http://_localhost_:8080/decision-central
+
+. Click *Save* to save your changes.
++
+After you create a new client, its *Access Type* is set to `public` by default. Change it to `confidential`. 
++
+At this point, the RH-SSO server is configured with a realm with a client for {PRODUCT} applications and running and listening for HTTP connections at [parameter]``localhost:8180``. This realm provides different users, roles, and sessions for {PRODUCT} applications.
+

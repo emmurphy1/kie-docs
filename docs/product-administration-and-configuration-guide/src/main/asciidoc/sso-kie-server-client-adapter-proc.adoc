@@ -1,0 +1,87 @@
+[id='sso-kie-server-client-adapter-proc']
+=== Installing and setting up {KIE_SERVER} with the client adapter
+
+To consume the {KIE_SERVER} remote service endpoints, you must first create and assign the `kie-server` role in the RH-SSO Admin Console.
+
+[NOTE]
+====
+If you deployed {KIE_SERVER} to a different application server than {PRODUCT}, install and configure RH-SSO on your second server as well.
+====
+
+.Procedure
+. Navigate to `_EAP_HOME_/standalone/configuration` in your {EAP} installation and edit the `standalone.xml` file to add the RH-SSO subsystem configuration. For example:
++
+--
+[source,xml]
+----
+<subsystem xmlns="urn:jboss:domain:keycloak:1.1">
+  <secure-deployment name="kie-execution-server.war">
+     <realm>demo</realm>
+     <realm-public-key>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQAB</realm-public-key>
+     <auth-server-url>http://localhost:8180/auth</auth-server-url>
+     <ssl-required>external</ssl-required>
+     <resource>kie-execution-server</resource>
+     <enable-basic-auth>true</enable-basic-auth>
+     <credential name="secret">03c2b267-7f64-4647-8566-572be673f5fa</credential>
+     <principal-attribute>preferred_username</principal-attribute>
+  </secure-deployment>
+</subsystem>
+
+<system-properties>
+  <property name="org.kie.server.sync.deploy" value="false"/>
+</system-properties>
+----
+
+In this example:
+
+* `secure-deployment name` is the name of your application WAR file.
+* `realm` is the name of the realm that you created for the applications to use.
+* `realm-public-key` is the  public key of the realm you created. You can find the key in the *Keys* tab in the *Realm settings* page of the realm you created in the RH-SSO Admin Console. If you do not provide a value for this public key, the server retrieves it automatically.
+* `auth-server-url` is the  URL for the RH-SSO authentication server.
+* `resource` is the name for the server client that you created.
+* `enable-basic-auth` is the setting to enable basic authentication mechanism, so that the clients can use both token-based and basic authentication approaches to perform the requests.
+* `credential name` is the secret key of the server client you created. You can find the key in the *Credentials* tab on the *Clients* page of the RH-SSO Admin Console.
+* `principal-attribute` is the login name of the user. If you do not provide this value, your User Id is displayed in the application instead of your user name.
+--
++
+
+. Save your configuration changes in the `standalone.xml` file.
+. Use the following command to restart the {EAP} server and run {KIE_SERVER}.
++
+--
+[source]
+----
+EXEC_SERVER_HOME/bin/standalone.sh -Dorg.kie.server.id=<ID> -Dorg.kie.server.user=<USER> -Dorg.kie.server.pwd=<PWD> -Dorg.kie.server.location=<LOCATION_URL> -Dorg.kie.server.controller=<CONTROLLER_URL> -Dorg.kie.server.controller.user=<CONTROLLER_USER> -Dorg.kie.server.controller.pwd=<CONTOLLER_PASSWORD>
+----
+
+Here is an example:
+
+[source]
+----
+EXEC_SERVER_HOME/bin/standalone.sh -Dorg.kie.server.id=kieserver1 -Dorg.kie.server.user=kieserver -Dorg.kie.server.pwd=password -Dorg.kie.server.location=http://localhost:8080/kie-execution-server/services/rest/server -Dorg.kie.server.controller=http://localhost:8080/decision-central/rest/controller -Dorg.kie.server.controller.user=kiecontroller -Dorg.kie.server.controller.pwd=password
+----
+--
++
+
+. After {KIE_SERVER} is running, you can check the server status. In the following command, `kieserver` is a user name with the `kie-server` role and password `password`:
++
+[source]
+----
+curl http://kieserver:password@localhost:8080/kie-execution-server/services/rest/server/
+----
+
+You can also use token-based authorization for communication between {PRODUCT} and  {KIE_SERVER}. You can use the complete token as a system property of your application server, instead of the user name and password, for your applications. However, you must ensure that the token will not expire while the applications are interacting because the token is not automatically refreshed. To get the token, see <<sso-user-add-proc>>.
+
+.Procedure
+. To configure {PRODUCT} to manage {KIE_SERVER} using the tokens set the `org.kie.server.token` property.
+. Make sure that the `org.kie.server.user` and `org.kie.server.pwd` properties are not set.
+ {PRODUCT} will then use the `Authorization: Bearer $TOKEN` authentication method. 
+
+.Procedure
+. If you want to use the REST API using the token-based authentication, set the `org.kie.server.controller.token` property.
+. Make sure that the `org.kie.server.controller.user` and `org.kie.server.controller.pwd` properties are not set.
+
+[NOTE]
+====
+Because {KIE_SERVER} is unable to refresh the token, use a high-lifespan token. A token's lifespan must not exceed January 19 2038. Check with your security best practices to see whether this is a suitable solution for your environment.
+====
