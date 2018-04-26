@@ -9,7 +9,6 @@ You can configure Red Hat JBoss Developer Studio to run the {PRODUCT} server.
 
 .Procedure
 . Start Red Hat JBoss Developer Studio.
-. To open the Drools view, click *Window* -> *Perpective* -> *Open Perspective* -> *Other*, select *Drools*, and click *OK*.
 . Click *Window* -> *Show View* -> *Other...* and select *Server* -> *Servers* to add the server view.
 . Right click the *Servers* panel and select *New* -> *Server* to open the server menu.
 . Click *Red Hat JBoss Middleware* -> *JBoss Enterprise Application Platform 7.1* and click *Next* to define the server.
