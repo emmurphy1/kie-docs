@@ -13,7 +13,7 @@ Red Hat JBoss Developer Studio is the JBoss integrated development environment (
 +
 [source]
 ----
-java -jar devstudio-11.3.0.GA-installer-standalone
+java -jar devstudio-11.3.0.GA-installer-standalone.jar
 ----
 . Follow the instructions in the installer to complete the installation.
 

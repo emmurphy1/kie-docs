@@ -280,7 +280,7 @@ JBossFuse:karaf@root> features:install jbpm-workitems-camel
 
 == Configuring Dependencies
 
-When you configure KIE, Red Hat JBoss BRMS, or Red Hat Jboss BPM Suite in your application, you can follow one of the following approaches to build your OSGi application bundles:
+When you configure KIE, Red Hat JBoss BRMS, or Red Hat JBoss BPM Suite in your application, you can follow one of the following approaches to build your OSGi application bundles:
 
 * Bundle required dependencies into your application bundle. In this approach, you declare all required artifacts as runtime dependencies in your `pom.xml`. Hence, you need not import the packages that provide these artifacts that you have already added as dependencies.
 * Import the required dependencies into the application bundle. This is a preferred approach for building OSGi bundles as it adheres to the principles of OSGi framework. In this approach, you declare only the  API JARs (such as `org.kie:kie-api`) as dependencies in your application bundle. You will need to install the required Red Hat JBoss BRMS and Red Hat JBoss BPM Suite bundles and then import them in your application.
