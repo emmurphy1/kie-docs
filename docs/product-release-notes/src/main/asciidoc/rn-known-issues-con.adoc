@@ -1,0 +1,12 @@
+[id='known-issues-con']
+= Known issues
+
+This section lists known issues with {PRODUCT} {PRODUCT_VERSION}.
+
+== Case Management Showcase
+When you start a new case, the case should appear in the case list of the users who are assigned to one of the case roles. However, in this beta release the cases are not listed in assigned users' case lists.
+
+To work around this issue:
+. Terminate all running instances in the running container.
+. Change the runtime strategy to Per Case.
+. Restart the container.

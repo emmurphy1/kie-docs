@@ -1,0 +1,5 @@
+[id='ba-dm-rn-whats-new-con']
+= What's new
+
+This section highlights new features in {PRODUCT} {PRODUCT_VERSION}.
+

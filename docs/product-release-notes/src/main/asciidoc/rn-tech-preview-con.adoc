@@ -1,0 +1,17 @@
+[id='ba-dm-rn-tech-preview-con']
+= Technical preview
+
+This section lists features that are in technical preview in {PRODUCT} {PRODUCT_VERSION}. You will see the following note where technical preview features are referred to in the documentation:
+
+[IMPORTANT]
+====
+These features are for Technology Preview only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs), might
+not be functionally complete, and Red Hat does not recommend to use them for
+production. These features provide early access to upcoming product features,
+enabling customers to test functionality and provide feedback during the
+development process.
+For more information on Red Hat Technology Preview features support scope,
+see https://access.redhat.com/support/offerings/techpreview/.
+====
+

@@ -5,6 +5,7 @@
 
 </subtitle>
 <abstract>
-	<para>This topic describes how to design a decision service using guided decision tables in {PRODUCT} {PRODUCT_VERSION}.</para>
+	<para>These release notes highlight new features in {PRODUCT} {PRODUCT_VERSION}, list features that are in technical preview, and include any known issues.
+ </para>
 </abstract>
 <xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
