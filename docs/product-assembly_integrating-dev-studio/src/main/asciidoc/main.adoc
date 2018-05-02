@@ -9,7 +9,7 @@ include::product-shared-docs/document-attributes.adoc[]
 include::product-shared-docs/author-group.adoc[]
 
 // Purpose statement for the assembly
-As a developer, you can use...
+As a developer, you can integrate JBoss Developer Studio with {PRODUCT} to write complex applications and leverage code auto-completion.
 
 include::product-installation-guide/dev-studio-con.adoc[leveloffset=+1]
 include::product-development-guide/dev-studio-install-proc.adoc[leveloffset=+1]
