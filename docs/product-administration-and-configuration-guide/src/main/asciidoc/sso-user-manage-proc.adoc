@@ -1,5 +1,5 @@
 [id='sso-user-manage-proc']
-= Enable user and group management for RH-SSO
+= Enabling user and group management for RH-SSO
 This section describes how you can configure {CENTRAL} to manage users and groups stored in RH-SSO.
 
 .Procedure

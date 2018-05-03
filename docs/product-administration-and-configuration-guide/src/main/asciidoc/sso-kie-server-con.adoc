@@ -1,7 +1,6 @@
 [id='sso-kie-server-con']
-= {KIE_SERVER} authentication through RH-SSO
+= Authentication {KIE_SERVER}  through RH-SSO
 
 {KIE_SERVER} provides a REST API for third-party clients. If you integrate {KIE_SERVER} with RH-SSO, you can delegate third-party client identity management to the RH-SSO server.
 
 After you have created a realm client for {PRODUCT} and set up the RH-SSO client adapter for {EAP}, you can repeat the same steps to integrate {KIE_SERVER} with RH-SSO.
-Comment: What steps, specifically?

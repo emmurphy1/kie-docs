@@ -1,7 +1,12 @@
 [id='sso-realm-proc']
-= Install and configure RH-SSO
+= Installing and configuring RH-SSO
 
 A realm is a security policy domain defined for a web or application server. Security realms are used to restrict access for different application resources. You should create a new realm whether your RH-SSO instance is private or shared with other products. You can keep the master realm as a place for super administrators to create and manage the realms in your system. If you are integrating with an RH-SSO instance that is shared with other product installations to achieve single sign-on with those applications, all of those applications must use the same realm.
+
+[NOTE]
+====
+If {CENTRAL} and {KIE_SERVER} are installed on different systems, complete this procedure on both systems.
+====
 
 .Procedure
 . Download RH-SSO 7.2:

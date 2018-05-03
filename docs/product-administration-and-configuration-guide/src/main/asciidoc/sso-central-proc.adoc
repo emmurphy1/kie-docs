@@ -1,10 +1,10 @@
 [id='sso-central-proc']
-= {PRODUCT} authentication through RH-SSO
+= Authenticating {PRODUCT} through RH-SSO
 
 This chapter describes how to authenticate {PRODUCT} through RH-SSO. It includes the following sections:
 
-* <<sso-realm-proc>>
-* <<sso-client-adapter-proc>>
+
+
 * <<sso-user-add-proc>>
 * <<sso-remote-services-proc>>
 * <<sso-remote-services-securing-proc>>
@@ -12,3 +12,16 @@ This chapter describes how to authenticate {PRODUCT} through RH-SSO. It includes
 //ifdef::PAM[]
 //. Create an RH-SSO client and configure the RH-SSO client adapter for Dashbuilder (BAM).
 //endif::PAM[]
+
+[NOTE]
+====
+If {CENTRAL} and {KIE_SERVER} are installed on different systems, complete this procedure on both systems.
+====
+
+.Prerequisites
+* RH-SSO is installed as described in <<sso-realm-proc>>.
+* The client adapter for {EAP} is set up as described in <<sso-client-adapter-proc>>.
+* {CENTRAL} is installed in a {EAP} 7.1 server, as described in _INSTALLING AND CONFIGURING RED HAT PROCESS AUTOMATION MANAGER ON EAP 7.1_.
+
+
+

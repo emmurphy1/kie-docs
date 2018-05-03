@@ -13,10 +13,10 @@ As a system administrator, you can integrate Red Hat Single Sign-On with {PRODUC
 
 include::product-administration-and-configuration-guide/sso-int-con.adoc[leveloffset=+1]
 //include::product-administration-and-configuration-guide/sso-int-points-con.adoc[leveloffset=+2]
+include::product-administration-and-configuration-guide/sso-realm-proc.adoc[leveloffset=+1]
+include::product-administration-and-configuration-guide/sso-client-adapter-proc.adoc[leveloffset=+1]
 include::product-administration-and-configuration-guide/sso-central-proc.adoc[leveloffset=+1]
 
-include::product-administration-and-configuration-guide/sso-realm-proc.adoc[leveloffset=+2]
-include::product-administration-and-configuration-guide/sso-client-adapter-proc.adoc[leveloffset=+2]
 include::product-administration-and-configuration-guide/sso-user-add-proc.adoc[leveloffset=+2]
 include::product-administration-and-configuration-guide/sso-remote-services-proc.adoc[leveloffset=+2]
 include::product-administration-and-configuration-guide/sso-remote-services-securing-proc.adoc[leveloffset=+2]

@@ -1,5 +1,5 @@
 [id='sso-remote-services-proc']
-= Secure {PRODUCT} remote service using RH-SSO
+= Securing {PRODUCT} remote service using RH-SSO
 
 {PRODUCT} provides different remote service endpoints that can be consumed by third-party clients using a remote API. To authenticate those services through RH-SSO, you must disable the `BasicAuthSecurityFilter` parameter.
 

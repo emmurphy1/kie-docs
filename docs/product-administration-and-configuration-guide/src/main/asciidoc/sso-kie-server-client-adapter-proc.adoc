@@ -1,5 +1,5 @@
 [id='sso-kie-server-client-adapter-proc']
-= Install and configure {KIE_SERVER} with the client adapter
+= Installing and configuring {KIE_SERVER} with the client adapter
 
 To consume the {KIE_SERVER} remote service endpoints, you must first create and assign the `kie-server` role in the RH-SSO Admin Console.
 

@@ -1,11 +1,16 @@
 [id='sso-client-adapter-proc']
-= Set up the RH-SSO client adapter for {EAP}
+= Setting up the RH-SSO client adapter for {EAP}
 
-To set up the RH-SSO client adapter for {EAP}, install the RH-SSO adapter for {EAP} then configure {PRODUCT} application and the RH-SSO client adapter.
+To set up the RH-SSO client adapter for {EAP}, install the RH-SSO adapter for {EAP} then configure {PRODUCT} and the RH-SSO client adapter.
 
 .Prerequisites
 * RH-SSO is installed as described in <<sso-realm-proc>>.
-* {PRODUCT} is installed in a {EAP} 7.1 server, as described in COMMENT: link to On Premise installation guide.
+* {PRODUCT} is installed in a {EAP} 7.1 server, as described in _INSTALLING AND CONFIGURING RED HAT PROCESS AUTOMATION MANAGER ON EAP 7.1_.. 
+
+[NOTE]
+====
+If {CENTRAL} and {KIE_SERVER} are installed on different systems, complete this procedure on both systems.
+====
 
 .Procedure
 . Download {EAP} adapter:
@@ -49,7 +54,7 @@ In this example:
 +
 [NOTE]
 ====
-The RH-SSO server converts the user names to lowe rcase. Therefore, after integration with RH-SSO, your user name will appear in lower case in {PRODUCT}. If you have user names in upper case hard coded in business processes, the application may not be able to identify the upper case user.
+The RH-SSO server converts the user names to lower case. Therefore, after integration with RH-SSO, your user name will appear in lower case in {PRODUCT}. If you have user names in upper case hard coded in business processes, the application may not be able to identify the upper case user.
 ====
 --
 +
