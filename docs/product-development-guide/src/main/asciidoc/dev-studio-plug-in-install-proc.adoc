@@ -6,11 +6,12 @@ The Red Hat JBoss Developer Studio {PRODUCT} plug-ins are based on the community
 //Get the latest Red Hat JBoss Developer Studio from the https://access.redhat.com[Red Hat Customer //Portal]. The {PRODUCT} plug-ins for Red Hat JBoss Developer Studio are available using the update site.
 
 .Procedure
-//. Download the {PRODUCT} plug-ins for Red Hat JBoss Developer Studio:
-//.. Log in to the https://access.redhat.com[Red Hat Customer Portal].
-//.. Click *DOWNLOADS* at the top of the page.
-//.. On the *Software Downloads* page, download *Red Hat JBoss Developer Studio 11.3.0 Update Site Zip* //(`devstudio-11.3.0.GA-updatesite-core.zip`).
-//. Unzip the `devstudio-11.3.0.GA-updatesite-core.zip` file.
+. Download the {PRODUCT} plug-ins for Red Hat JBoss Developer Studio:
+.. Log in to the https://access.redhat.com[Red Hat Customer Portal].
+.. Click *DOWNLOADS* at the top of the page.
+. On the *Product Downloads* page that opens, navigate to the JBOSS DEVELOPMENT AND MANAGEMENT section, and click *{Red Hat JBoss Developer Studio*.
+.. On the *Software Downloads* page, download *Red Hat JBoss Developer Studio Integration Stack 11.3.0 Update Site Zip* (`devstudio-11.2.0/devstudio-integration-stack-11.3.0.GA-updatesite.zip`).
+. Unzip the `devstudio-11.3.0.GA-updatesite-core.zip` file.
 . Start Red Hat JBoss Developer Studio by selecting *Red Hat JBoss Developer Studio* from the Start menu.
 . Click *Help* -> *Install New Software*.
 . Click *Add* to enter the *Add Repository* menu.
