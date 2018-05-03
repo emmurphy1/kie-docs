@@ -19,9 +19,7 @@ include::product-development-guide/dev-studio-import-projects-from-git-repo-con.
 include::product-development-guide/dev-studio-clone-remote-git-repo-proc.adoc[leveloffset=+2]
 include::product-development-guide/dev-studio-import-local-git-repo-proc.adoc[leveloffset=+2]
 
-== Next steps
-*
-* 
+
 
 // Versioning info
 include::product-shared-docs/versioning-information.adoc[]
