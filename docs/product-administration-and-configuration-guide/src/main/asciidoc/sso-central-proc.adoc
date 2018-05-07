@@ -1,11 +1,8 @@
 [id='sso-central-proc']
-= Authenticating {PRODUCT} through RH-SSO
+= Authenticating {Central} through RH-SSO
 
-This chapter describes how to authenticate {PRODUCT} through RH-SSO. It includes the following sections:
-
-
-
-* <<sso-user-add-proc>>
+This chapter describes how to authenticate {CENTRAL} through RH-SSO. It includes the following sections:
+* <<sso-central-configure-proc>>
 * <<sso-remote-services-proc>>
 * <<sso-remote-services-securing-proc>>
 * <<sso-user-manage-proc>>
