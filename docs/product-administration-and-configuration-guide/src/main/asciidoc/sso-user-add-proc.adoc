@@ -1,5 +1,5 @@
 [id='sso-user-add-proc']
-= Adding {CENTRAL} users
+= Adding {PRODUCT} users
 Before you can use RH-SSO to authenticate {CENTRAL}, you must add users to the realm that you created
 To add new users and assign them a role to access {PRODUCT}:
 
