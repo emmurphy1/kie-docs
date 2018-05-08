@@ -1,19 +1,15 @@
 [id='sso-client-adapter-proc']
-= Setting up the RH-SSO client adapter for {EAP}
+= Installing the RH-SSO client adapter for {CENTRAL}
 
-To set up the RH-SSO client adapter for {EAP}, install the RH-SSO adapter for {EAP} then configure {PRODUCT} and the RH-SSO client adapter.
+After you install RH-SSO, you must install the RH-SSO client adapter for {EAP} and configure it for {CENTRAL}.
 
-.Prerequisites
+.Prerequisite
 * RH-SSO is installed as described in <<sso-realm-proc>>.
-* {PRODUCT} is installed in a {EAP} 7.1 server, as described in _INSTALLING AND CONFIGURING RED HAT PROCESS AUTOMATION MANAGER ON EAP 7.1_.. 
-
-[NOTE]
-====
-If {CENTRAL} and {KIE_SERVER} are installed on different systems, complete this procedure on both systems.
-====
+* A user with the `admin`role has been added to RH-SSO as described in <<sso-user-add-proc>>.
+* {CENTRAL} is installed in a {EAP} 7.1 instance, as described in _INSTALLING AND CONFIGURING RED HAT PROCESS AUTOMATION MANAGER ON EAP 7.1_.
 
 .Procedure
-. Download {EAP} adapter:
+. Download the {EAP} adapter:
 .. Log in to the https://access.redhat.com[Red Hat Customer Portal].
 .. Click *DOWNLOADS* at the top of the page.
 .. On the *Product Downloads* page that opens, navigate to the JBOSS INTEGRATION AND AUTOMATION section, and click *Red Hat Single Sign-On*.
@@ -70,5 +66,5 @@ The RH-SSO server converts the user names to lower case. Therefore, after integr
 
 [NOTE]
 ====
-You can also configure the RH-SSO adapter for {EAP} by updating your application's WAR file to use the RH-SSO security subsystem. However, Red Hat recommends that you configure the adapter through the RH-SSO subsystem. Doing this updates the {EAP} configuration instead of applying the configuration on each WAR file.
+You can also configure the RH-SSO adapter for {CENTRAL} by updating your application's WAR file to use the RH-SSO security subsystem. However, Red Hat recommends that you configure the adapter through the RH-SSO subsystem. Doing this updates the {EAP} configuration instead of applying the configuration on each WAR file.
 ====

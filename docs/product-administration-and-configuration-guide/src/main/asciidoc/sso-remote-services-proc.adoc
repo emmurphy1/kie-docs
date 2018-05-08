@@ -1,10 +1,10 @@
 [id='sso-remote-services-proc']
-= Securing {PRODUCT} remote service using RH-SSO
+= Securing {CENTRAL} remote service using RH-SSO
 
-{PRODUCT} provides different remote service endpoints that can be consumed by third-party clients using a remote API. To authenticate those services through RH-SSO, you must disable the `BasicAuthSecurityFilter` parameter.
+{CENTRAL} provides different remote service endpoints that can be consumed by third-party clients using a remote API. To authenticate those services through RH-SSO, you must disable the `BasicAuthSecurityFilter` parameter.
 
 .Procedure
-. Open your application deployment descriptor file (`WEB-INF/web.xml`) and apply the following changes to it:
+. Open the {CENTRAL} application deployment descriptor file (`WEB-INF/web.xml`) and apply the following changes to it:
 * Remove the following lines to remove the servlet filter and its mapping for class [class]``org.uberfire.ext.security.server.BasicAuthSecurityFilter``:
 +
 [source,xml]

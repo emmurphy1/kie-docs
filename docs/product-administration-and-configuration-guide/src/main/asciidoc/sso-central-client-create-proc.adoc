@@ -16,11 +16,11 @@ The *Add Client* page opens.
 . On the *Add Client* page, provide the required information to create a new client for your realm. For example:
 * *Client ID*: kie
 * *Client protocol*: openid-connect
-* *Root URL*: http://_localhost_:8080/decision-central
+* *Root URL*: http://_localhost_:8080/business-central
 
 . Click *Save* to save your changes.
 +
 After you create a new client, its *Access Type* is set to `public` by default. Change it to `confidential`. 
 +
-At this point, the RH-SSO server is configured with a realm with a client for {PRODUCT} applications and running and listening for HTTP connections at [parameter]``localhost:8180``. This realm provides different users, roles, and sessions for {PRODUCT} applications.
+The RH-SSO server is now configured with a realm with a client for {CENTRAL} applications and running and listening for HTTP connections at [parameter]``localhost:8180``. This realm provides different users, roles, and sessions for {CENTRAL} applications.
 

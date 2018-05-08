@@ -1,5 +1,5 @@
 [id='sso-remote-services-securing-proc']
-= Securing {PRODUCT} file system services using RH-SSO
+= Securing {CENTRAL} file system services using RH-SSO
 
 To consume other remote services, such as file systems (for example, a remote GIT service), you must specify the correct RH-SSO login module. 
 
