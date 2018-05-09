@@ -4,6 +4,7 @@
 This chapter describes how to authenticate {CENTRAL} through RH-SSO. It includes the following sections:
 
 * <<sso-central-client-create-proc>>
+* <<sso-client-adapter-proc>>
 * <<sso-remote-services-proc>>
 * <<sso-remote-services-securing-proc>>
 * <<sso-user-manage-proc>>
