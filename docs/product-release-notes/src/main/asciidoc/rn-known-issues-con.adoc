@@ -1,12 +1,33 @@
-[id='known-issues-con']
+[id='rn-known-issues-con']
 = Known issues
 
-This section lists known issues with {PRODUCT} {PRODUCT_VERSION}.
+This section lists known issues with {PRODUCT} {PRODUCT_VERSION} Beta 02.
 
-== Case Management Showcase
+== Case Management Showcase issue
 When you start a new case, the case should appear in the case list of the users who are assigned to one of the case roles. However, in this beta release the cases are not listed in assigned users' case lists.
 
 To work around this issue:
+
 . Terminate all running instances in the running container.
 . Change the runtime strategy to Per Case.
 . Restart the container.
+
+== Installer always assigns `admin` and `rest-all` roles
+When you create a user in the installer, that user is assigned the `admin` and `rest-all` roles even if you deselect those roles.
+
+== Installer does not allow you to select additional roles
+When you create a user in the installer, a list of additional roles are available, but you cannot select these roles.
+
+== Using the installer to customize KIE server 
+If you customize KIE server settings in the installer, you will receive the following error:
+
+`The task list could not be loaded. Check if the jBPM Capabilities are enabled and if the remote server is correctly set up.`
+
+== Stunner null pointer error 
+The null pointer dialog box appears for some operations with canvas on Internet Explorer 11. If it appears, close it and continue working.
+
+== KIE Server with PostgreSQL 9.6
+If KIE Server uses a PostgreSQL 9.6 database, it fails when it's pod is restarted. 
+
+== Migration tool null pointer error
+The form migration tool crashes and returns a null pointer error if migrated forms contain certain kind of form fields.

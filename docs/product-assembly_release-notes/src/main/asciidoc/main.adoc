@@ -2,7 +2,7 @@
 
 include::product-shared-docs/document-attributes.adoc[]
 
-= Release notes for {PRODUCT} {PRODUCT_VERSION}
+= Known issues for {PRODUCT} {PRODUCT_VERSION} BETA DRAFT 2
 // Context attribute is assembly specific and enables module reuse between assemblies.
 :imagesdir: topics/product-shared-docs/images
 :context: release-notes
@@ -10,14 +10,10 @@ include::product-shared-docs/author-group.adoc[]
 
 // Purpose statement for the assembly
 //These release notes highlight new features in {PRODUCT} {PRODUCT_VERSION}, list features that are in //technical preview, and include any known issues.
-
-include::product-release-notes/rn-intro-con.adoc[leveloffset=+1]
-
-include::product-release-notes/rn-whats-new-con.adoc[leveloffset=+1]
-
-include::product-release-notes/rn-tech-preview-con.adoc[leveloffset=+1]
-
+//include::product-release-notes/rn-intro-con.adoc[leveloffset=+1]
+//include::product-release-notes/rn-whats-new-con.adoc[leveloffset=+1]
+//include::product-release-notes/rn-tech-preview-con.adoc[leveloffset=+1]
 include::product-release-notes/rn-known-issues-con.adoc[leveloffset=+1]
 
 // Versioning info
-include::product-shared-docs/versioning-information.adoc[]
+//include::product-shared-docs/versioning-information.adoc[]

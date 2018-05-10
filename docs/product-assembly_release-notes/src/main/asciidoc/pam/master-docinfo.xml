@@ -5,7 +5,7 @@
 
 </subtitle>
 <abstract>
-	<para>These release notes highlight new features in {PRODUCT} {PRODUCT_VERSION}, list features that are in technical preview, and include any known issues.
+	<para>These notes highlight known issues in {PRODUCT} {PRODUCT_VERSION} Beta 2.
  </para>
 </abstract>
 <xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
