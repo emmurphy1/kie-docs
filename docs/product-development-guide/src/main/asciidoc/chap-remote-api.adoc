@@ -1916,7 +1916,7 @@ public class DocumentationJmsExamples {
     int loompaMonitoringResultIndex = 1;
     // 5
     // Get JNDI context from server:
-    InitialContext context = getRemoteJbossInitialContext(serverUrl, USER, PASSWORD);
+    InitialContext context = getRemoteJBossInitialContext(serverUrl, USER, PASSWORD);
 
     // Create JMS connection:
     ConnectionFactory connectionFactory;
@@ -2082,7 +2082,7 @@ public class DocumentationJmsExamples {
     return cmdResponses;
   }
 
-  private InitialContext getRemoteJbossInitialContext(URL url, String user, String password) {
+  private InitialContext getRemoteJBossInitialContext(URL url, String user, String password) {
 
     Properties initialProps = new Properties();
     initialProps.setProperty(InitialContext.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
@@ -2662,7 +2662,7 @@ Sets the JMS queue for requests related to the task service usage.
 addResponseQueue(javax.jms.Queue param)::
 Sets a JMS queue used for receiving responses.
 
-addJbossServerHostName(String param)::
+addJBossServerHostName(String param)::
 Sets a host name to look up and retrieve a remote instance of `InitialContext`.
 
 addHostName(String param)::
@@ -2723,7 +2723,7 @@ public class RemoteJavaApiJmsClientExample {
       RuntimeEngine engine = RemoteRuntimeEngineFactory
         .newJmsBuilder()
         .addDeploymentId(deploymentId)
-        .addJbossServerHostName(serverUrl.getHost())
+        .addJBossServerHostName(serverUrl.getHost())
         .addUserName(user)
         .addPassword(password)
         .build();
@@ -2749,7 +2749,7 @@ When configuring the `RemoteJmsRuntimeEngineBuilder` with an `InitialContext` in
 
 [source,java]
 ----
-private InitialContext getRemoteJbossInitialContext(URL url, String user, String password) {
+private InitialContext getRemoteJBossInitialContext(URL url, String user, String password) {
 
   Properties initialProps = new Properties();
   initialProps.setProperty(InitialContext.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");

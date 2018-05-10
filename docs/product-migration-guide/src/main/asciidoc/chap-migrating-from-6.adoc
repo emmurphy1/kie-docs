@@ -367,7 +367,7 @@ For example, in 6.0._X_, you would use the following code for creating a JMS bas
 ----
 import org.kie.services.client.api.command.RemoteRuntimeEngine;
 ...
-RemoteJmsRuntimeEngineBuilder rjmsreBuilder = RemoteJmsRuntimeEngineFactory.newBuilder().addJbossServerHostName(host).addHostName(host).addUserName(username).addPassword(password).addTimeout(timeout).addDeploymentId(deploymentId).addExtraJaxbClasses(classes);
+RemoteJmsRuntimeEngineBuilder rjmsreBuilder = RemoteJmsRuntimeEngineFactory.newBuilder().addJBossServerHostName(host).addHostName(host).addUserName(username).addPassword(password).addTimeout(timeout).addDeploymentId(deploymentId).addExtraJaxbClasses(classes);
 
 if( useSsl ) {
   rjmsreBuilder.addKeystoreLocation("client0.keystore.jks").addKeystorePassword(storePassword).addTruststorePassword(storePassword).useKeystoreAsTruststore().addJmsConnectorPort(sslPort);
@@ -392,7 +392,7 @@ This code should be modified as the Remote Class API defines new generalized int
 import org.kie.api.runtime.manager.RuntimeEngine;
 ...
 
-RemoteJmsRuntimeEngineBuilder rjmsreBuilder = RemoteRuntimeEngineFactory.newJmsBuilder().addJbossServerHostName(host).addHostName(host).addUserName(username).addPassword(password).addTimeout(timeout).addDeploymentId(deploymentId).addExtraJaxbClasses(classes);
+RemoteJmsRuntimeEngineBuilder rjmsreBuilder = RemoteRuntimeEngineFactory.newJmsBuilder().addJBossServerHostName(host).addHostName(host).addUserName(username).addPassword(password).addTimeout(timeout).addDeploymentId(deploymentId).addExtraJaxbClasses(classes);
 
 // 5446 is the default secured jms port, 5445 the default unsecured jms port
 if ( port == 5446 ) {
