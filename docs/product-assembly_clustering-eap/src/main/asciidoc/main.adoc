@@ -23,18 +23,18 @@ include::product-installation-guide/clustering-dm-install-proc.adoc[leveloffset=
 
 //include::product-installation-guide/clustering-runtime-con.adoc[leveloffset=+1]
 :context: clustering-runtime-standalone
-include::product-installation-guide/clustering-ks-runtime-standalone-proc.adoc[leveloffset=+1]
+include::product-installation-guide/clustering-ks-runtime-standalone-proc.adoc[leveloffset=+2]
+//include::product-installation-guide/clustering-elasticsearch-proc.adoc[leveloffset=+3]
+include::product-installation-guide/clustering-artemis-activate-proc.adoc[leveloffset=+3]
+include::product-installation-guide/clustering-kie-server-install-proc.adoc[leveloffset=+3]
 
-//include::product-installation-guide/clustering-artemis-activate-proc.adoc[leveloffset=+3]
-//include::product-installation-guide/clustering-kie-server-install-proc.adoc[leveloffset=+3]
-
-//:context: clustering-runtime-managed
-//include::product-installation-guide/clustering-runtime-managed-proc.adoc[leveloffset=+2]
+:context: clustering-runtime-managed
+include::product-installation-guide/clustering-runtime-managed-proc.adoc[leveloffset=+2]
 //include::product-installation-guide/clustering-elasticsearch-proc.adoc[leveloffset=+3]
 //include::product-installation-guide/clustering-artemis-activate-proc.adoc[leveloffset=+3]
-//include::product-installation-guide/clustering-kie-server-install-proc.adoc[leveloffset=+2]
-//include::product-installation-guide/clustering-standalone-pc-proc.adoc[leveloffset=+2]
-//include::product-installation-guide/clustering-smartrouter-pc-proc.adoc[leveloffset=+2]
+include::product-installation-guide/clustering-kie-server-install-proc.adoc[leveloffset=+3]
+include::product-installation-guide/clustering-standalone-pc-proc.adoc[leveloffset=+3]
+include::product-installation-guide/clustering-smartrouter-pc-proc.adoc[leveloffset=+3]
 
 
 

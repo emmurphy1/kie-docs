@@ -7,6 +7,7 @@ In a runtime environment, {KIE_SERVER} runs rules and processes that support bus
 
 .Procedure
 . Set up a {EAP} 7.1 cluster as described in  https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/configuring_a_red_hat_jboss_eap_7_cluster/[_Configuring a {EAP} 7 Cluster_].
+<<<<<<< HEAD
 . Install {KIE_SERVER} on each node of the cluster as decribed in _Installing and configuring {PRODUCT} on {EAP} 7.1_.
 . If your environment is connected to Smart Router, on the java process running Smart Router do the following:
 
@@ -37,3 +38,13 @@ org.kie.server.controller.templatefile.watcher.enabled=true
 ----
 org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
 ----
+=======
+//. Install and configure Elasticsearch as described in <<clustering-elasticsearch-proc_{context}>>.
+. Install and configure AMQ Broker as described in <<clustering-artemis-activate-proc_{context}>>.
++
+[NOTE]
+====
+If you prefer, you can use the JMS broker of your choice.
+====
+. Install and configure {CENTRAL} as described in <<clustering-kie-server-install-proc_{context}>>.
+>>>>>>> BXMSDOC-2294 updated runtime sections
