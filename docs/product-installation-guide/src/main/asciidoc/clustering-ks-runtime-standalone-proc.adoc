@@ -12,12 +12,26 @@ In a runtime environment, {KIE_SERVER} runs rules and processes that support bus
 +
 [source]
 ----
-org.kie.server.controller.templatefile.watcher.enabled=true
+org.kie.server.router.config.watcher.enabled=true
 ----
-.. In the `org.kie.server.router.repo` property, specify the path to the NFS storage where the memory configuration is stored:
+.. In the `org.kie.server.router.repo` property, specify the absolute path to the NFS storage where the memory configuration is stored:
 +
 [source]
 ----
-org.kie.server.controller.templatefile><absolute_path_to_NFS_storage>
+org.kie.server.router.repo=<absolute_path_to_NFS_storage>
 ----
 
+. If your environment is managed by the headless {PRODUCT} controller, on the java process running the headless {PRODUCT} controller, do the following:
+
+.. Enable the {KIE_SERVER} watcher service system property:
++
+[source]
+----
+org.kie.server.controller.templatefile.watcher.enabled=true
+----
+.. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the memory configuration is stored:
++
+[source]
+----
+org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
+----
