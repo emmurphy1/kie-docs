@@ -7,7 +7,11 @@
 * An NFS server with a mounted partition accessible to a {EAP} user is available.
 
 .Procedure
+<<<<<<< HEAD
 On the java process running Smart Router, do the following:
+=======
+On each node of the cluster, in the `pom.xml` file, complete the following steps:
+>>>>>>> BXMSDOC-2294 updated the runtime clustering section
 
 . Enable the {KIE_SERVER} watcher service system property:
 +
@@ -19,6 +23,10 @@ org.kie.server.router.config.watcher.enabled=true
 +
 [source]
 ----
+<<<<<<< HEAD
 org.kie.server.router.repo=<absolute_path_to_NFS_storage>
+=======
+org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
+>>>>>>> BXMSDOC-2294 updated the runtime clustering section
 ----
 
