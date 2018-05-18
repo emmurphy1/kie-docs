@@ -25,7 +25,13 @@ endif::PAM[]
 include::product-migration-guide/migration-non-execution-server-con.adoc[leveloffset=+1]
 
 :context: non-exec-server
-include::product-migration-guide/migration-tool-7.0-proc.adoc[leveloffset=+2]
+include::product-migration-guide/migration-tool-7.0-con.adoc[leveloffset=+2]
+
+:context: non-exec-server
+include::product-migration-guide/migration-tool-niogit-7.0-proc.adoc[leveloffset=+3]
+
+:context: non-exec-server
+include::product-migration-guide/migration-tool-repo-7.0-proc.adoc[leveloffset=+3]
 
 :context: non-exec-server
 include::product-migration-guide/migration-upgrade-database-proc.adoc[leveloffset=+2]
@@ -45,7 +51,13 @@ include::product-migration-guide/migration-execution-server-con.adoc[leveloffset
 include::product-migration-guide/migration-execution-server-prep-proc.adoc[leveloffset=+2]
 
 :context: exec-server
-include::product-migration-guide/migration-tool-7.0-proc.adoc[leveloffset=+2]
+include::product-migration-guide/migration-tool-7.0-con.adoc[leveloffset=+2]
+
+:context: exec-server
+include::product-migration-guide/migration-tool-niogit-7.0-proc.adoc[leveloffset=+3]
+
+:context: exec-server
+include::product-migration-guide/migration-tool-repo-7.0-proc.adoc[leveloffset=+3]
 
 :context: exec-server
 include::product-migration-guide/migration-upgrade-database-proc.adoc[leveloffset=+2]
@@ -87,6 +99,12 @@ include::product-migration-guide/migration-planner-changes-ref.adoc[leveloffset=
 == Next steps
 * {URL_GETTING_STARTED_DECISION_SERVICE}[_{GETTING_STARTED_DECISION_SERVICE}_]
 * {URL_GUIDED_DECISION_TABLES}[_{GUIDED_DECISION_TABLES}_]
+ifdef::PAM[]
+* _Getting started with business processes_ (link coming soon)
+* _Modeling a new business process_ (link coming soon)
+endif::PAM[]
+//@link: Add links for process docs above.
+
 
 // Versioning info
 include::product-shared-docs/versioning-information.adoc[]
