@@ -30,3 +30,5 @@ discovery.zen.minimum_master_nodes: 1
 On Windows, enter:
 +
 `_ELASTICSEARCH_HOME_\bin\elasticsearch.bat`
+
+For more information, see the "Getting Started" section of https://www.elastic.co/guide/en/elasticsearch/guide/current/getting-started.html[Elasticseach: The Definitive Guide].
