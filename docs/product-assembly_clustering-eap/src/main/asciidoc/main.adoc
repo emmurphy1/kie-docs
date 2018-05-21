@@ -48,15 +48,7 @@ include::product-installation-guide/clustering-ks-runtime-standalone-proc.adoc[l
 //
 //
 == Related information
-<<<<<<< HEAD
-
-* _Planning a {PRODUCT} installation_
-//@link
-* _Installing and configuring {PRODUCT} on {EAP} 7.1_
-//@link
-=======
 _Installing and configuring {PRODUCT} on {EAP} 7.1_
->>>>>>> BXMSDOC 2294 updated with SME comments
 
 
 // Versioning info

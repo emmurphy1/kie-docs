@@ -81,5 +81,5 @@ EAP_HOME/bin/domain.sh
 +
 [source,bash]
 ----
-EAP_HOME\bin\domain.sh
+EAP_HOME\bin\domain.sh 
 ----
