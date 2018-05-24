@@ -9,7 +9,7 @@ A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch and AMQ Broker 7.
 .Procedure
 
 . Install {CENTRAL} on each node of the cluster. See _Installing and configuring {PRODUCT} on {EAP} 7.1_ for information about installing {CENTRAL}.
-. On each node of the cluster, edit the following properties in the `<EAP_HOME>/domain/configuration/domain.xml` file, where:
+. On each node of the cluster, edit the following properties in the `_EAP_HOME_/domain/configuration/domain.xml` file, where:
 * `<NIOGIT_DIR>` is the location of Git repositories stored under ``.niogit`, on an NFS mounted partition.
 * `<ELASTICSEARCH_NODE_IP>` and `<AMQ_NODE_IP>` are IP addresses where Elasticseach and AMQ Broker are installed.
 * `<AMQ_BROKER_USER>` is the AMQ Broker user that you created.
