@@ -4,12 +4,42 @@
 Complete the steps in this section to install and run {CENTRAL} on each node of the cluster.
 
 .Prerequisite
+<<<<<<< HEAD
 A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
+=======
+A {EAP} 7.1 cluster is available and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
+>>>>>>> BXMSDOC-2294 updated with SME comments
 
 .Procedure
-
-. Install {CENTRAL} on each node of the cluster. See _Installing and configuring {PRODUCT} on {EAP} 7.1_ for information about installing {CENTRAL}.
-. On each node of the cluster, edit the following properties in the `_EAP_HOME_/domain/configuration/domain.xml` file, where:
+. On any node of the cluster, navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
+* *Product: {PRODUCT}*
+* *Version: {PRODUCT_VERSION}*
+* *Download  {PRODUCT} 7.0.0 {CENTRAL} Deployable for {EAP} 7* (`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`).
+. Extract the 
+ifdef::DM[]
+`rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
+endif::[]  
+ifdef::PAM[]
+`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
+endif::[] 
+file to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
+. Copy the contents of the 
+ifdef::DM[]
+`__TEMP_DIR__/rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
+endif::[]  
+ifdef::PAM[]
+`__TEMP_DIR__/rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
+endif::[]
+directory to `__EAP_HOME__`. When asked to overwrite files or merge directories, select *Yes*.
++
+WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the {EAP} instance.
+. Navigate to the `_EAP_HOME_/standalone/deployments/business-central.war` directory.
+. Package the contents of the  `_EAP_HOME_/standalone/deployments/business-central.war` directory into a new `business-central.war` file that you will use to deploy {CENTRAL} on the cluster nodes.
+. On each node of the cluster:
+.. Copy the new `business-central.war` to a location where it will be deployed.
+COMMENT: Can we clarify this?
+.. Add management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and application users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
+.. Edit the following properties in the `_EAP_HOME_/domain/configuration/domain.xml` file, where:
 * `<NIOGIT_DIR>` is the location of Git repositories stored under ``.niogit`, on an NFS mounted partition.
 * `<ELASTICSEARCH_NODE_IP>` and `<AMQ_NODE_IP>` are IP addresses where Elasticseach and AMQ Broker are installed.
 * `<AMQ_BROKER_USER>` is the AMQ Broker user that you created.
@@ -19,7 +49,7 @@ A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch and AMQ Broker 7.
 ----
 <system-properties>
   <property name="org.uberfire.nio.git.dir" value="
-      <NIOGIT_DIR>"/>
+      <NIOGIT_DIR>"/> 
   <property name="appformer-jms-connection-mode" value="REMOTE"/>
   <property name="appformer-jms-url" value="tcp://<AMQ_NODE_IP>:61616"/>
   <property name="appformer-jms-username" value="<AMQ_BROKER_USER>"/>
@@ -33,12 +63,19 @@ A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch and AMQ Broker 7.
   <property name="org.appformer.ext.metadata.elastic.retries" value="10"/>
 </system-properties>
 ----
+<<<<<<< HEAD
 . In the {EAP} instance hosting the embedded AMQ broker, create a user with the `admin` role and a username and password that matches the values of `<AMQ_BROKER_USER>` and `<AMQ_BROKER_PASSWORD>`:
+=======
+.. Edit the `server-groups` element to specify the server groups to be used in the cluster and their JVM parameters.
+.. Edit the `host.xml` file to specify the servers to be created on that node.
+.. In {EAP} create a user with the `admin` role and a username and password that matches the values of `<AMQ_BROKER_USER>` and `<AMQ_BROKER_PASSWORD>`:
+>>>>>>> BXMSDOC-2294 updated with SME comments
 +
 [source,bash]
 ----
 $ <EAP_HOME>/bin/add-user.sh -a --user <AMQ_BROKER_USER> --password <AMQ_BROKER_USER> --role admin
 ----
+<<<<<<< HEAD
 . If you are using the embedded JMS broker, edit the `domain.xml` file as follows:
 .. To create an outbound-socket-binding pointing to the remote messaging server, in the `domain.xml` file, add the following lines to the `<socket-binding-group name="full-sockets"` tag, where `localhost` is the host name or IP address of the remote {EAP} instance:
 +
@@ -70,6 +107,293 @@ $ <EAP_HOME>/bin/add-user.sh -a --user <AMQ_BROKER_USER> --password <AMQ_BROKER_
 +
 `<property name="appformer-jms-connection-factory" value="java:/jms/remoteCF"/>`
 .  To start {CENTRAL}, enter one of the following commands on each node of the cluster:
+=======
+.. Configure individual server nodes in the `main-server-group` element in the `_EAP_HOME_/domain/configuration/domain.xml` file with properties defined in
+ifdef::PAM[]
+<<_cluster_properties_pam>>.
+endif::PAM[]
+ifdef::DM[]
+<<_cluster_properties_BRMS>>.
+endif::DM[]
++
+ifdef::PAM[]
+[id='_cluster_properties_pam']
+.Cluster Node Properties
+[cols="1,1,2", frame="all", options="header"]
+|===
+|Property Name
+|Value
+|Description
+
+|jboss.node.name
+|nodeOne
+|Node name unique within the cluster.
+
+|org.uberfire.metadata.index.dir
+|/home/jbpm/node[N]/index
+|Location where the index for search is to be created (maintained by Apache Lucene).
+
+|org.uberfire.nio.git.daemon.host
+|nodeOne
+|The name of the daemon host machine in a physical cluster.
+
+|org.uberfire.nio.git.daemon.port
+|9418
+|Port used by the VFS repo to accept client connections. The port must be unique for each cluster member.
+
+|org.uberfire.nio.git.dir
+|/home/jbpm/node[N]/repo
+|Git (VFS) repository location on node[N].
+
+|org.uberfire.nio.git.ssh.host
+|nodeOne
+|The name of the SSH host machine in a physical cluster.
+
+|org.uberfire.nio.git.ssh.port
+|8003
+|The unique port number for ssh access to the GIT repo for a cluster running on physical machines.
+
+|org.uberfire.nio.git.ssh.hostport and org.uberfire.nio.git.daemon.hostport
+|8003 and 9418
+|In a virtualized environment, the outside port to be used.
+|===
+endif::PAM[]
+ifdef::DM[]
++
+[id='_cluster_properties_BRMS']
+.Cluster Node Properties
+[cols="1,1,2", frame="all", options="header"]
+|===
+|Property Name
+|Value
+|Description
+
+|org.uberfire.nio.git.dir
+|/home/jbrm/node[N]/repo
+|Git (VFS) repository location on node[N].
+
+|jboss.node.name
+|nodeOne
+|Node name unique within the cluster.
+
+|org.uberfire.nio.git.daemon.port
+|9418
+|Port used by the VFS repo to accept client connections. The port must be unique for each cluster member.
+
+|org.uberfire.metadata.index.dir
+|/home/jbrm/node[N]/index
+|Location where the index for search is to be created (maintained by Apache Lucene).
+
+|org.uberfire.nio.git.ssh.port
+|8003
+|The unique port number for ssh access to the Git repo for a cluster running on physical machines.
+
+|org.uberfire.nio.git.daemon.host
+|nodeOne
+|The name of the daemon host machine in a physical cluster.
+
+|org.uberfire.nio.git.ssh.host
+|nodeOne
+|The name of the SSH host machine in a physical cluster.
+
+|org.uberfire.nio.git.ssh.hostport and org.uberfire.nio.git.daemon.hostport
+|8003 and 9418
+|In a virtualized environment, the outside port to be used.
+|===
+endif::DM[]
++
+ifdef::PAM[]
+
+.Cluster nodeOne Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/rhpam/nodeone"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeOne" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="rhpam-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2182,server3:2183" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeOne_12345"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeOne"/>
+ <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeOne"/>
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbpm/nodeone"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::PAM[]
++
+ifdef::PAM[]
+
+.Cluster nodeTwo Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/rhpam/nodetwo"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeTwo" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="rhpam-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2182,server3:2183" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeTwo_12346"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeTwo" />
+ <property name="org.uberfire.nio.git.daemon.port" value="9419" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9419"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8004" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8004" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbpm/nodetwo"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::PAM[]
++
+ifdef::PAM[]
+
+.Cluster nodeThree Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/rhpam/nodethree"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeThree" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="rhpam-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2182,server3:2183" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeThree_12347"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeThree" />
+ <property name="org.uberfire.nio.git.daemon.port" value="9420" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9420"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8005" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8005" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeThree" />
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbpm/nodethree"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodethree"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::PAM[]
+ifdef::DM[]
+
+.Cluster nodeOne Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/brms/nodeone"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeOne" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="brms-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2181,server3:2181" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeOne_12345"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbrm/nodeone"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeOne" />
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeOne" />
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::DM[]
++
+ifdef::DM[]
+
+.Cluster nodeTwo Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/brms/nodetwo"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeTwo" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="brms-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2182,server3:2183" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeTwo_12346"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbrm/nodetwo"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeTwo" />
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::DM[]
++
+ifdef::DM[]
+
+.Cluster nodeThree Configuration
+====
+[source,xml]
+----
+<system-properties>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/brms/nodethree"
+           boot-time="false"/>
+ <property name="jboss.node.name" value="nodeThree" boot-time="false"/>
+ <property name="org.uberfire.cluster.id" value="brms-cluster" boot-time="false"/>
+ <property name="org.uberfire.cluster.zk"
+           value="server1:2181,server2:2182,server3:2183" boot-time="false"/>
+ <property name="org.uberfire.cluster.local.id" value="nodeThree_12347"
+           boot-time="false"/>
+ <property name="org.uberfire.cluster.vfs.lock" value="vfs-repo" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
+ <property name="org.uberfire.metadata.index.dir" value="/tmp/jbrm/nodethree"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodethree"
+           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.host" value="nodeThree" />
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeThree" />
+ <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
+           boot-time="false"/>
+</system-properties>
+----
+====
+endif::DM[]
+..  To start {CENTRAL} on the node, enter one of the following commands:
+>>>>>>> BXMSDOC-2294 updated with SME comments
 +
 * On Linux or UNIX-based systems:
 +
@@ -83,3 +407,10 @@ EAP_HOME/bin/domain.sh
 ----
 EAP_HOME\bin\domain.sh 
 ----
+.. Verify that the nodes are available.
+COMMENT: How?
+.. Deploy the `business-central.war` file that you created in previously into the server group.
+COMMENT: How, what do I do?
+
+For more information about installing {CENTRAL}, see  {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
+
