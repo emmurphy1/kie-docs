@@ -2,13 +2,6 @@
 = Clustering {KIE_SERVER} for a runtime environment
 In a runtime environment, {KIE_SERVER} runs rules and processes that support business decisions. The primary benefit of clustering a {KIE_SERVER} runtime environment is load balancing. If activity on one node of the cluster increases, that activity can be shared among the other nodes of the cluster to improve performance.
 
-<<<<<<< HEAD
-.Prerequiste
-* An NFS server with a mounted partition accessible to a {EAP} user is available. 
-
-.Procedure
-. Set up a {EAP} 7.1 cluster as described in  https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/configuring_a_red_hat_jboss_eap_7_cluster/[_Configuring a {EAP} 7 Cluster_].
-=======
 .Prerequisites
 * A {EAP} 7.1 cluster is available. 
 * An NFS server with a mounted partition accessible to a {EAP} user is available.
@@ -124,7 +117,6 @@ endif::PAM[]
 ====
 +
 Ensure that the data sources contain schemas. If your data source does not contain schemas, ensure your nodes start one at a time.
->>>>>>> BXMSDOC-2294 updated with SME comments
 
 .. Enable the {KIE_SERVER} watcher service system property:
 +
