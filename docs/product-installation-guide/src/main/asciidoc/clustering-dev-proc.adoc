@@ -16,5 +16,5 @@ You can also use this configuration for runtime environments if you want to use 
 
 .Procedure
 . Install and configure Elasticsearch as described in <<clustering-elasticsearch-proc_{context}>>.
-. Install and configure AMQ Broker as described in <<clustering-artemis-activate-proc_{context}>>.
+//. Install and configure AMQ Broker as described in <<clustering-artemis-activate-proc_{context}>>.
 . Install and configure {CENTRAL} as described in <<clustering-dm-install-proc_{context}>>.
