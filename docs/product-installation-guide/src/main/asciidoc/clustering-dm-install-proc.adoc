@@ -1,7 +1,9 @@
 [id='clustering-dm-install-proc_{context}']
 = Installing and configuring {CENTRAL} on cluster nodes
 
-Complete the steps in this section to install and run {CENTRAL} on each node of the cluster.
+Complete the steps in this section to install {CENTRAL}, Configure
+
+ou can use the embedded JMS broker in {EAP}. To do this, install {EAP} and edit the `domain.xml` file as described in <<clustering-dm-install-proc_{context}>>. on each node of the cluster.
 
 .Prerequisite
 A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
@@ -55,7 +57,7 @@ WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not co
   <property name="org.appformer.ext.metadata.elastic.retries" value="10"/>
 </system-properties>
 ----
-. If you are using the embedded JMS broker, edit the `domain.xml` file as follows:
+. To configure the embedded JMS broker, edit the `domain.xml` file as follows:
 
 .. To create an `outbound-socket-binding` pointing to the remote messaging server, in the `domain.xml` file add the following lines to the `<socket-binding-group name="full-sockets"` tag, where `localhost` is the host name or IP address of the remote {EAP} instance:
 +
