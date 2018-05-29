@@ -2,9 +2,9 @@
 = Clustering {KIE_SERVER} for a runtime environment
 In a runtime environment, {KIE_SERVER} runs rules and processes that support business decisions. The primary benefit of clustering a {KIE_SERVER} runtime environment is load balancing. If activity on one node of the cluster increases, that activity can be shared among the other nodes of the cluster to improve performance.
 
-.Prerequisites
-* A {EAP} 7.1 cluster is available. 
-* An NFS server with a mounted partition accessible to a {EAP} user is available.
+.Prerequisite
+A {EAP} 7.1 cluster is available. 
+
 
 .Procedure
 . Navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
@@ -19,7 +19,6 @@ ifdef::DM[]
 endif::DM[]
 ifdef::PAM[]
 +
-COMMENT: Are these steps relevant?
 . Extract the 
 ifdef::PAM[]
 `rhpam-7.0.0.GA-kie-server-ee7.zip`
@@ -28,17 +27,7 @@ ifdef::DM[]
 `rhdm-7.0.0.GA-kie-server-ee7.zip`
 endif::DM[]
  archive to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
-. On each node of the cluster, copy the
-ifdef::PAM[]
-`__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/rhpam-7.0.0.GA-kie-server-ee7/kie-server.war`
-endif::PAM[]
-ifdef::DM[]
-`__TEMP_DIR__/rhdm-7.0.0.GA-kie-server-ee7/rhdm-7.0.0.GA-kie-server-ee7/kie-server.war`
-endif::DM[]
- directory to `__EAP_HOME__/standalone/deployments/`.
-+
-WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the {EAP} instance.
-. Copy the contents of the
+. If you want to use a security manager for Process Server, copy the contents of the
 ifdef::PAM[]
 `__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/rhpam-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
 endif::PAM[]
