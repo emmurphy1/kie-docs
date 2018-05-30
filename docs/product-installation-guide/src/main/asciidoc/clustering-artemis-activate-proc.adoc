@@ -43,6 +43,6 @@ This command creates an AMQ Broker user with the `admin` role and a broker in th
 +
 [source]
 ----
-<AMQ_INSTANCE>\bin\artemisbat run
+<AMQ_INSTANCE>\bin\artemis.bat run
 ----
 
