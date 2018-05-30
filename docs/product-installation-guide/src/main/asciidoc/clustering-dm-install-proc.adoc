@@ -146,6 +146,26 @@ ifdef::PAM[]
 |org.uberfire.nio.git.ssh.hostport and org.uberfire.nio.git.daemon.hostport
 |8003 and 9418
 |In a virtualized environment, the outside port to be used.
+
+|appformer-jms-connection-factory
+|java:/ConnectionFactory
+|
+
+|org.appformer.ext.metadata.index
+|elastic
+|
+
+|org.appformer.ext.metadata.elastic.port
+|9300
+|
+
+|org.appformer.ext.metadata.elastic.host
+|Elasticsearch node IP address
+|
+
+|org.appformer.ext.metadata.elastic.retries
+|10
+|The number of times Elasticsearch retries...
 |===
 endif::PAM[]
 ifdef::DM[]
@@ -185,10 +205,6 @@ ifdef::DM[]
 |org.uberfire.nio.git.ssh.host
 |nodeOne
 |The name of the SSH host machine in a physical cluster.
-
-|org.uberfire.nio.git.ssh.hostport and org.uberfire.nio.git.daemon.hostport
-|8003 and 9418
-|In a virtualized environment, the outside port to be used.
 |===
 endif::DM[]
 +
