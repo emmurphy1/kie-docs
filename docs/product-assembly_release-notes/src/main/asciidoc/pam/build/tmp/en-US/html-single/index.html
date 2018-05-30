@@ -1,0 +1,442 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Release notes for Red Hat Process Automation Manager 7.0</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.3"/><meta name="description" content="This document contains release notes for Red Hat Process Automation Manager 7.0."/><link rel="next" href="#idm139849666732256" title="Preface"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm139849661920464"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Process Automation Manager</span> <span class="productnumber">7.0</span></div><div><h1 class="title">Release notes for Red Hat Process Automation Manager 7.0</h1></div><div><h2 class="subtitle"/></div><div><div xml:lang="en-US" class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Red Hat</span> <span class="surname">Customer Content Services</span></h3><code class="email"><a class="email" href="mailto:brms-docs@redhat.com">brms-docs@redhat.com</a></code></div></div></div><div><a href="#idm139849666540656">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This document contains release notes for Red Hat Process Automation Manager 7.0.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#idm139849666732256">Preface</a></span></li><li><span class="chapter"><a href="#rn-intro-con">1. Product overview</a></span></li><li><span class="chapter"><a href="#rn-whats-new-con">2. New features</a></span><ul><li><span class="section"><a href="#business_central">2.1. Business Central</a></span><ul><li><span class="section"><a href="#high_availability">2.1.1. High availability</a></span></li><li><span class="section"><a href="#process_designer">2.1.2. Process Designer</a></span></li><li><span class="section"><a href="#improved_navigation">2.1.3. Improved navigation</a></span></li><li><span class="section"><a href="#case_management">2.1.4. Case management</a></span></li><li><span class="section"><a href="#decision_model_and_notation_models">2.1.5. Decision Model and Notation models</a></span></li><li><span class="section"><a href="#guided_decision_table">2.1.6. Guided decision table</a></span></li><li><span class="section"><a href="#projects_metrics_dashboard">2.1.7. Projects Metrics dashboard</a></span></li><li><span class="section"><a href="#team_metrics_dashboard">2.1.8. Team Metrics dashboard</a></span></li><li><span class="section"><a href="#form_modeler">2.1.9. Form modeler</a></span></li><li><span class="section"><a href="#new_columns_available_on_process_instances_tasks_and_jobs">2.1.10. New columns available on process instances, tasks, and jobs</a></span></li><li><span class="section"><a href="#advanced_search_filter">2.1.11. Advanced search filter</a></span></li><li><span class="section"><a href="#new_task_and_task_administration_pages">2.1.12. New Task and Task Administration pages</a></span></li><li><span class="section"><a href="#error_handling">2.1.13. Error Handling</a></span></li><li><span class="section"><a href="#improved_validation_in_the_deployment_descriptor_designer">2.1.14. Improved validation in the deployment descriptor designer</a></span></li><li><span class="section"><a href="#job_creation">2.1.15. Job creation</a></span></li></ul></li><li><span class="section"><a href="#process_engine">2.2. Process Engine</a></span><ul><li><span class="section"><a href="#property_reactivity">2.2.1. Property reactivity</a></span></li><li><span class="section"><a href="#process_api_and_task_administration_api">2.2.2. Process API and task administration API</a></span></li><li><span class="section"><a href="#usertaskservice">2.2.3. UserTaskService</a></span></li><li><span class="section"><a href="#advanced_task_routing">2.2.4. Advanced task routing</a></span></li><li><span class="section"><a href="#business_rule_task_fire_limit">2.2.5. Business rule task fire limit</a></span></li><li><span class="section"><a href="#nosql_integration">2.2.6. NoSQL integration</a></span></li><li><span class="section"><a href="#quartz_improvements">2.2.7. Quartz improvements</a></span></li></ul></li><li><span class="section"><a href="#process_server">2.3. Process Server</a></span><ul><li><span class="section"><a href="#separate_business_central_from_execution_server">2.3.1. Separate Business Central from execution server</a></span></li><li><span class="section"><a href="#smart_router">2.3.2. Smart router</a></span></li><li><span class="section"><a href="#aliases">2.3.3. Aliases</a></span></li><li><span class="section"><a href="#work_item_archetype">2.3.4. Work Item archetype</a></span></li><li><span class="section"><a href="#kie_server_maven_plugins">2.3.5. KIE Server Maven plugins</a></span></li></ul></li><li><span class="section"><a href="#red_hat_business_optimizer">2.4. Red Hat Business Optimizer</a></span><ul><li><span class="section"><a href="#planningpin">2.4.1. @PlanningPin</a></span></li><li><span class="section"><a href="#conference_scheduling">2.4.2. Conference scheduling</a></span></li><li><span class="section"><a href="#plannerbenchmark">2.4.3. PlannerBenchmark</a></span></li><li><span class="section"><a href="#guided_decision_tables_integration">2.4.4. Guided decision tables integration</a></span></li><li><span class="section"><a href="#guided_rule_designer_integration">2.4.5. Guided rule designer integration</a></span></li><li><span class="section"><a href="#real_time_planning">2.4.6. Real-time planning</a></span></li><li><span class="section"><a href="#multi_threaded_partitioned_search">2.4.7. Multi-threaded partitioned search</a></span></li><li><span class="section"><a href="#solution_interface">2.4.8. Solution interface</a></span></li><li><span class="section"><a href="#score_type">2.4.9. Score type</a></span></li><li><span class="section"><a href="#enhanced_solver_configuration_designer">2.4.10. Enhanced solver configuration designer</a></span></li><li><span class="section"><a href="#difficulty_comparator_definition">2.4.11. Difficulty comparator definition</a></span></li><li><span class="section"><a href="#red_hat_business_optimizer_execution_server">2.4.12. Red Hat Business Optimizer execution server</a></span></li></ul></li><li><span class="section"><a href="#new_component_names">2.5. New component names</a></span></li></ul></li><li><span class="chapter"><a href="#rn-tech-preview-con">3. Technology preview</a></span><ul><li><span class="section"><a href="#technology_preview_features">3.1. Technology preview features</a></span></li><li><span class="section"><a href="#technology_preview_experimental_features">3.2. Technology Preview experimental features</a></span><ul><li><span class="section"><a href="#enabling_application_lifecycle_automation_and_provisioning_user_interface">3.2.1. Enabling Application Lifecycle Automation and Provisioning User Interface</a></span></li><li><span class="section"><a href="#enabling_the_content_management_system_cms_page">3.2.2. Enabling the Content Management System (CMS) page</a></span></li><li><span class="section"><a href="#enabling_predictive_model_markup_language_pmml">3.2.3. Enabling Predictive Model Markup Language (PMML)</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#rn-known-issues-con">4. Known issues</a></span></li></ul></div><section class="preface" id="idm139849666732256"><div class="titlepage"><div><div><h1 class="title">Preface</h1></div></div></div><p>
+			These release notes list new features, features in technical preview, and known issues in Red Hat Process Automation Manager 7.0.
+		</p></section><section class="chapter" id="rn-intro-con"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Product overview</h1></div></div></div><p>
+			Red Hat Process Automation Manager is an open-source business automation platform that combines business process management (BPM), case management, business rules management, and resource planning. It enables business and IT users to create, manage, validate, and deploy business processes, cases, and business rules.
+		</p><p>
+			Red Hat Process Automation Manager uses a centralized repository where all resources are stored. This ensures consistency, transparency, and the ability to audit across the business. Business users can modify business logic and business processes without requiring assistance from IT personnel.
+		</p><p>
+			Red Hat Process Automation Manager 7.0 further expands the product capabilities by providing an enhanced user experience, a simplified process design work flow, case management capabilities, an improved comprehensive dashboard, and optimized task-handling and collaboration features.
+		</p><p>
+			Red Hat Process Automation Manager is fully supported on OpenShift and can be installed on various platforms.
+		</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+				Red Hat Process Automation Manager now requires Java 8 or higher.
+			</p></div></div></section><section class="chapter" id="rn-whats-new-con"><div class="titlepage"><div><div><h1 class="title">Chapter 2. New features</h1></div></div></div><p>
+			This section highlights new features in Red Hat Process Automation Manager 7.0.
+		</p><section class="section" id="business_central"><div class="titlepage"><div><div><h2 class="title">2.1. Business Central</h2></div></div></div><section class="section" id="high_availability"><div class="titlepage"><div><div><h3 class="title">2.1.1. High availability</h3></div></div></div><p>
+					High availability and clustering for Business Central is now configured with JMS and NFS storage.
+				</p></section><section class="section" id="process_designer"><div class="titlepage"><div><div><h3 class="title">2.1.2. Process Designer</h3></div></div></div><p>
+					An improved Process Designer interface includes the most common BPMN2 nodes as well as form generation, case management extensions, and the ability to export to PNG, PDF, SVG, and BPMN2. The legacy Process Designer is still available for full functionality.
+				</p></section><section class="section" id="improved_navigation"><div class="titlepage"><div><div><h3 class="title">2.1.3. Improved navigation</h3></div></div></div><p>
+					The Red Hat Process Automation Manager Home page has been redesigned for easier navigation.
+				</p></section><section class="section" id="case_management"><div class="titlepage"><div><div><h3 class="title">2.1.4. Case management</h3></div></div></div><p>
+					A case project is a type of project in Business Central that is configured for case management. Case management is an extension of business process management (BPM) that enables you to handle dynamic and ad hoc activities. It handles one-off situations where the process cannot be predicted in advance. For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.0/html-single/getting_started_with_case_management"><span class="emphasis"><em>Getting started with case management</em></span></a>.
+				</p></section><section class="section" id="decision_model_and_notation_models"><div class="titlepage"><div><div><h3 class="title">2.1.5. Decision Model and Notation models</h3></div></div></div><p>
+					You can use Decision Model and Notation (DMN) to model a decision service graphically in a decision requirements diagram (DRD). This diagram traces business decisions from start to finish, with each decision node drawing logic from DMN model decision elements such as decision tables.
+				</p></section><section class="section" id="guided_decision_table"><div class="titlepage"><div><div><h3 class="title">2.1.6. Guided decision table</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Guided decision table has a new wizard for creating and editing columns.
+						</li><li class="listitem">
+							Hit policies are now available. Hit policies determine the order in which rules (rows) in a guided decision table are applied.
+						</li><li class="listitem">
+							New support to display multiple linked guided decision tables in the guided decision tables designer has been added.
+						</li></ul></div></section><section class="section" id="projects_metrics_dashboard"><div class="titlepage"><div><div><h3 class="title">2.1.7. Projects Metrics dashboard</h3></div></div></div><p>
+					A new dashboard is available for every project listed in the Projects page. The Projects Metrics dashboard displays all of your project contribution metrics in one place. This new dashboard replaces the Contributors page, which was part of the Authoring group.
+				</p></section><section class="section" id="team_metrics_dashboard"><div class="titlepage"><div><div><h3 class="title">2.1.8. Team Metrics dashboard</h3></div></div></div><p>
+					The Team Metrics dashboard shows all of the project metrics for a team in a single page. This new dashboard replaces the older Contributors page, which was part of the Authoring group.
+				</p></section><section class="section" id="form_modeler"><div class="titlepage"><div><div><h3 class="title">2.1.9. Form modeler</h3></div></div></div><p>
+					With Form Modeler, you can generate forms for data objects, task forms, and process start forms without writing code. Form Modeler includes a widget library for binding multiple data types and a callback mechanism to send notifications when form values change. Form Modeler uses bean-based validation and supports binding form fields to static or dynamic models.
+				</p></section><section class="section" id="new_columns_available_on_process_instances_tasks_and_jobs"><div class="titlepage"><div><div><h3 class="title">2.1.10. New columns available on process instances, tasks, and jobs</h3></div></div></div><p>
+					The following columns have been added to the corresponding pages:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							<span class="strong strong"><strong>Process instance list page:</strong></span> Last update and correlation key.
+						</li><li class="listitem">
+							<span class="strong strong"><strong>Task list:</strong></span> Last update, correlation key (of the associated process instance ID), process instance description (of the associated process instance).
+						</li><li class="listitem">
+							<span class="strong strong"><strong>Jobs page:</strong></span> Name of the associated process (if any), ID of the associated process instance (if any), Description of the associated process instance (if any).
+						</li></ul></div></section><section class="section" id="advanced_search_filter"><div class="titlepage"><div><div><h3 class="title">2.1.11. Advanced search filter</h3></div></div></div><p>
+					You can now search for specific data by using the <span class="strong strong"><strong>Search</strong></span> tab on the Jobs, Process Instances, Task Administration, and Execution Errors pages.
+				</p></section><section class="section" id="new_task_and_task_administration_pages"><div class="titlepage"><div><div><h3 class="title">2.1.12. New Task and Task Administration pages</h3></div></div></div><p>
+					The former Task List page has been divided into the Task and Administration pages. The Task page is used by task operators to work with their assigned (or potentially assigned) tasks. The Task Administration page is used by administrators to manage tasks assigned to other users. This page is only available for users with admin or process-admin roles. It is similar to the Admin filter tab on the former Task List page.
+				</p></section><section class="section" id="error_handling"><div class="titlepage"><div><div><h3 class="title">2.1.13. Error Handling</h3></div></div></div><p>
+					While running a process instance or a job, the system now detects and stores execution errors such as exceptions after the maximum number of retries has been exceeded. If an error occurs, the system generates an event that contains the following data:
+				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 67%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139849666338224" scope="col">Data</th><th align="left" valign="top" id="idm139849666337360" scope="col">Fields</th></tr></thead><tbody><tr><td rowspan="3" align="left" valign="top" headers="idm139849666338224">
+								<p>
+									Process model
+								</p>
+								</td><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									processModelID
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									processModelVersion
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									processModelName
+								</p>
+								</td></tr><tr><td rowspan="2" align="left" valign="top" headers="idm139849666338224">
+								<p>
+									Process instance that has failed
+								</p>
+								</td><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									processInstanceID
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									customProcessID
+								</p>
+								</td></tr><tr><td rowspan="5" align="left" valign="top" headers="idm139849666338224">
+								<p>
+									Activity that has failed
+								</p>
+								</td><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									activityID
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									activityName
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									activityType
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									iteration
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									status
+								</p>
+								</td></tr><tr><td rowspan="2" align="left" valign="top" headers="idm139849666338224">
+								<p>
+									Error data
+								</p>
+								</td><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									errorMessage: Message with the error that has occurred.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm139849666337360">
+								<p>
+									errorStack: Stack with error detail.
+								</p>
+								</td></tr></tbody></table></div><p>
+					The process instance list includes a new column that displays the number of errors per process instance which are not marked as acknowledged. When you select the column, a window appears which enables you to navigate to the new Error page.
+				</p><p>
+					The Execution Errors page lists any errors that occur during process instances or executor service jobs on a Process Server. Use this page to help troubleshoot issues. It is visible to users with the admin and process-admin roles.
+				</p></section><section class="section" id="improved_validation_in_the_deployment_descriptor_designer"><div class="titlepage"><div><div><h3 class="title">2.1.14. Improved validation in the deployment descriptor designer</h3></div></div></div><p>
+					The deployment descriptor designer in Business Central has been improved to validate data entered for the following:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Work item handlers
+						</li><li class="listitem">
+							Event listeners
+						</li><li class="listitem">
+							Marshalling strategies
+						</li><li class="listitem">
+							Globals
+						</li><li class="listitem">
+							Environment entries
+						</li><li class="listitem">
+							Configuration
+						</li></ul></div><p>
+					The deployment descriptor designer performs the validation when a build is invoked or manually when a user clicks <span class="strong strong"><strong>Validate</strong></span>.
+				</p></section><section class="section" id="job_creation"><div class="titlepage"><div><div><h3 class="title">2.1.15. Job creation</h3></div></div></div><p>
+					The Job creation interface has been modified to enable you to start the job immediately or schedule it to be executed later.
+				</p></section></section><section class="section" id="process_engine"><div class="titlepage"><div><div><h2 class="title">2.2. Process Engine</h2></div></div></div><section class="section" id="property_reactivity"><div class="titlepage"><div><div><h3 class="title">2.2.1. Property reactivity</h3></div></div></div><p>
+					Property reactivity is enabled by default in Drools 7.0. If you expect property reactivity to be enabled only for classes annotated with <code class="literal">@PropertyReactive</code>, add the following configuration to the <code class="literal">kmodule.xml</code> file:
+				</p><pre class="screen">&lt;configuration&gt;
+  &lt;property key="drools.propertySpecific" value="ALLOWED"/&gt;
+&lt;/configuration&gt;</pre></section><section class="section" id="process_api_and_task_administration_api"><div class="titlepage"><div><div><h3 class="title">2.2.2. Process API and task administration API</h3></div></div></div><p>
+					A process administration API and task administration API have been introduced to simplify some of the more complex administrator use cases. You can use the process administration API to perform the following tasks:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Retrieve all process definition nodes
+						</li><li class="listitem">
+							Cancel node instances
+						</li><li class="listitem">
+							Retrigger node instances
+						</li><li class="listitem">
+							Update the timer (absolute or relative)
+						</li><li class="listitem">
+							List timer instances
+						</li><li class="listitem">
+							Trigger nodes
+						</li></ul></div><p>
+					You can use the task administration API to do the following:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Add and remove potential owners and excluded owners and business administrators
+						</li><li class="listitem">
+							Add and remove task inputs and outputs
+						</li><li class="listitem">
+							List, create, and cancel escalations and notifications
+						</li></ul></div></section><section class="section" id="usertaskservice"><div class="titlepage"><div><div><h3 class="title">2.2.3. UserTaskService</h3></div></div></div><p>
+					UserTaskService updates task metadata and variables in single operation. This feature is available through KIE Server REST and JMS API.
+				</p></section><section class="section" id="advanced_task_routing"><div class="titlepage"><div><div><h3 class="title">2.2.4. Advanced task routing</h3></div></div></div><p>
+					When tasks are assigned to a group of users, you can use pluggable task assignment strategies to automatically assign tasks to a suitable individual immediately. This enables more efficient task allocation, based on all properties associated with the task. For example, such as potential owners and task priority but also task data that includes information such as geography, required skills, and so on. You can use business rules to define the assignment logic, making it easy to customize this to your needs.
+				</p></section><section class="section" id="business_rule_task_fire_limit"><div class="titlepage"><div><div><h3 class="title">2.2.5. Business rule task fire limit</h3></div></div></div><p>
+					The business rule task has been enhanced to limit the number of fired rules. This avoids situations where rules run into an infinite loop and make the server completely unresponsive. The fire default fire limit is 10000.
+				</p></section><section class="section" id="nosql_integration"><div class="titlepage"><div><div><h3 class="title">2.2.6. NoSQL integration</h3></div></div></div><p>
+					Initial integration with NoSQL has been introduced. This is based on additional emitters that can be implemented to receive notifications when the process engine executes processes. This enables users to plug in their own emitters that will be responsible for sending data to external data stores. Note that this is an integration and not a replacement of the persistence layer of jBPM.
+				</p></section><section class="section" id="quartz_improvements"><div class="titlepage"><div><div><h3 class="title">2.2.7. Quartz improvements</h3></div></div></div><p>
+					The Quartz scheduler service has been improved to fetch jobs only for deployments (KIE containers) that are currently available in the running system.
+				</p></section></section><section class="section" id="process_server"><div class="titlepage"><div><div><h2 class="title">2.3. Process Server</h2></div></div></div><p>
+				The Process Server (also known as kie-server) has been extended to support core engine features and offers a remote API for these operations. In addition, the following architectural changes were introduced.
+			</p><section class="section" id="separate_business_central_from_execution_server"><div class="titlepage"><div><div><h3 class="title">2.3.1. Separate Business Central from execution server</h3></div></div></div><p>
+					Business Central now delegates all of its requests to the execution server. The main advantage is that Business Central can now be used to monitor any set of execution servers. By linking the execution server to Business Central, the process and task monitoring interfaces in Business Central can now connect to this execution server and show all relevant information. When multiple independent execution servers are used, you can either connect to a specific one or use the smart router to aggregate information across multiple servers.
+				</p></section><section class="section" id="smart_router"><div class="titlepage"><div><div><h3 class="title">2.3.2. Smart router</h3></div></div></div><p>
+					Smart router (also known as the KIE server router) includes the following enhancements:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Smart router can be used as a proxy to help manage multiple independent process execution servers.
+						</li><li class="listitem">
+							When the controller is not available during smart router start up, a retry mechanism is in place to connect to the controller as soon as it becomes available.
+						</li><li class="listitem">
+							A retry mechanism is in place for times when the controller is not available and there are updates to be sent to the controller.
+						</li><li class="listitem">
+							When a Process Server does not respond to a request, it is removed from the list of active servers. Subsequent requests will not target it. The now inactive server is put on a list to be verified. After verification, it is added back to the active servers list.
+						</li></ul></div></section><section class="section" id="aliases"><div class="titlepage"><div><div><h3 class="title">2.3.3. Aliases</h3></div></div></div><p>
+					You can now use aliases instead of container IDs in the remote REST APIs of the execution server.
+				</p></section><section class="section" id="work_item_archetype"><div class="titlepage"><div><div><h3 class="title">2.3.4. Work Item archetype</h3></div></div></div><p>
+					To help users build custom service tasks (work items), Red Hat Process Automation Manager comes with the Work Item archetype that generates the majority of items required to build a custom service task. The archetype includes the following:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							A Work Item Definition (WID) file
+						</li><li class="listitem">
+							The Work Item Handler implementation class
+						</li><li class="listitem">
+							The Work Item Handler test class
+						</li></ul></div><p>
+					The Maven assembly (zip) packages everything at build time so it can be consumed by the Service Repository and therefore be used from within the Web Designer.
+				</p></section><section class="section" id="kie_server_maven_plugins"><div class="titlepage"><div><div><h3 class="title">2.3.5. KIE Server Maven plugins</h3></div></div></div><p>
+					KIE Server has been enhanced with additional Maven plugins that enable interaction with the KIE Server and KIE Controller REST API directly from within a build. This interaction facilitates easier integration with CI/CD pipelines when building KJars so they can be directly deployed to the execution environment (both managed and unmanaged KIE Servers).
+				</p></section></section><section class="section" id="red_hat_business_optimizer"><div class="titlepage"><div><div><h2 class="title">2.4. Red Hat Business Optimizer</h2></div></div></div><section class="section" id="planningpin"><div class="titlepage"><div><div><h3 class="title">2.4.1. @PlanningPin</h3></div></div></div><p>
+					To pin down an assignment and force Red Hat Business Optimizer to leave it untouched, add the @PlanningPin annotation on a planning entity’s boolean property and make it true for those entities that are immovable.
+				</p></section><section class="section" id="conference_scheduling"><div class="titlepage"><div><div><h3 class="title">2.4.2. Conference scheduling</h3></div></div></div><p>
+					You can assign each conference talk to a time slot and a room. Timeslots can overlap. Save data in or extract data from an <code class="literal">*.xlsx</code> file that can be edited with LibreOffice or Microsof Excel.
+				</p></section><section class="section" id="plannerbenchmark"><div class="titlepage"><div><div><h3 class="title">2.4.3. PlannerBenchmark</h3></div></div></div><p>
+					PlannerBenchmark has a new method benchmarkAndShowReportInBrowser() to automatically open the benchmark report in the default browser after the benchmark has finished.
+				</p></section><section class="section" id="guided_decision_tables_integration"><div class="titlepage"><div><div><h3 class="title">2.4.4. Guided decision tables integration</h3></div></div></div><p>
+					Red Hat Business Optimizer now integrates with the guided decision tables designer. Modify the score with built-in Red Hat Business Optimizer actions that can be accessed in the Action BRL fragment column type. The Workbench examples now include the dinnerparty project, which uses a guided decision table to define score constraints.
+				</p></section><section class="section" id="guided_rule_designer_integration"><div class="titlepage"><div><div><h3 class="title">2.4.5. Guided rule designer integration</h3></div></div></div><p>
+					Red Hat Business Optimizer now integrates with the guided rule designer. You can modify the score with a built-in Red Hat Business Optimizer action.
+				</p></section><section class="section" id="real_time_planning"><div class="titlepage"><div><div><h3 class="title">2.4.6. Real-time planning</h3></div></div></div><p>
+					Process Server now has an interface that enables you to update a problem data set while the solver is running. Use the Java client or REST interface to submit your <code class="literal">ProblemFactChange</code> implementations.
+				</p></section><section class="section" id="multi_threaded_partitioned_search"><div class="titlepage"><div><div><h3 class="title">2.4.7. Multi-threaded partitioned search</h3></div></div></div><p>
+					Red Hat Business Optimizer now has support for solving a single data set by partitioning across multiple threads. This enhancement makes use of multiple CPU cores for a single problem. Partitioned search can implement geo-fencing for Vehicle Routing use cases.
+				</p></section><section class="section" id="solution_interface"><div class="titlepage"><div><div><h3 class="title">2.4.8. Solution interface</h3></div></div></div><p>
+					The Solution interface is deprecated. Your solution class requires only the <code class="literal">@PlanningSolution</code> annotation.
+				</p></section><section class="section" id="score_type"><div class="titlepage"><div><div><h3 class="title">2.4.9. Score type</h3></div></div></div><p>
+					You no longer need to define the score type in the solver configuration. Red Hat Business Optimizer now determines it automatically from the domain model.
+				</p></section><section class="section" id="enhanced_solver_configuration_designer"><div class="titlepage"><div><div><h3 class="title">2.4.10. Enhanced solver configuration designer</h3></div></div></div><pre class="literallayout">The {PLANNER} designer now supports adding all termination types, including composite termination. The `Phase configuration` section enables you to tweak `Construction Heuristic` settings and select the `Local Search` algorithm to optimize your planning problem.</pre></section><section class="section" id="difficulty_comparator_definition"><div class="titlepage"><div><div><h3 class="title">2.4.11. Difficulty comparator definition</h3></div></div></div><p>
+					The Red Hat Business Optimizer domain designer can now specify a planning entity difficulty. Navigate through the object hierarchy and define the sorting attributes. Several construction heuristic algorithms use this information to construct a better initial solution.
+				</p></section><section class="section" id="red_hat_business_optimizer_execution_server"><div class="titlepage"><div><div><h3 class="title">2.4.12. Red Hat Business Optimizer execution server</h3></div></div></div><p>
+					The Red Hat Business Optimizer execution server now supports real-time planning.
+				</p></section></section><section class="section" id="new_component_names"><div class="titlepage"><div><div><h2 class="title">2.5. New component names</h2></div></div></div><p>
+				The following components have been renamed in Red Hat Process Automation Manager 7.0:
+			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 67%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139849667378800" scope="col">Red Hat JBoss BPM Suite</th><th align="left" valign="top" id="idm139849667377936" scope="col">Red Hat Process Automation Manager (RHPAM)</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								Red Hat JBoss BPM Suite
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								Red Hat Process Automation Manager
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								Business Resource Planner
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								Red Hat Business Optimizer
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								asset editor
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								asset designer (for example, guided rules designer)
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								KIE Execution Server
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								Process Server (for Process Automation Manager capabilities), Planner Server (for Business Optimization capabilities), KIE Server (represents both Process Server and Planner servers )
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								Organizational units
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								Spaces
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm139849667378800">
+							<p>
+								Drools engine, Rules engine
+							</p>
+							</td><td align="left" valign="top" headers="idm139849667377936">
+							<p>
+								Decision engine
+							</p>
+							</td></tr></tbody></table></div></section></section><section class="chapter" id="rn-tech-preview-con"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Technology preview</h1></div></div></div><p>
+			This section lists features that are in technology preview in Red Hat Process Automation Manager 7.0.
+		</p><div class="admonition important"><div class="admonition_header">Important</div><div><p>
+				These features are for Technology Preview only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs), might not be functionally complete, and Red Hat does not recommend to use them for production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process. For more information on Red Hat Technology Preview features, see <a class="link" href="https://access.redhat.com/support/offerings/techpreview/">Technology Preview Features Scope</a>.
+			</p></div></div><section class="section" id="technology_preview_features"><div class="titlepage"><div><div><h2 class="title">3.1. Technology preview features</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Aliases: You can use aliases instead of container IDs in the remote REST APIs of the Planner Server.
+					</li><li class="listitem">
+						Application lifecycle automation: Part of Red Hat Process Automation Manager and disabled by default.
+					</li><li class="listitem">
+						Embedded jBPM use case with pooling datasource.
+					</li><li class="listitem">
+						High-availability authoring on Red Hat JBoss EAP (on premise).
+					</li><li class="listitem">
+						Clustering for the OpenShift development environment: Enables high-availability while authoring.
+					</li><li class="listitem"><p class="simpara">
+						Predictive Model Markup Language (PMML): The PMML feature is fully implementated for the following predictive model types:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								Decision tree
+							</li><li class="listitem">
+								Regression
+							</li><li class="listitem"><p class="simpara">
+								Scorecard
+							</p><p class="simpara">
+								PMML has a partial implementation of the Mining Model type. The Select All, Select First, and Model Chaining sub-types are available.
+							</p></li></ul></div></li><li class="listitem">
+						Multi-threaded execution: Solves a single data set by partitioning across multiple threads. It is turned off by default and can be enabled either with a KieBaseConfiguration option or with a system property as explained in <a class="link" href="http://docs.jboss.org/drools/release/7.5.0.Final/drools-docs/html_single/#_multi-threaded_rule_engine">Drools Documentation</a>
+					</li><li class="listitem"><p class="simpara">
+						Rule Units: Rule Units represent a declarative approach to partitioning a rule set into smaller units, binding different data sources to those units, and the execution of the individual unit. A Rule Unit is comprised of data sources, global variables, and rules.#
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								You can use the installer to install Red Hat Process Automation Manager on Red Hat JBoss Web Server with Tomcat 9.
+							</li><li class="listitem">
+								You can use Narayana to configure JDBC data sources for Process Server.
+							</li></ul></div></li><li class="listitem">
+						Executable model: Provides a pure Java-based representation of a rule set, together with a convenient Java DSL to programmatically create such model.
+					</li></ul></div></section><section class="section" id="technology_preview_experimental_features"><div class="titlepage"><div><div><h2 class="title">3.2. Technology Preview experimental features</h2></div></div></div><p>
+				The following Technology Preview features are experimental and may require additional API changes.
+			</p><section class="section" id="enabling_application_lifecycle_automation_and_provisioning_user_interface"><div class="titlepage"><div><div><h3 class="title">3.2.1. Enabling Application Lifecycle Automation and Provisioning User Interface</h3></div></div></div><p>
+					Red Hat Process Automation Manager settings allow you to enable the Application Lifecycle Automation and Provisioning User Interface features.
+				</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+							Go to <span class="strong strong"><strong>Settings</strong></span>:&gt; <span class="strong strong"><strong>Roles</strong></span>:&gt; <span class="strong strong"><strong>admin</strong></span>.
+						</li><li class="listitem">
+							Expand <span class="strong strong"><strong>Pages</strong></span> and click the <span class="strong strong"><strong>Read</strong></span> field to enable <span class="strong strong"><strong>Deployments</strong></span>.
+						</li></ol></div></section><section class="section" id="enabling_the_content_management_system_cms_page"><div class="titlepage"><div><div><h3 class="title">3.2.2. Enabling the Content Management System (CMS) page</h3></div></div></div><p>
+					Red Hat Process Automation Manager settings allow you to enable the CMS page.
+				</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+							Go to <span class="strong strong"><strong>Settings</strong></span>:&gt; <span class="strong strong"><strong>Roles</strong></span>:&gt; <span class="strong strong"><strong>admin</strong></span>.
+						</li><li class="listitem">
+							Expand <span class="strong strong"><strong>Pages</strong></span> and click the <span class="strong strong"><strong>Read</strong></span> field to enable <span class="strong strong"><strong>Page Authoring</strong></span>.
+						</li></ol></div></section><section class="section" id="enabling_predictive_model_markup_language_pmml"><div class="titlepage"><div><div><h3 class="title">3.2.3. Enabling Predictive Model Markup Language (PMML)</h3></div></div></div><p>
+					This feature uses a single configuration option, <code class="literal">org.drools.compiler.compiler.PMMLCompiler</code> which has the following valid options:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							<code class="literal">org.kie.pmml.pmml_4_2.PMML4Compiler</code>: This value should be used for the majority of cases where PMML support is desired.
+						</li><li class="listitem">
+							<code class="literal">org.drools.pmml.pmml_4_2.PMML4Compiler</code>: This value provides backward compatibility, and should only be used in cases where there is a reliance on the older drools-pmml and drools-scorecards modules.
+						</li></ul></div></section></section></section><section class="chapter" id="rn-known-issues-con"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Known issues</h1></div></div></div><p>
+			This section lists known issues with Red Hat Process Automation Manager 7.0.
+		</p><div class="itemizedlist"><p class="title"><strong>Process Designer morphing issues [<a class="link" href="https://issues.jboss.org/browse/RHPAM-430">RHPAM-430</a>]</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+					It is possible to morph from a sub-process into a certain task type, but it is not possible to morph back to a sub-process. You should be able to:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+							Morph between task types and re-usable sub-processes
+						</li><li class="listitem">
+							Morph between embedded and ad-hoc sub-processes
+						</li></ul></div></li><li class="listitem">
+					After morphing an embedded sub-process to a task, any nodes that were contained inside the subprocess are not removed. This prevents you from saving the diagram. You must delete the task to continue.
+				</li></ul></div><div class="formalpara"><p class="title"><strong>Process Designer instances are very slow with Google Chrome on Linux [<a class="link" href="https://issues.jboss.org/browse/RHPAM-922">RHPAM-922</a>]</strong></p><p>
+				Step to reproduce: Open three Process Designer instances in Google Chrome on Linux.
+			</p></div><p>
+			Expected result: All instances of Process Designer perform at the same level, regardless of the number of instances open.
+		</p><p>
+			Actual result: The first two instances that were opened perform as usual, but the third and all subsequent instances are very slow, even if you will close the first two instances.
+		</p><p>
+			Workaround: Set the value of <code class="literal">chrome://flags/#force-color-profile</code> to sRGB.
+		</p><div class="formalpara"><p class="title"><strong>With Process Designer, ensure embedded sub-process have enough storage [<a class="link" href="https://issues.jboss.org/browse/RHPAM-426">RHPAM-426</a>]</strong></p><p>
+				When using the context menu to add nodes to an embedded sub-process, this operation fails if there is not enough space in the embedded sub-process to add the node. You must first make the embedded sub-process bigger.
+			</p></div><div class="formalpara"><p class="title"><strong>With Process Designer, a copy of the timer is created when you copy text from a name field to a documentation field [<a class="link" href="https://issues.jboss.org/browse/RHPAM-755">RHPAM-755</a>]</strong></p><p>
+				When your mouse is over the canvas, keyboard shorts perform actions related to the canvas, not the forms. A copy of the timer is created on the canvas if you copy text from a name field to a documentation field. In addition, you cannot change the cursor position. If you try to move the cursor using arrow keys, the timer event is moved on the canvas.
+			</p></div><p>
+			Steps to reprduce:
+		</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					Add a task to canvas.
+				</li><li class="listitem">
+					Open the properties form for the task.
+				</li><li class="listitem">
+					Select the contents of the <span class="strong strong"><strong>Name</strong></span> field on the task.
+				</li><li class="listitem">
+					Move the mouse over the canvas without clicking.
+				</li><li class="listitem">
+					Click <span class="strong strong"><strong>Delete</strong></span> to remove the contents of the <span class="strong strong"><strong>Name</strong></span> field.
+				</li></ol></div><p>
+			Expected result: Only the contents of the <span class="strong strong"><strong>Name</strong></span> field are deleted.
+		</p><p>
+			Actual result: The selected task is deleted from the canvas as well as the contents of the <span class="strong strong"><strong>Name</strong></span> field.
+		</p><div class="formalpara"><p class="title"><strong>With Process Designer, you cannot edit element or event names inline [<a class="link" href="https://issues.jboss.org/browse/RHPAM-444">RHPAM-444</a>]</strong></p><p>
+				Step to reproduce: Double-click the task name text.
+			</p></div><p>
+			Expected result: You can change the task name.
+		</p><p>
+			Actual result: Nothing happens and no input appears.
+		</p><p>
+			Workaround: Resize the node, then edit the element or event name.
+		</p><div class="formalpara"><p class="title"><strong>Business Central does not deploy if the EAP home contains a space in the name [<a class="link" href="https://issues.jboss.org/browse/RHPAM-1099">RHPAM-1099</a></strong></p><p>
+				Steps to reproduce:
+			</p></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					Install Red Hat JBoss EAP in a directory that contains a space.
+				</li><li class="listitem">
+					Start Business Central.
+				</li></ol></div><p>
+			Expected result: Business Central deploys.
+		</p><p>
+			Actual result: Business Central does not deploy and an error is recorded in the server log.
+		</p><p>
+			It is possible to embed designers to hide the path to projects. However, this feature is not working in the Authoring page if you use a parameter-controlled URL.
+		</p><div class="formalpara"><p class="title"><strong>Project-0riented standalone pages are broken [<a class="link" href="https://issues.jboss.org/browse/RHPAM-503">RHPAM-503</a>]</strong></p><p>
+				The standalone designers and pages are currently broken.
+			</p></div><div class="formalpara"><p class="title"><strong>Newly created persistable data objects are not automatically added to the list of Project Persistable Data Objects [<a class="link" href="https://issues.jboss.org/browse/RHPAM-938">RHPAM-938</a>]</strong></p><p>
+				Issue: Newly created persistable data objects are not automatically added to the list of <span class="strong strong"><strong>Project Persistable Data Objects</strong></span> in the Persistence designer.
+			</p></div><p>
+			Workaround: Click <span class="strong strong"><strong>Add all project’s persistable data objects</strong></span> to update the list.
+		</p><p>
+			Expected result: The designer closes.
+		</p><p>
+			Actual result: The edtor does not close.
+		</p><p>
+			Steps to reproduce:
+		</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					Open an example Mortgages project.
+				</li><li class="listitem">
+					Open the guided rules asset in standalone mode.
+				</li><li class="listitem">
+					Click <span class="strong strong"><strong>Save</strong></span>.
+				</li></ol></div><p>
+			Expected result: The project is saved.
+		</p><p>
+			Actual result: An error occurs.
+		</p><div class="formalpara"><p class="title"><strong>Serialization of KieBase/package is not supported [<a class="link" href="https://issues.jboss.org/browse/BXMSDOC-2574">RHPAM-2574</a>]</strong></p><p>
+				Serialization of KieBase/package is not supported in Red Hat Process Automation Manager 7.0. For more information, see <a class="link" href="https://access.redhat.com/solutions/3216951">Is serialization of kbase/package supported in BRMS 6/BPM Suite 6/RHDM 7?</a>.
+			</p></div><div class="formalpara"><p class="title"><strong>Smart Router Servers view error [<a class="link" href="https://issues.jboss.org/browse/BXMSDOC-1029">RHPAM-1029</a>]</strong></p><p>
+				If a Smart Router is registered in the controller and you select one of the deployment units on the Smart Router in the <span class="strong strong"><strong>Servers</strong></span> view, an error occurs. You should not manage deployment units on the Smart Router. Instead, manage the server configurations of the connected Process Servers directly.
+			</p></div></section><div><div xml:lang="en-US" class="legalnotice" id="idm139849666540656"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2018 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat Software Collections is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>

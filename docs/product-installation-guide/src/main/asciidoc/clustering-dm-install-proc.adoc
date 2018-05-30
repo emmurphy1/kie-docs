@@ -9,7 +9,6 @@ Complete the steps in this section to install and configure {CENTRAL} with the {
 A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch is installed and running on one node of the cluster.
 
 .Procedure
-. Install {CENTRAL} on each node of the cluster. See URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_] for information about installing Business Central.
 . On the cluster node where the domain controller will be started, navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
 * *Product: {PRODUCT}*
 * *Version: {PRODUCT_VERSION}*

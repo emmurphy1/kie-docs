@@ -56,8 +56,7 @@ ifdef::PAM[]
 <xa-datasource jndi-name="java:/jboss/datasources/rhpam" pool-name="rhpam-RHPAM" use-java-context="true" enabled="true"> 
   <xa-datasource-property name="PortNumber">5432</xa-datasource-property> 
   <xa-datasource-property name="ServerName"><SERVER_NAME></xa-datasource-property> 
-  <driver>postgresql</driver> 
-  <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation> 
+  <driver>postgresql</driver>  
   <security>
     <user-name><USER_NAME></user-name> 
     <password><USER_PWD></password> 
@@ -73,7 +72,6 @@ ifdef::PAM[]
     <xa-datasource-property name="PortNumber">5432</xa-datasource-property> 
     <xa-datasource-property name="ServerName"><SERVER_NAME></xa-datasource-property> 
     <driver>postgresql</driver> 
-    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation> 
     <xa-pool> 
         <min-pool-size>10</min-pool-size> 
         <max-pool-size>10</max-pool-size> 
@@ -85,28 +83,13 @@ ifdef::PAM[]
 </xa-datasource>
 ----
 endif::PAM[]
-.. Set the value of the `org.jbpm.ejb.timer.tx` system property to `true`.
 . Add management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and application users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
 
-. Open the `_EAP_HOME_/standalone/configuration/standalone.xml` file and add the following properties to the `<system-properties>` tag:
+. Open the `_EAP_HOME_/standalone/configuration/domain.xml` file and add the following properties to the `<system-properties>` tag:
 
 * `org.kie.server.persistence.ds`: The JNDI name of your data source
 * `org.kie.server.persistence.dialect`: The hibernate dialect for your database
 . If your environment is connected to Smart Router, on the java process running Smart Router do the following:
-.. Define the data source driver.
-+
-.PostgreSQL Driver Definition
-====
-[source,xml]
-----
-<driver name="postgres" module="org.postgresql">
-  <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-</driver>
-----
-====
-+
-Ensure that the data sources contain schemas. If your data source does not contain schemas, ensure your nodes start one at a time.
-
 .. Enable the {KIE_SERVER} watcher service system property:
 +
 [source]
