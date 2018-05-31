@@ -6,7 +6,7 @@ Set up Elasticsearch on one node of the cluster.
 
 [NOTE]
 ====
-This procedure describes how to set up Elasticseach for a simplified, non-high availability environement. For high availability production environments, see the https://www.elastic.co/guide/en/elasticsearch/guide/current/deploy.html[Production Deployment] section of the Elasticsearch documentation.
+Elasticsearch is available with this release, however it is currently in technical preview. This procedure describes how to set up Elasticseach for a simplified, non-high availability environement. For high availability production environments, see the https://www.elastic.co/guide/en/elasticsearch/guide/current/deploy.html[Production Deployment] section of the Elasticsearch documentation.
 ====
 
 .Procedure
