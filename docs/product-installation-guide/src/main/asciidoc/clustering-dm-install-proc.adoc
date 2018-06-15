@@ -5,10 +5,24 @@ A Java messaging server (JMS) broker resource adapter enables your applications 
 
 Complete the steps in this section to install and configure {CENTRAL} with the {EAP} integrated JMS resource adapter.
 
-.Prerequisite
-A Red Hat JBoss EAP 7.1 cluster is available and Elasticsearch is installed and running on one node of the cluster.
+.Prerequisites
+* A Red Hat JBoss EAP 7.1 cluster with Java Messaging Server high availability configured is available.
+* Elasticsearch is installed and running on one node of the cluster.
 
 .Procedure
+. In the `_EAP_HOME_/domain/configuration/domain.xml` file, make the following changes in each `server-group`:
+.. To enable high availability, change the `profile` to `"full-ha"` and the `socket-binding-group` to `"full-ha-sockets"`.
+.. To prevent {CENTRAL} from running out of memory, increase the JVM maximum heap size to `1500m`,
++
+[source]
+----
+<server-group name="some-server-group" profile="full-ha">
+    <jvm name="default">
+        <heap size="1000m" max-size="1500m"/>
+    </jvm>
+    <socket-binding-group ref="full-ha-sockets"/>
+</server-group>
+----
 . On the cluster node where the domain controller will be started, navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
 * *Product: {PRODUCT}*
 * *Version: {PRODUCT_VERSION}*
@@ -33,11 +47,12 @@ directory to `__EAP_HOME__`. When asked to overwrite files or merge directories,
 WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the {EAP} instance.
 . Navigate to the `_EAP_HOME_/standalone/deployments/business-central.war` directory.
 . Package the contents of the  `_EAP_HOME_/standalone/deployments/business-central.war` directory into a new `business-central.war` file that you will use to deploy {CENTRAL} on the cluster nodes.
+. If desired, copy the new `business-central.war` file to a different location that is more convenient to deploy from.
 . Edit the following properties in the `_EAP_HOME_/domain/configuration/domain.xml` file, where:
 * `<NIOGIT_DIR>` is the location of Git repositories stored under ``.niogit`, on an NFS mounted partition.
 * `<ELASTICSEARCH_NODE_IP>` and `<AMQ_NODE_IP>` are IP addresses where Elasticseach and AMQ Broker are installed.
-* `<AMQ_BROKER_USER>` is the AMQ Broker user that you created.
-* `<AMQ_BROKER_PASSWORD>` is the password for the AMQ Broker user.
+* `<JMS_USER>` is an {EAP} application user. It is the user used by {CENTRAL} to connect to the  embedded JMS broker. Should be the same user as defined in cluster user. Role must be defined in security settings.
+* `<JMS_USER_PASSWORD>` is the password for `<JMS_USER>`.
 +
 [source,xml]
 ----
@@ -46,8 +61,8 @@ WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not co
       <NIOGIT_DIR>"/> 
   <property name="appformer-jms-connection-mode" value="REMOTE"/>
   <property name="appformer-jms-url" value="tcp://<AMQ_NODE_IP>:61616"/>
-  <property name="appformer-jms-username" value="<AMQ_BROKER_USER>"/>
-  <property name="appformer-jms-password" value="<AMQ_BROKER_PASSWORD>"/>
+  <property name="appformer-jms-username" value="<JMS_USER>  "/>
+  <property name="appformer-jms-password" value="<JMS_USER_PASSWORD>"/>
   <property name="org.appformer.ext.metadata.index" value="elastic"/>
   <property name="org.appformer.ext.metadata.elastic.port" value="9300"/>
   <property name="org.appformer.ext.metadata.elastic.host" 
@@ -92,13 +107,8 @@ WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not co
 <property name="appformer-jms-connection-factory" value="java:/jms/remoteCF"/>
 ----
 . Edit the `server-groups` element to specify the server groups to be used in the cluster and their JVM parameters.
-. Edit the `host.xml` file to specify the servers to be created on that node.
-+
-[source,bash]
-----
-$ <EAP_HOME>/bin/add-user.sh -a --user <AMQ_BROKER_USER> --password <AMQ_BROKER_USER> --role admin
-----
-. Configure individual server nodes in the `main-server-group` element in the `_EAP_HOME_/domain/configuration/domain.xml` file with properties defined in
+. Edit the `host.xml` file to specify the servers to be created on that node. 
+. Configure individual server nodes in the `main-server-group` element in the `_EAP_HOME_/domain/configuration/host.xml` file with properties defined in
 ifdef::PAM[]
 <<_cluster_properties_pam>>.
 endif::PAM[]
@@ -149,15 +159,19 @@ ifdef::PAM[]
 
 |appformer-jms-connection-factory
 |java:/ConnectionFactory
-|
+|The Java messaging service connection factory of the {EAP} installation.
 
 |org.appformer.ext.metadata.index
 |elastic
 |
 
+|org.appformer.ext.metadata.elastic.cluster
+|`kie-cluster`
+|The name of the Elasticsearch cluster
+
 |org.appformer.ext.metadata.elastic.port
 |9300
-|
+|The Elasticsearch port
 
 |org.appformer.ext.metadata.elastic.host
 |Elasticsearch node IP address
@@ -387,12 +401,26 @@ ifdef::DM[]
 ====
 endif::DM[]
 . Add management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and application users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
-. Start the domain and host controllers. For more information, see the following sections of the _Red Hat JBoss EAP 7.1 Configuration Guide_:
+. Start the domain and host controllers:
++
+* On Linux or UNIX-based systems, enter:
++
+`_EAP_HOME_/bin/domain.sh`
++
+On Windows, enter:
++
+`_EAP_HOME_/bin/domain.bat`
++
+For more information, see the following sections of the _Red Hat JBoss EAP 7.1 Configuration Guide_:
 * https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/starting_and_stopping_jboss_eap#starting_jboss_eap["Starting JBoss EAP"]
 * https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/jboss_eap_management#managed_domain_configuration_files["Managed Domain Configuration Files"]
-. Review the `EAP_HOME/domain/servers/SERVER_NAME/log/server.log` file to verify that the nodes are available.
-. To deploy the `business-central.war` file (that you created previously) into the server group, log in to the server `Administration` console of your domain as the `management` user .
-. Use the `Runtime` view of the console to add the new `business-central.war` file. After the `.war` deployment is added to the domain, assign it to the correct server group (`main-server-group`).
+. Review the `_EAP_HOME_/domain/servers/SERVER_NAME/log/server.log` file to verify that the nodes are available.
+. To deploy the `business-central.war` file that you created previously into the server group, complete the following steps:
+.. Log in to the {EAP} `Administration` console of your domain as a `management` user.
+.. Click *Deployments -> Server Groups-> *main-server-group* and click *Add*.
+.. In the dialog box, click *Upload a new deployment* and click *Next*.
+.. In the *Upload Deployments* dialog box, click *Browse*, select the `business-central.war` file, and click *Next*.
+.. Click *Enable* then click *Next*.
 +
 [NOTE]
 ====
