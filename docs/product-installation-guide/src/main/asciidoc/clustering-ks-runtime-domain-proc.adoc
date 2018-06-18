@@ -2,11 +2,16 @@
 = Clustering {KIE_SERVER} for a runtime environment
 In a runtime environment, {KIE_SERVER} runs rules and processes that support business decisions. The primary benefit of clustering a {KIE_SERVER} runtime environment is load balancing. If activity on one node of the cluster increases, that activity can be shared among the other nodes of the cluster to improve performance.
 
-.Prerequisite
-A {EAP} 7.1 cluster is available. 
-
 .Procedure
-. Navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
+. Download and install {EAP}:
+.. Navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
+* *Product: Enterprise Application Platform*
+* *Version: 7.1*
+.. Click *Download* next to *Red Hat JBoss Enterprise Application Platform 7.1.0*. (`JBEAP-7.1.0/jboss-eap-7.1.0.zip`).
+.. Extract the `jboss-eap-7.1.0.zip` file. In the following steps, `_EAP_HOME_` is the `jboss-eap-7.1/jboss-eap-7.1` directory.
+
+. Download and install {KIE_SERVER}:
+.. Navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
 * *Product: {PRODUCT}*
 * *Version: {PRODUCT_VERSION}*
 * Download  *{PRODUCT} 7.0.0 {KIE_SERVER} for All Supported EE7 Containers*
@@ -18,7 +23,7 @@ ifdef::DM[]
 endif::DM[]
 ifdef::PAM[]
 +
-. Extract the 
+.. Extract the 
 ifdef::PAM[]
 `rhpam-7.0.0.GA-kie-server-ee7.zip`
 endif::PAM[]
@@ -26,7 +31,7 @@ ifdef::DM[]
 `rhdm-7.0.0.GA-kie-server-ee7.zip`
 endif::DM[]
  archive to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
-. If you want to use a security manager for Process Server, copy the contents of the
+.. If you want to use a security manager for Process Server, copy the contents of the
 ifdef::PAM[]
 `__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/rhpam-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
 endif::PAM[]
@@ -34,14 +39,20 @@ ifdef::DM[]
 `__TEMP_DIR__/rhdm-7.0.0.GA-kie-server-ee7/rhdm-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
 endif::DM[]
  to `__EAP_HOME__/bin`. When asked to overwrite files, select *Yes*.
-. In the `__EAP_HOME__/standalone/deployments/` directory, create an empty file named `kie-server.war.dodeploy`. This file ensures that {KIE_SERVER} is automatically deployed when the server starts.
+. Repackage the `kie-server.war` file:
+.. Navigate to the `_EAP_HOME_/standalone/deployments/kie-server.war` directory.
+ Select the contents of the  `_EAP_HOME_/standalone/deployments/kie-server.war` directory and create the `kie-server.zip` file.
+..  Rename `kie-server.zip` file to `kie-server.war`. This is the file that you will use to deploy {CENTRAL} on the cluster nodes.
+.. If desired, copy the new `kie-server.war` file to a location that is more convenient to deploy from.
 
-. Install the JDBC driver. 
+. Add {EAP} management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and {KIE_SERVER} administration users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_]. To access {KIE_SERVER}, the user must have the `kie-server` role. Add the `admin` role to the {KIE_SERVER} user to access {CENTRAL} as well.
+. Install the JDBC driver on all {EAP} instances that are part of this cluster. For more information, see the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/#jdbc_drivers["JDBC Drivers"] section of the _{EAP} 7.1 Configuration Guide_.
 . Edit the `_EAP_HOME_/_MODE_/configuration/domain.xml` file.
-.. Edit the `data-stores` property. The `datasource-jndi-name` is the JNDI name of the database specified in the previous step. You can enter any name for the value of the `partition` property:
+.. Edit the `data-stores` property and the `timer-service thread-pool-name` above it. The `datasource-jndi-name` is the JNDI name of the database specified in the previous step. You can enter any name for the value of the `partition` property. Replace `"default-file-store"` with `"ejb_timer-EJB_TIMER_ds"`:
 +
 [source,xml]
 ----
+<timer-service thread-pool-name="default" default-data-store="default-file-store">
 <data-stores>      
     <database-data-store name="ejb_timer-EJB_TIMER_ds" datasource-jndi-name="java:jboss/datasources/ejb_timer" database="postgresql" partition="ejb_timer-EJB_TIMER_part" refresh-interval="30000"/>       
 </data-stores> 
@@ -75,8 +86,9 @@ ifdef::PAM[]
     <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation> 
     <xa-pool> 
         <min-pool-size>10</min-pool-size> 
-        <max-pool-size>10</max-pool-size> 
+        <max-pool-size>10</max-pool-size>
     </xa-pool> 
+    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation> 
     <security> 
         <user-name><USER_NAME></user-name> 
         <password><USER_PWD></password> 
@@ -84,37 +96,48 @@ ifdef::PAM[]
 </xa-datasource>
 ----
 endif::PAM[]
-. Add management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and application users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
-
-. Open the `_EAP_HOME_/domain/configuration/domain.xml` file and add the following properties to the `<system-properties>` tag:
-
+.. In the `security-settings` element of the `activemq` subsystem in the `"full"` profile, add the `kie-server` and `admin` roles:
++
+[source]
+----
+<subsystem xmlns="urn:jboss:domain:messaging-activemq:2.0">
+    <server name="default">
+        <security-setting name="#">
+            <role name="guest" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
+            <role name="kie-server" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
+            <role name="admin" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
+        </security-setting>
+---- 
+.. Add the following properties to the `<system-properties>` tag:
++
 * `org.kie.server.persistence.ds`: The JNDI name of your data source
 * `org.kie.server.persistence.dialect`: The hibernate dialect for your database
-. If your environment is connected to Smart Router, on the java process running Smart Router do the following:
-.. Enable the {KIE_SERVER} watcher service system property:
 +
-[source]
-----
-org.kie.server.router.config.watcher.enabled=true
-----
-.. In the `org.kie.server.router.repo` property, specify the absolute path to the NFS storage where the memory configuration is stored:
-+
-[source]
-----
-org.kie.server.router.repo=<absolute_path_to_NFS_storage>
-----
+The following dialects are supported:
++ 
+* DB2: `org.hibernate.dialect.DB2Dialect`
+* MSSQL: `org.hibernate.dialect.SQLServer2012Dialect`
+* MySQL: `org.hibernate.dialect.MySQL5InnoDBDialect`
+* MariaDB: `org.hibernate.dialect.MySQL5InnoDBDialect`
+* Oracle: `org.hibernate.dialect.Oracle10gDialect`
+* PostgreSQL: `org.hibernate.dialect.PostgreSQL82Dialect`
+* PostgreSQL plus: `org.hibernate.dialect.PostgresPlusDialect`
+* Sybase: `org.hibernate.dialect.SybaseASE157Dialect`
 
-. If your environment is managed by the headless {PRODUCT} controller, on the java process running the headless {PRODUCT} controller, do the following:
+. To deploy the `kie-server.war` file that you created previously into the server group, complete the following steps:
+.. Log in to the {EAP} `Administration` console of your domain as a `management` user.
+.. Click *Deployments -> Server Groups-> main-server-group* and click *Add*.
+.. In the dialog box, click *Upload a new deployment* and click *Next*.
+.. In the *Upload Deployments* dialog box, click *Browse*, select the `kie-server.war` file, and click *Next*.
+.. Click *Enable* and  click *Next*.
++
+[NOTE]
+====
+It is important to check deployment unit readiness with every cluster member.
 
-.. Enable the {KIE_SERVER} watcher service system property:
-+
-[source]
-----
-org.kie.server.controller.templatefile.watcher.enabled=true
-----
-.. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the memory configuration is stored:
-+
-[source]
-----
-org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
-----
+When a deployment unit is created on a cluster node, it takes some time before it is distributed among all cluster members. You can check the deployment status using the server Administration console or REST API. However, if the query is sent to the node where the deployment was originally issued, the query will return a value of `deployed`. If the query is sent to a node where the deployment has not yet been distributed, the query returns `DeploymentNotFoundException`.
+====
+
+For more information about installing {CENTRAL}, see  {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
+
+

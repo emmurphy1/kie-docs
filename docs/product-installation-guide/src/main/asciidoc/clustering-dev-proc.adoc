@@ -10,11 +10,10 @@ Most development environments consist of {CENTRAL} for creating rules and proces
 You can also use this configuration for runtime environments if you want to use {CENTRAL} to manage the {KIE_SERVER}s in the cluster.
 ====
 
-.Prerequisites
-* A {EAP} cluster is available. 
-* An NFS server with a mounted partition accessible to a {EAP} user is available.
+.Prerequisite
+An NFS server with a mounted partition accessible to a {EAP} user is available.
 
 .Procedure
 . Install and configure Elasticsearch as described in <<clustering-elasticsearch-proc_{context}>>.
-//. Install and configure AMQ Broker as described in <<clustering-artemis-activate-proc_{context}>>.
+. Install {EAP} and configure as described in <<clustering-create-dev-proc>>.
 . Install and configure {CENTRAL} as described in <<clustering-dm-install-proc_{context}>>.

@@ -5,11 +5,8 @@
 * An NFS server with a mounted partition accessible to a {EAP} user is available to the headless Process Automation Manager controller.
 
 .Procedure
-//. Install and configure Elasticsearch as described in <<clustering-elasticsearch-proc_{context}>>.
-//. Install and configure AMQ Broker as described in <<clustering-artemis-activate-proc_{context}>>.
 . Install and configure the headless Process Automation Manager controller as described in <<clustering-standalone-pc-proc_{context}>>.
 . Install and configure Smart Router as described in <<clustering-smartrouter-pc-proc_{context}>>.
-
 
 ifdef::DM[]
 [NOTE]
