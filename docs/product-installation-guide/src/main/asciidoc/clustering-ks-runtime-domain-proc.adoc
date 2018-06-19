@@ -31,18 +31,26 @@ ifdef::DM[]
 `rhdm-7.0.0.GA-kie-server-ee7.zip`
 endif::DM[]
  archive to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
-.. If you want to use a security manager for Process Server, copy the contents of the
+ .. Copy the
 ifdef::PAM[]
-`__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/rhpam-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
+ `__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/kie-server.war`
 endif::PAM[]
 ifdef::DM[]
-`__TEMP_DIR__/rhdm-7.0.0.GA-kie-server-ee7/rhdm-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
+ `__TEMP_DIR__/rhdm-7.0.0.GA-kie-server-ee7/kie-server.war`
+endif::DM[]
+ directory to `__EAP_HOME__/standalone/deployments/`.
+.. If you want to use a security manager for Process Server, copy the contents of the
+ifdef::PAM[]
+`__TEMP_DIR__/rhpam-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
+endif::PAM[]
+ifdef::DM[]
+`__TEMP_DIR__/rhdm-7.0.0.GA-kie-server-ee7/SecurityPolicy/`
 endif::DM[]
  to `__EAP_HOME__/bin`. When asked to overwrite files, select *Yes*.
 . Repackage the `kie-server.war` file:
 .. Navigate to the `_EAP_HOME_/standalone/deployments/kie-server.war` directory.
  Select the contents of the  `_EAP_HOME_/standalone/deployments/kie-server.war` directory and create the `kie-server.zip` file.
-..  Rename `kie-server.zip` file to `kie-server.war`. This is the file that you will use to deploy {CENTRAL} on the cluster nodes.
+..  Rename `kie-server.zip` file to `kie-server.war`. This is the file that you will use to deploy {KIE_SERVER} on the cluster nodes.
 .. If desired, copy the new `kie-server.war` file to a location that is more convenient to deploy from.
 
 . Add {EAP} management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and {KIE_SERVER} administration users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_]. To access {KIE_SERVER}, the user must have the `kie-server` role. Add the `admin` role to the {KIE_SERVER} user to access {CENTRAL} as well.
@@ -108,7 +116,7 @@ endif::PAM[]
             <role name="admin" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
         </security-setting>
 ---- 
-.. Add the following properties to the `<system-properties>` tag:
+.. Add the following properties to the `<system-properties>` element:
 +
 * `org.kie.server.persistence.ds`: The JNDI name of your data source
 * `org.kie.server.persistence.dialect`: The hibernate dialect for your database

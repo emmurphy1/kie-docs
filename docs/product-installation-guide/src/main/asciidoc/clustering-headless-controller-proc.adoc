@@ -1,6 +1,9 @@
 [id='clustering-headless-controller-proc']
 = Clustering with the headless Process Automation Manager controller
-You can install the headless Process Automation Manager controller and use the REST API or the {KIE_SERVER} Java Client API to interact with it. 
+
+You can configure {KIE_SERVER} to run in managed or unmanaged mode. If {KIE_SERVER} is unmanaged, you must manually create and maintain containers. If {KIE_SERVER} is managed, the Process Automation Manager controller manages the {KIE_SERVER} configuration and you interact with the controller to create and maintain containers.
+
+The Process Automation Manager controller is integrated with {CENTRAL}. However, if you do not install {CENTRAL}, you can install the headless Process Automation Manager controller and use the REST API or the {KIE_SERVER} Java Client API to interact with it.
 
 .Prerequisites
 * A backed-up {EAP} installation version 7.1 or higher is available. The base directory of the {EAP} installation is referred to as `__EAP_HOME__`. 
