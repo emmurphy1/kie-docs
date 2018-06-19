@@ -1,0 +1,58 @@
+[id='_defining_a_data_model']
+= Viewing the *Mortgage Process* data objects
+
+The goal of this chapter is to introduce you to the *Mortgage Process* data objects.
+
+The *Mortgage Process* data model is composed of four data objects:
+
+* `Applicant`
+* `Application`
+* `Property`
+* `ValidationErrorDo`
+
+== Viewing the Application data object
+Follow these steps to familiarize yourself with the predefined *Application* data object.
+
+. Click *Menu* -> *Design* -> *Projects*, then *Mortgage Process*.
+. Input `Applicantion.java` in to the project's asset search box and click on the *Application* data object.
++
+image::applicant_do.png[]
+
+. Review the *Applicant* data object fields.
++
+image::field-data-applicant.png[]
+
+== Viewing the Application data object
+Follow these steps to familiarize yourself with the predefined *Application* data object.
+
+. Click *Menu* -> *Design* -> *Projects*, then *Mortgage Process*.
+. Input `Applicantion.java` in to the project's asset search box and click on the *Application* data object.
++
+image::application_do.png[]
+
+. Review the *Application* data object fields.
++
+image::field-data-application.png[]
+
+== Viewing the Property data object
+Follow these steps to familiarize yourself with the predefined *Property* data object.
+
+. Click *Menu* -> *Design* -> *Projects*, then *Mortgage Process*.
+. Input `Property.java` in to the project's asset search box and click on the *Property* data object.
++
+image::property_do.png[]
+. Review the *Property* data object fields.
++
+image::field-data-property.png[]
+
+== Viewing the ValidationErrorDO data object
+Follow these steps to familiarize yourself with the predefined *ValidationErrorDO* data object.
+
+. Click *Menu* -> *Design* -> *Projects*, then *Mortgage Process*.
+. Input `ValidationErrorDO.java` in to the project's asset search box and click on the *ValidationErrorDO* data object.
++
+image::val-error.png[]
+
+. Review the *Property* data object fields.
++
+image::field-data-val-error.png[]

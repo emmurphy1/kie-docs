@@ -1,56 +1,70 @@
 [id='clustering-dm-install-proc_{context}']
-= Installing {CENTRAL} on cluster nodes
+= Installing and configuring {CENTRAL} on cluster nodes
 
-Complete the steps in this section to install and run {CENTRAL} on each node of the cluster.
+A Java messaging server (JMS) broker resource adapter enables your applications to communicate with any messaging provider. It specifies how components such as message-driven beans, Enterprise JavaBeans, and servlets can send or receive messages. {EAP} 7 includes an integrated Artemis resource adapter.
 
-.Prerequisite
-A {EAP} 7.1 cluster is configured and Elasticsearch and AMQ Broker 7.1 are installed and running on one node of the cluster.
+Complete the steps in this section to install and configure {CENTRAL} with the {EAP} integrated JMS resource adapter.
+
+.Prerequisites
+* A Red Hat JBoss EAP 7.1 cluster is available.
+* Elasticsearch is installed and running on one node of the cluster.
 
 .Procedure
+. On the cluster node where the domain controller will be started, navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
+* *Product: {PRODUCT}*
+* *Version: {PRODUCT_VERSION}*
+* *Download  {PRODUCT} 7.0.0 {CENTRAL} Deployable for {EAP} 7* (`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`).
+. Extract the 
+ifdef::DM[]
+`rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
+endif::[]  
+ifdef::PAM[]
+`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
+endif::[] 
+file to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
+. Copy the contents of the 
+ifdef::DM[]
+`__TEMP_DIR__/rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
+endif::[]  
+ifdef::PAM[]
+`__TEMP_DIR__/rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
+endif::[]
+directory to `__EAP_HOME__`. When asked to overwrite files or merge directories, select *Yes*.
++
+WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the {EAP} instance.
+. Navigate to the `_EAP_HOME_/standalone/deployments/business-central.war` directory.
+. Select the contents of the  `_EAP_HOME_/standalone/deployments/business-central.war` directory and create the `business-central.zip` file.
+.  Rename `business-central.zip` file to `business-central.war`. This is the file that you will use to deploy {CENTRAL} on the cluster nodes.
+. If desired, copy the new `business-central.war` file to a location that is more convenient to deploy from.
 
-. Install {CENTRAL} on each node of the cluster. See _INSTALLING AND CONFIGURING RED HAT PROCESS AUTOMATION MANAGER ON EAP 7.1_ for information about installing {CENTRAL}.
-. On each node of the cluster, edit the following properties in the `<EAP_HOME>/standalone/configuration/standalone.xml` file, where:
-* `<NIOGIT_DIR>` is the location git repositories stored under ``.niogit`, on an NFS mounted partition.
-* `<MAIN_NODE_IP>` is the IP address of the node where Elasticseach and AMQ Broker are installed.
-* `<AMQ_BROKER_USER>` is the AMQ Broker user that you created.
-* `<AMQ_BROKER_PASSWORD>` is the password for the AMQ Broker user.
+. Add {EAP} management users as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_] and {CENTRAL} adminstration users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
+. Start the domain and host controllers:
 +
-[source,xml]
-----
-<system-properties>
-  <property name="org.uberfire.nio.git.dir" value="
-      <NIOGIT_DIR>"/>
-  <property name="appformer-cluster" value="true"/>
-  <property name="appformer-jms-url" value="tcp://<MAIN_NODE_IP>:61616"/>
-  <property name="appformer-jms-username" value="<AMQ_BROKER_USER>"/>
-  <property name="appformer-jms-password" value="<AMQ_BROKER_PASSWORD>"/>
-  <property name="org.appformer.ext.metadata.index" value="elastic"/>
-  <property name="org.appformer.ext.metadata.elastic.port" value="9300"/>
-  <property name="org.appformer.ext.metadata.elastic.host" 
-      value="<MAIN_NODE_IP>"/>
-  <property name="org.appformer.ext.metadata.elastic.cluster" 
-      value="kie-cluster"/>
-  <property name="org.appformer.ext.metadata.elastic.retries" value="10"/>
-</system-properties>
-----
-. On the node where Elasticseach and AMQ Broker are installed, in {EAP} create a user with the `admin` role and a username and password that matches the values of `<AMQ_BROKER_USER>` and `<AMQ_BROKER_PASSWORD>`:
+* On Linux or UNIX-based systems, enter:
 +
-[source,bash]
-----
-$ <MAIN_NODE_EAP_HOME>/bin/./add-user.sh -a --user <AMQ_BROKER_USER> --password <AMQ_BROKER_USER> --role admin
-----
+`_EAP_HOME_/bin/domain.sh`
++
+On Windows, enter:
++
+`_EAP_HOME_/bin/domain.bat`
++
+For more information, see the following sections of the _Red Hat JBoss EAP 7.1 Configuration Guide_:
+* https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/starting_and_stopping_jboss_eap#starting_jboss_eap["Starting JBoss EAP"]
+* https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/jboss_eap_management#managed_domain_configuration_files["Managed Domain Configuration Files"]
+. Review the `_EAP_HOME_/domain/servers/SERVER_NAME/log/server.log` file to verify that the nodes are available.
+. To deploy the `business-central.war` file that you created previously into the server group, complete the following steps:
+.. Log in to the {EAP} `Administration` console of your domain as a `management` user.
+.. Click *Deployments -> Server Groups-> main-server-group* and click *Add*.
+.. In the dialog box, click *Upload a new deployment* and click *Next*.
+.. In the *Upload Deployments* dialog box, click *Browse*, select the `business-central.war` file, and click *Next*.
+.. Click *Enable* and  click *Next*.
++
+[NOTE]
+====
+It is important to check deployment unit readiness with every cluster member.
 
-.  To start {CENTRAL}, enter one of the following commands on each node of the cluster:
-+
-* On Linux or UNIX-based systems:
-+
-[source,bash]
-----
-EAP_HOME/bin/standalone.sh
-----
-* On Windows:
-+
-[source,bash]
-----
-EAP_HOME\bin\standalone.bat
-----
+When a deployment unit is created on a cluster node, it takes some time before it is distributed among all cluster members. You can check the deployment status using the server Administration console or REST API. However, if the query is sent to the node where the deployment was originally issued, the query will return a value of `deployed`. If the query is sent to a node where the deployment has not yet been distributed, the query returns `DeploymentNotFoundException`.
+====
+
+For more information about installing {CENTRAL}, see  {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
+

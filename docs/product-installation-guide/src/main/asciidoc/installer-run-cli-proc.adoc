@@ -9,12 +9,12 @@ For security reasons, you should run the installer as a non-root user.
 ====
 
 .Prerequisites
-* A backed up 
+* A backed-up 
 ifeval::["{context}" == "install-on-eap"]
 {EAP} 7.1 or higher
 endif::[] 
 ifeval::["{context}" == "install-on-jws"]
-Red Hat JBoss Web Server 3.1 with Tomcat 8 or higher
+Red Hat JBoss Web Server 5 with Tomcat 9 or higher
 endif::[] 
  server installation is available.
 * Sufficient user permissions to complete the installation are granted.
@@ -38,10 +38,10 @@ endif::[]
 [source]
 ----
 ifdef::PAM[]
-java -jar rhpam-installer-7.0.0.Beta02.jar -console
+java -jar rhpam-installer-7.0.0.GA.jar -console
 endif::PAM[]
 ifdef::DM[]
-java -jar rhdm-installer-7.0.0.Beta02.jar -console
+java -jar rhdm-installer-7.0.0.GA.jar -console
 endif::DM[]
 ----
 +
@@ -55,9 +55,11 @@ press 1 to continue, 2 to quit, 3 to redisplay.
 +
 [source]
 ----
-Specify the home directory of one of the following servers:  Red Hat JBoss EAP 7.1 or Red Hat JBoss Web Server 3.1 with Tomcat 8
+Specify the home directory of one of the Red Hat JBoss EAP 7.1 server
 [/home/user/RHPAM-7.0.0/jboss-eap-7.1]
 ----
+//Specify the home directory of one of the following servers:  Red Hat JBoss EAP 7.1 or Red Hat JBoss Web //Server 3.1 with Tomcat 8
+//[/home/user/RHPAM-7.0.0/jboss-eap-7.1]
 +
 . Enter the parent directory of an existing 
 ifeval::["{context}" == "install-on-eap"]
@@ -73,7 +75,7 @@ The installer will verify the location of the installation at the location provi
 ifeval::["{context}" == "install-on-eap"]
 [NOTE]
 ====
-It is possible to install {CENTRAL} and {KIE_SERVER} on the same server. However, Red Hat recommends installing {CENTRAL} and {KIE_SERVER} on different servers in production environments.
+You cannot install {CENTRAL} and {KIE_SERVER} on the same server. However, you should install {CENTRAL} and {KIE_SERVER} on different servers in production environments.
 ====
 endif::[]  
 . Follow the instructions in the installer to complete the installation.
@@ -123,7 +125,7 @@ standalone.bat -c standalone-full.xml
 +
 [NOTE]
 ====
-If you deployed {CENTRAL} without {KIE_SERVER}, you can start {CENTRAL} with the `standalone.sh` script without specifying the `standalone-full.xml` file:
+If you deployed {CENTRAL} without {KIE_SERVER}, you can start {CENTRAL} with the `standalone.sh` script without specifying the `standalone-full.xml` file. In this case, ensure that you make any configuration changes to the `standalone.xml` file before starting {CENTRAL}.:
 
 On Linux or UNIX-based systems:
 ----
