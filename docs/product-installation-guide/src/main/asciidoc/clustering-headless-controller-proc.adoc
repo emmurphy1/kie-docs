@@ -23,17 +23,18 @@ WARNING: Ensure the names of the headless Process Automation Manager controller 
 . Copy the contents of the `__TEMP_DIR__/rhpam-7.0-controller-ee7/SecurityPolicy/` directory to `__EAP_HOME__/bin`. When asked to overwrite files, select *Yes*.
 . In the `__EAP_HOME__/standalone/deployments/` directory, create an empty file named `controller.war.dodeploy`. This file ensures that the headless Process Automation Manager controller is automatically deployed when the server starts.
 
-. If your clustered environment is managed by the headless {PRODUCT} controller, on the java process running the headless {PRODUCT} controller, do the following:
+. Complete the following tasks on the system running the headless Process Automation Manager controller:
+.. Specify the path to NFS storage in the `org.kie.server.controller.templatefile` system property:
++
+[source]
+----
+<property name="org.kie.server.controller.templatefile" value="<ABSOLUTE_PATH_TO_NFS_STORAGE"/>
+----
 
 .. Enable the {KIE_SERVER} watcher service system property:
 +
 [source]
 ----
-org.kie.server.controller.templatefile.watcher.enabled=true
-----
-.. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the memory configuration is stored:
-+
-[source]
-----
-org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
+<property name="org.kie.server.controller.templatefile.watcher.enabled" value="<true"/>
+
 ----

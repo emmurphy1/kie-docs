@@ -33,16 +33,10 @@ This section describes how to install Smart Router and configure
     <property name="org.kie.server.controller.token`" value="<CONTROLLER_TOKEN>"/>
     <property name="org.kie.server.controller.user" value="<CONTROLLER_USER"/>
     <property name="org.kie.server.controller.pwd" value="<CONTROLLER_PWD"/>
-    <property name="org.kie.server.controller.templatefile.watcher.enabled" value="<TRUE"/>
+    <property name="org.kie.server.router.config.watcher.enabled" value="<TRUE"/>
+    <property name="org.kie.server.router.repo" value="<<ABSOLUTE_PATH_TO_NFS_STORAGE>"/>
 </system-properties>
 ----
-. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the memory configuration is stored:
-+
-[source]
-----
-org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
-----
-
 . Start the {KIE_SERVERS} (with the router property): 
 
 +
