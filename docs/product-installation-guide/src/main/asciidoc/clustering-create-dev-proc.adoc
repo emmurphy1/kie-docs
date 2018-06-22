@@ -33,16 +33,13 @@ A server group is a set of server instances that are managed and configured toge
 </server-group>
 ----
 . In the `_EAP_HOME_/domain/configuration/domain.xml` file, edit or add the following properties to the `<system-properties>` element and replace the following placeholders:
-* `<NIOGIT_DIR>` is the location of Git repositories stored under `.niogit`, on an NFS mounted partition.
 * `<ELASTICSEARCH_NODE_IP>` is the IP addresses where Elasticseach is installed.
-* `<JMS_USER>` is an {EAP} application user. It is the user that {CENTRAL} uses to connect to the  embedded JMS broker. COMMENT Should be the same user as defined in cluster user. Role must be defined in security settings.
+* `<JMS_USER>` is an {EAP} application user. It is the user that {CENTRAL} uses to connect to the  embedded JMS broker.
 * `<JMS_USER_PASSWORD>` is the password for `<JMS_USER>`.
 +
 [source,xml]
 ----
 <system-properties>
-  <property name="org.uberfire.nio.git.dir" value="
-      <NIOGIT_DIR>"/> 
   <property name="appformer-jms-connection-mode" value="JNDI"/>
   <property name="appformer-jms-username" value="<JMS_USER>  "/>
   <property name="appformer-jms-password" value="<JMS_USER_PASSWORD>"/>
@@ -137,7 +134,7 @@ ifdef::PAM[]
 
 |`org.uberfire.nio.git.dir`
 |`/home/jbpm/node[N]/repo`
-|Git (VFS) repository location on node[N]. COMMENT: You say to remove this because it is set in system properties in domain.xml, but it looks like it is unique for each node?
+|Git (VFS) repository location on node[N].
 
 |`org.uberfire.nio.git.ssh.host`
 |_SSH host node name_
@@ -215,7 +212,7 @@ endif::DM[]
 ifdef::PAM[]
 The following examples demonstrate how to configure a three node cluster in the `host.xml` file:
 +
-.Cluster nodeOne Configuration COMMENT: Should I remove all of the 'boot-time="false"?'
+.Cluster nodeOne Configuration
 ====
 [source,xml]
 ----
