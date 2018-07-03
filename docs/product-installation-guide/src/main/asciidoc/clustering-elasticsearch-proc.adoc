@@ -1,11 +1,11 @@
 [id='clustering-elasticsearch-proc_{context}']
 = Setting up Elasticsearch
 
-Elasticsearch is a highly scalable open source full-text search and analytics engine. It enables you to store, search, and analyze high volumes of data quickly and in near real time.  In a {PRODUCT} clustered environment, it enables you to perform complex and efficient searches across cluster nodes. 
+Elasticsearch is a highly scalable open source full-text search and analytics engine. It enables you to store, search, and analyze high volumes of data quickly and in near-real time.  In a {PRODUCT} clustered environment, it enables you to perform complex and efficient searches across cluster nodes. 
 
 [NOTE]
 ====
-Elasticsearch is available with this release, however it is currently in technical preview. This procedure describes how to set up Elasticseach for a simplified, non-high availability environement. For high availability production environments, see the https://www.elastic.co/guide/en/elasticsearch/guide/current/deploy.html[Production Deployment] section of the Elasticsearch documentation.
+Elasticsearch is available with this release, however it is currently in technical preview. This procedure describes how to set up Elasticseach for a simplified, non-high availability environment. For high availability production environments, see the https://www.elastic.co/guide/en/elasticsearch/guide/current/deploy.html[Production Deployment] section of the Elasticsearch documentation.
 ====
 
 .Procedure

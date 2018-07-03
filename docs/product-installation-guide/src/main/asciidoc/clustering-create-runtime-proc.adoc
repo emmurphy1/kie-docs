@@ -1,7 +1,7 @@
 [id='clustering-create-dev-proc']
 = Configuring {EAP} 7.1 for a {PRODUCT} development environment
 
-Complete the steps in this section to install {EAP} 7.1 and configure it for a clustered environment with Elasticsearch and the Artemis Java messaging server (JMS) broker resource adapter integrated with {EAP}. The Artemis JWS broker resource adapter enables your applications to communicate with any messaging provider. It specifies how components such as message-driven beans, Enterprise JavaBeans, and servlets can send or receive messages.
+Complete the steps in this section to install {EAP} 7.1 and configure it for a clustered environment with Elasticsearch and the Artemis Java messaging server (JMS) broker resource adapter integrated with {EAP}. The Artemis JMS broker resource adapter enables your applications to communicate with any messaging provider. It specifies how components such as message-driven beans, Enterprise JavaBeans, and servlets can send or receive messages.
 
 [NOTE] 
 ====
@@ -33,9 +33,9 @@ A server group is a set of server instances that are managed and configured toge
 </server-group>
 ----
 . In the `_EAP_HOME_/domain/configuration/domain.xml` file, edit or add the following properties to the `<system-properties>` element and replace the following placeholders:
-* `<NIOGIT_DIR>` is the location of Git repositories stored under `.niogit`, on an NFS mounted partition.
+* `<NIOGIT_DIR>` is the location of Git repositories stored under `.niogit`, on an NFS mounted partition accessible to a {EAP} user.
 * `<ELASTICSEARCH_NODE_IP>` is the IP addresses where Elasticseach is installed.
-* `<JMS_USER>` is an {EAP} application user. It is the user that {CENTRAL} uses to connect to the  embedded JMS broker. COMMENT Should be the same user as defined in cluster user. Role must be defined in security settings.
+* `<JMS_USER>` is an {EAP} application user. It is the user that {CENTRAL} uses to connect to the  embedded JMS broker.
 * `<JMS_USER_PASSWORD>` is the password for `<JMS_USER>`.
 +
 [source,xml]

@@ -21,41 +21,23 @@ This section describes how to install Smart Router and configure
 * *Product:* {PRODUCT_SHORT}
 * *Version:* {PRODUCT_VERSION}
 . Download *{PRODUCT} {PRODUCT_VERSION_LONG} Add-Ons*.
-. Extract the downloaded `{PRODUCT_FILE}-add-ons.zip` file to a temporary directory. The `rhpam-7.0-smart-router.jar` file is in the exatracted `{PRODUCT_FILE}-add-ons` directory.
-. In the `_EAP_HOME_/domain/configuration/domain.xml` file, edit or add the following properties to the `<system-properties>` element:
-+ 
-[source]
-----
-<system-properties>
-    <property name="org.kie.server.router.host" value="<ROUTER_HOST"/>
-    <property name="org.kie.server.router.port" value="<ROUTER_PORT"/>
-    <property name="org.kie.server.controller" value="CONTROLLER_URL"/>
-    <property name="org.kie.server.controller.token`" value="<CONTROLLER_TOKEN>"/>
-    <property name="org.kie.server.controller.user" value="<CONTROLLER_USER"/>
-    <property name="org.kie.server.controller.pwd" value="<CONTROLLER_PWD"/>
-    <property name="org.kie.server.controller.templatefile.watcher.enabled" value="<TRUE"/>
-</system-properties>
-----
-. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the memory configuration is stored:
-+
-[source]
-----
-org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
-----
-
-. Start the {KIE_SERVERS} (with the router property): 
-
-+
-[options="nowrap"]
-----
-/standalone.sh --server-config=standalone-full.xml -Djboss.socket.binding.port-offset=100 -Dorg.kie.server.id=hr-server -Dorg.kie.server.location=http://localhost:8180/kie-server/services/rest/server -Dorg.kie.server.router=http://localhost:9000
-----
+. Extract the downloaded `{PRODUCT_FILE}-add-ons.zip` file to a temporary directory. The `rhpam-7.0-smart-router.jar` file is in the extracted `{PRODUCT_FILE}-add-ons` directory.
+. Copy the `rhpam-7.0-smart-router.jar` file to location where you will run the file.
 
 . From the temporary directory, enter the following command to start SmartRouter:
 +
 [source]
 ----
-java -jar rhpam-7.0-smart-router.jar
+java 
+-Dorg.kie.server.router.host=<ROUTER_HOST>
+-Dorg.kie.server.router.port=<ROUTER_PORT>
+-Dorg.kie.server.controller=<CONTROLLER_URL">
+-Dorg.kie.server.controller.token=<CONTROLLER_TOKEN>
+-Dorg.kie.server.controller.user=<CONTROLLER_USER>
+-Dorg.kie.server.controller.pwd=<CONTROLLER_PWD>
+-Dorg.kie.server.controller.templatefile.watcher.enabled=<TRUE>
+-Dorg.kie.server.router.repo=<ABSOLUTE_PATH_TO_NFS_STORAGE>
+-jar rhpam-7.0-smart-router.jar
 ----
 
 +

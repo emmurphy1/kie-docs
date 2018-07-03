@@ -10,28 +10,6 @@ Complete the steps in this section to install and configure {CENTRAL} with the {
 * Elasticsearch is installed and running on one node of the cluster.
 
 .Procedure
-. On the cluster node where the domain controller will be started, navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
-* *Product: {PRODUCT}*
-* *Version: {PRODUCT_VERSION}*
-* *Download  {PRODUCT} 7.0.0 {CENTRAL} Deployable for {EAP} 7* (`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`).
-. Extract the 
-ifdef::DM[]
-`rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
-endif::[]  
-ifdef::PAM[]
-`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable.zip`
-endif::[] 
-file to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
-. Copy the contents of the 
-ifdef::DM[]
-`__TEMP_DIR__/rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
-endif::[]  
-ifdef::PAM[]
-`__TEMP_DIR__/rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-eap7-deployable/jboss-eap-7.1`
-endif::[]
-directory to `__EAP_HOME__`. When asked to overwrite files or merge directories, select *Yes*.
-+
-WARNING: Ensure the names of the {PRODUCT} deployments you are copying do not conflict with your existing deployments in the {EAP} instance.
 . Navigate to the `_EAP_HOME_/standalone/deployments/business-central.war` directory.
 . Select the contents of the  `_EAP_HOME_/standalone/deployments/business-central.war` directory and create the `business-central.zip` file.
 .  Rename `business-central.zip` file to `business-central.war`. This is the file that you will use to deploy {CENTRAL} on the cluster nodes.
