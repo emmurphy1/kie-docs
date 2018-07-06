@@ -5,7 +5,7 @@ The Showcase application is included with the {PRODUCT}{PRODUCT_VERSION } distri
 
 .Prerequistes
 
-* {CENTRAL} and {KIE_SERVER} are installed in an {EAP}instance.
+* {CENTRAL} and {KIE_SERVER} are installed in a {EAP}instance.
 * {CENTRAL} is not running.
 
 .Procedure
