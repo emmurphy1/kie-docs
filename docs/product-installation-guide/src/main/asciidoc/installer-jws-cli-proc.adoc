@@ -43,7 +43,7 @@ press 1 to continue, 2 to quit, 3 to redisplay.
 [source]
 ----
 Specify the home directory of the following servers:  Red Hat JBoss EAP 7.1 or Tomcat 8
-[/home/user/RHDM-7.0.0/jboss-eap-7.1]
+[/home/user/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}/jboss-eap-7.1]
 ----
 +
 . Enter the parent directory of an existing Red Hat JBoss Web Server 3.1 with Tomcat 8 installation.

@@ -15,18 +15,18 @@ Red Hat supports this installation type only when it is installed on Red Hat Ent
 * Version: {PRODUCT_VERSION}
 . Download *{PRODUCT} {PRODUCT_VERSION} {CENTRAL} Standalone* 
 ifdef::PAM[]
-(`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`).
+(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-{URL_COMPONENT_CENTRAL}-standalone.jar`).
 endif::[]  
 ifdef::DM[]
-(`rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`).
+(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`).
 endif::[]  
 
 . Create a directory and move the 
 ifdef::PAM[]
-`rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`
+`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-{URL_COMPONENT_CENTRAL}-standalone.jar`
 endif::[]  
 ifdef::DM[]
-`rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`
+`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-{URL_COMPONENT_CENTRAL}-standalone.jar`
 endif::[]   
 file to this directory.
 . In a terminal window, navigate to the directory that contains the standalone JAR file.
@@ -95,10 +95,10 @@ datasource:
 [source]
 ----
 ifdef::PAM[]
-java -jar rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml
+java -jar {PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml
 endif::PAM[]
 ifdef::DM[]
-java -jar rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml
+java -jar {PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml
 endif::DM[]
 ----
 +
@@ -107,10 +107,10 @@ In addition, you can set any properties supported by {CENTRAL} by including the 
 [source]
 ---- 
 ifdef::PAM[]
-java -jar rhpam-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
+java -jar {PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
 endif::PAM[]
 ifdef::DM[]
-java -jar rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
+java -jar {PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-{URL_COMPONENT_CENTRAL}-standalone.jar -s application-config.yaml -D<property>=<value> -D<property>=<value>
 endif::DM[]
 
 ----
@@ -120,7 +120,7 @@ endif::DM[]
 //+
 //[source]
 //----
-//java -jar rhdm-7.0.0.GA-{URL_COMPONENT_CENTRAL}-standalone.jar \
+//java -jar {PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-{URL_COMPONENT_CENTRAL}-standalone.jar \
 // -s application-config.yaml \
 // -Dorg.kie.server.user=controllerUser
 // -Dorg.kie.server.pwd=controllerUser1234

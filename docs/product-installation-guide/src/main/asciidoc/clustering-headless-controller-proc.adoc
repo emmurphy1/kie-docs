@@ -15,8 +15,8 @@ The Process Automation Manager controller is integrated with {CENTRAL}. However,
 
 * Product: {PRODUCT}
 * Version: {PRODUCT_VERSION}
-. Download *{PRODUCT} {PRODUCT_VERSION_LONG} Add Ons* (the `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-add-ons.zip` file).
-. Unzip the `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-add-ons.zip` file. The `{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7.zip` file is in the unzipped directory.
+. Download *{PRODUCT} {PRODUCT_VERSION_LONG} Add Ons* (the `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons.zip` file).
+. Unzip the `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons.zip` file. The `{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7.zip` file is in the unzipped directory.
 . Extract the `{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7.zip` file to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
 
 . Repackage the `controller.war` directory:
@@ -25,12 +25,8 @@ The Process Automation Manager controller is integrated with {CENTRAL}. However,
 ..  Rename `controller.zip` to `controller.war`. This is the file that you will use to deploy the controller on the cluster nodes.
 .. If desired, copy the new `controller.war` file to a location that is more convenient to deploy from.
 
-. If you want to use a security manager with the controller, repackage the `SecurityPolicy` directory:
-.. Navigate to the `__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons/{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7/SecurityPolicy/`
-directory.
-.. Select the contents of the  `__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons/{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7/SecurityPolicy/` directory and create the `controllerSecurityPolicy.zip` file.
-..  Rename `SecurityPolicy.zip` to `controllerSecurityPolicySecurityPolicy.war`. This is the file that you will use to deploy the security policy on the cluster nodes.
-.. If desired, copy the new `controllerSecurityPolicy.war` file to a location that is more convenient to deploy from.
+. If you want to use a security manager with the controller, copy the contents of the  `__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons/{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7/SecurityPolicy`
+directory to the `_EAP_HOME_/bin` directory on each node of the cluster.
 . Add {EAP} management users to the main node of the cluster (where you configured the `domain.xml` file) as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_].
 . On each node of the cluster, add {KIE_SERVER} administration users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
 . On each node of the cluster, edit the `_EAP_HOME_/domain/configuration/host.xml` file:
@@ -48,11 +44,6 @@ org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
 ----
 
 . To deploy the `controller.war` file that you created previously into the server group, complete the following steps:
-+
-[NOTE]
-====
-If you created the `controllerSecurityPolicySecurityPolicy.war` file and want to deploy it, repeat these steps and replace `controller.war` with `controllerSecurityPolicySecurityPolicy.war`.
-====
 .. Log in to the {EAP} `Administration` console of your domain as a `management` user.
 .. Click *Deployments -> Server Groups-> main-server-group* and click *Add*.
 .. In the dialog box, click *Upload a new deployment* and click *Next*.

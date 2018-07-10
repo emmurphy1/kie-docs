@@ -10,7 +10,12 @@ Smart Router enables you to aggregate multiple independent {KIE_SERVER} instance
 * Manages changing environments, for example adding and removing server instances
 * Manages registration with the {KIE_SERVER} controller
 
-This section describes how to install Smart Router and configure
+This section describes how to install Smart Router and configure it for a {PRODUCT} runtime environment.
+
+[NOTE]
+====
+Load balancing requests for Smart router cluster must be managed externally, using standard load balancing tools.
+ ====
 
 
 .Prerequisites
@@ -21,8 +26,8 @@ This section describes how to install Smart Router and configure
 * *Product:* {PRODUCT_SHORT}
 * *Version:* {PRODUCT_VERSION}
 . Download *{PRODUCT} {PRODUCT_VERSION_LONG} Add-Ons*.
-. Extract the downloaded `{PRODUCT_FILE}-add-ons.zip` file to a temporary directory. The `rhpam-7.0-smart-router.jar` file is in the extracted `{PRODUCT_FILE}-add-ons` directory.
-. Copy the `rhpam-7.0-smart-router.jar` file to location where you will run the file.
+. Extract the downloaded `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons.zip` file to a temporary directory. The `{PRODUCT_INIT}-{PRODUCT_VERSION}-smart-router.jar` file is in the extracted `{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-add-ons` directory.
+. Copy the `{PRODUCT_INIT}-7.0-smart-router.jar` file to location where you will run the file.
 
 . From the temporary directory, enter the following command to start SmartRouter:
 +
@@ -35,7 +40,7 @@ java
 -Dorg.kie.server.controller.token=<CONTROLLER_TOKEN>
 -Dorg.kie.server.controller.user=<CONTROLLER_USER>
 -Dorg.kie.server.controller.pwd=<CONTROLLER_PWD>
--Dorg.kie.server.controller.templatefile.watcher.enabled=<TRUE>
+-Dorg.kie.server.router.config.watcher.enabled=<TRUE>
 -Dorg.kie.server.router.repo=<ABSOLUTE_PATH_TO_NFS_STORAGE>
 -jar rhpam-7.0-smart-router.jar
 ----

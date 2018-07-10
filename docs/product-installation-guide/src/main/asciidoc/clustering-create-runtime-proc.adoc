@@ -90,7 +90,7 @@ A server group is a set of server instances that are managed and configured toge
 .. Change `<cluster password="${jboss.messaging.cluster.password:CHANGE ME!!}"/>` where `<CLUSTER_USER>` is the (COMMENT WHAT?) and `<CLUSTER_PWD>` is the password for that user:
 +
 `<cluster user="<CLUSTER_USER>" password="<CLUSTER_PWD>"/>`
-. In the `security-settings` element below this line, add the roles of the `<CLUSTER_USER>` and the `<JWS_USER>` to a new `role-name` element, for example:
+. In the `security-setting` element below this line, add the roles of the `<CLUSTER_USER>` and the `<JWS_USER>` to a new `role-name` element, for example:
 +
 [source]
 ----

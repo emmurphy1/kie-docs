@@ -7,7 +7,7 @@ Most development environments consist of {CENTRAL} for creating rules and proces
 
 [NOTE]
 ====
-You can also use this configuration for runtime environments if you want to use {CENTRAL} to manage the {KIE_SERVER}s in the cluster.
+You can also use this configuration for runtime environments if you want to use {CENTRAL} to manage the {KIE_SERVERS} in the cluster.
 ====
 
 To create a {PRODUCT} clustered development environment, download and extract {EAP} 7.1 and {PRODUCT} {PRODUCT_VERSION}. Then, configure {EAP} 7.1 for a domain-mode cluster, including Elasticsearch and the Artemis Java messaging server (JMS) broker resource adapter integrated with {EAP}. Finally, start the cluster and install {CENTRAL} on each cluster node.

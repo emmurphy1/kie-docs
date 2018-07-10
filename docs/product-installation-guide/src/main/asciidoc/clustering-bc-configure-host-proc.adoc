@@ -7,8 +7,8 @@ After you have installed {EAP} and configured the `domain.xml` file for a cluste
 {EAP} 7.1 is installed on each node of the cluster.
 
 .Procedure
-. On each node of the cluster, open the `_EAP_HOME_/domain/configuration/domain.xml` file in a text editor.
-. In the `main-server-group` `<servers>` element,  add the servers that will be part of the cluster.
+. On each node of the cluster, open the `_EAP_HOME_/domain/configuration/host.xml` file in a text editor.
+. In the `main-server-group` `<servers>` element, add the servers that will be part of the cluster.
 . Add the the system properties listed in
 ifdef::PAM[]
 <<_cluster_properties_pam>>
@@ -26,6 +26,10 @@ ifdef::PAM[]
 |Property Name
 |Value
 |Description
+
+|`org.uberfire.nio.git.dir`
+|_.niogit directory_
+|The location of Git repositories stored under `.niogit`, on an NFS mounted partition accessible to a {EAP} user.
 
 |`jboss.node.name`
 |_node name_
