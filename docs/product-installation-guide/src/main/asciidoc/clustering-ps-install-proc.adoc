@@ -1,6 +1,6 @@
 [id='clustering-ps-install-proc']
 = Starting the cluster and distributing {KIE_SERVER}
-After you have configured a {EAP} cluster and repackaged {CENTRAL}, you must start the cluster and distribute the repackaged `business-central.war` file.
+After you have configured a {EAP} cluster and repackaged {KIE_SERVER}, you must start the cluster and distribute the repackaged `kie-server.war` file.
 
 .Prerequisites
 * A Red Hat JBoss EAP 7.1 cluster is available and you have configured the `domain.xml` file.

@@ -1,7 +1,7 @@
 [id='clustering-bc-install-proc_{context}']
 = Starting the cluster and distributing {CENTRAL}
 
-After you have configured a {EAP} cluster and repackaged {KIE_SERVER}, you must start the cluster and distribute the repackaged `kie-server.war` file.
+After you have configured a {EAP} cluster and repackaged {CENTRAL}, you must start the cluster and distribute the repackaged `business-central.war` file.
 
 .Prerequisites
 * Elasticsearch is installed and running on one node of the cluster.

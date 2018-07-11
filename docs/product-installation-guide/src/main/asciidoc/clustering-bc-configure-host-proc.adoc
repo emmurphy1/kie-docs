@@ -55,21 +55,6 @@ ifdef::PAM[]
 |_SSH host port_ and _daemon host port_
 |In a virtualized environment, the outside port to be used.
 
-|`org.appformer.ext.metadata.elastic.cluster`
-|_Elasticsearch cluster name_
-|The name of the Elasticsearch cluster
-
-|`org.appformer.ext.metadata.elastic.port`
-|_Elasticsearch port number_
-|The Elasticsearch port
-
-|`org.appformer.ext.metadata.elastic.host`
-|_Elasticsearch node IP address_
-|The IP address of the Elasticsearch node
-
-|`org.appformer.ext.metadata.elastic.retries`
-|10
-|The number of attempts to connect to Elasticsearch
 |===
 endif::PAM[]
 ifdef::DM[]
@@ -120,6 +105,7 @@ The following examples demonstrate how to configure a three node cluster in the 
  <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.host" value="nodeOne"/>
+ <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
  <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone"
            boot-time="false"/>
 </system-properties>
@@ -142,6 +128,7 @@ ifdef::PAM[]
  <property name="org.uberfire.nio.git.ssh.port" value="8004" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.hostport" value="8004" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
+ <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
  <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo"
            boot-time="false"/>
 </system-properties>
@@ -164,7 +151,7 @@ ifdef::PAM[]
  <property name="org.uberfire.nio.git.ssh.port" value="8005" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.hostport" value="8005" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.host" value="nodeThree" />
-
+ <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
  <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodethree"
            boot-time="false"/>
 </system-properties>

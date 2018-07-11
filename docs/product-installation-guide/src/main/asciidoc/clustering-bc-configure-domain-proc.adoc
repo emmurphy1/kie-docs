@@ -46,6 +46,7 @@ These steps describe a basic cluster configuration. For more complex configurati
       value="<ELASTICSEARCH_NODE_IP>"/>
   <property name="org.appformer.ext.metadata.elastic.cluster" 
       value="kie-cluster"/>
+  <property name="org.appformer.ext.metadata.index" value="elastic"/> 
   <property name="org.appformer.ext.metadata.elastic.retries" value="10"/>
   <property name="appformer-jms-connection-factory" value="java:/ConnectionFactory"/> 
 </system-properties>

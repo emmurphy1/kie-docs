@@ -16,27 +16,27 @@ Complete the steps in this section to download and install {EAP} 7.1 and downloa
 * *Version: {PRODUCT_VERSION}*
 * Download  *{PRODUCT} 7.0.0 {KIE_SERVER} for All Supported EE7 Containers*
 ifdef::PAM[]
-(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`).
+(`{PRODUCT_FILE}-kie-server-ee7.zip`).
 endif::PAM[]
 ifdef::DM[]
-(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`).
+(`{PRODUCT_FILE}-kie-server-ee7.zip`).
 endif::DM[]
 ifdef::PAM[]
 +
 .. Extract the 
 ifdef::PAM[]
-`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`
+`{PRODUCT_FILE}-kie-server-ee7.zip`
 endif::PAM[]
 ifdef::DM[]
-`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`
+`{PRODUCT_FILE}-kie-server-ee7.zip`
 endif::DM[]
  archive to a temporary directory. In the following examples this directory is called `_TEMP_DIR_`.
 . Repackage the `kie-server.war` directory:
-.. Navigate to the `TEMP_DIR_/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7/kie-server.war` directory.
-.. Select the contents of the  `_TEMP_DIR_/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7/kie-server.war` directory and create the `kie-server.zip` file.
+.. Navigate to the `TEMP_DIR_/{PRODUCT_FILE}-kie-server-ee7/kie-server.war` directory.
+.. Select the contents of the  `_TEMP_DIR_/{PRODUCT_FILE}-kie-server-ee7/kie-server.war` directory and create the `kie-server.zip` file.
 ..  Rename `kie-server.zip` to `kie-server.war`. This is the file that you will use to deploy {KIE_SERVER} on the cluster nodes.
 .. If desired, copy the new `kie-server.war` file to a location that is more convenient to deploy from.
 
-. If you want to use a security manager with {KIE_SERVER}, copy the contents of the `__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7/SecurityPolicy`
+. If you want to use a security manager with {KIE_SERVER}, copy the contents of the `__TEMP_DIR__/{PRODUCT_FILE}-kie-server-ee7/SecurityPolicy`
 directory to the `_EAP_HOME_/bin` directory on each node of the cluster.
 

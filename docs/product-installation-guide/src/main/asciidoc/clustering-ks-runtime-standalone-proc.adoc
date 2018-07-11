@@ -11,27 +11,27 @@ A {EAP} 7.1 cluster is available.
 * *Version: {PRODUCT_VERSION}*
 * Download  *{PRODUCT} 7.0.0 {KIE_SERVER} for All Supported EE7 Containers*
 ifdef::PAM[]
-(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`).
+(`{PRODUCT_FILE}-kie-server-ee7.zip`).
 endif::PAM[]
 ifdef::DM[]
-(`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-kie-server-ee7.zip`).
+(`{PRODUCT_FILE}-kie-server-ee7.zip`).
 endif::DM[]
 ifdef::PAM[]
 +
 . Extract the 
 ifdef::PAM[]
-`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7.zip`
+`{PRODUCT_FILE}-kie-server-ee7.zip`
 endif::PAM[]
 ifdef::DM[]
-`{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-kie-server-ee7.zip`
+`{PRODUCT_FILE}-kie-server-ee7.zip`
 endif::DM[]
  archive to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
 . If you want to use a security manager for Process Server, copy the contents of the
 ifdef::PAM[]
-`__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}-kie-server-ee7/SecurityPolicy/`
+`__TEMP_DIR__/{PRODUCT_FILE}-kie-server-ee7/{PRODUCT_FILE}-kie-server-ee7/SecurityPolicy/`
 endif::PAM[]
 ifdef::DM[]
-`__TEMP_DIR__/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-kie-server-ee7/{PRODUCT_INIT}-{PRODUCT_VERSION_LONG}.GA-kie-server-ee7/SecurityPolicy/`
+`__TEMP_DIR__/{PRODUCT_FILE}-kie-server-ee7/{PRODUCT_FILE}.GA-kie-server-ee7/SecurityPolicy/`
 endif::DM[]
  to `__EAP_HOME__/bin`. When asked to overwrite files, select *Yes*.
 
