@@ -39,7 +39,7 @@ file to a temporary directory. In the following examples this directory is calle
 ..  Rename `business-central.zip` file to `business-central.war`. This is the file that you will use to deploy {CENTRAL} on the cluster nodes.
 .. If desired, copy the new `business-central.war` file to a location that is more convenient to deploy from.
 
-. On the main node of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, make the following changes for each server group in the `server-groups` element:
+. On the  of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, make the following changes for each server group in the `server-groups` element:
 
 .. Specify the `server-group name` and `jvm` name.
 .. To enable high availability, change the `profile` to `"full-ha"` and the `socket-binding-group` to `"full-ha-sockets"`.
@@ -54,7 +54,7 @@ file to a temporary directory. In the following examples this directory is calle
     <socket-binding-group ref="full-ha-sockets"/>
 </server-group>
 ----
-. On the main node of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, edit or add the following properties to the `<system-properties>` element and replace the following placeholders:
+. On the  of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, edit or add the following properties to the `<system-properties>` element and replace the following placeholders:
 * `<NIOGIT_DIR>` is the location of Git repositories stored under `.niogit`, on an NFS mounted partition accessible to a {EAP} user.
 * `<ELASTICSEARCH_NODE_IP>` is the IP addresses where Elasticseach is installed.
 * `<JMS_USER>` is a {EAP} application user. It is the user that {CENTRAL} uses to connect to the  embedded JMS broker. 
@@ -77,7 +77,7 @@ file to a temporary directory. In the following examples this directory is calle
   <property name="appformer-jms-connection-factory" value="java:/ConnectionFactory"/> 
 </system-properties>
 ----
-.  On the main node of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, in the `<subsystem xmlns="urn:jboss:domain:messaging-activemq:2.0">` element, make the following changes:
+.  On the  of the cluster, in the `_EAP_HOME_/domain/configuration/domain.xml` file, in the `<subsystem xmlns="urn:jboss:domain:messaging-activemq:2.0">` element, make the following changes:
 .. Replace `<cluster password="${jboss.messaging.cluster.password:CHANGE ME!!}"/>` with `<cluster user="<CLUSTER_USER>" password="<CLUSTER_PWD>"/>` where `<CLUSTER_USER>` is the user used by EAP to form a messaging cluster and `<CLUSTER_PWD>` is the password for that user.
 .. In the `security-setting` element , add the role of the `<JMS_USER>` to a new `role-name` element, for example:
 +

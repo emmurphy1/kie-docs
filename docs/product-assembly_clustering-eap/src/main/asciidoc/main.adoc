@@ -27,6 +27,7 @@ include::product-installation-guide/clustering-bc-install-proc.adoc[leveloffset=
 include::product-installation-guide/clustering-ps-con.adoc[leveloffset=+1]
 include::product-installation-guide/clustering-download-eap-ps-proc.adoc[leveloffset=+2]
 include::product-installation-guide/clustering-ps-configure-domain-proc.adoc[leveloffset=+2]
+include::product-installation-guide/clustering-ps-configure-host-proc.adoc[leveloffset=+2]
 include::product-installation-guide/clustering-ps-install-proc.adoc[leveloffset=+2]
 
 

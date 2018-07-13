@@ -1,7 +1,7 @@
 [id='clustering-bc-configure-domain-proc']
 = Configuring a {EAP} 7.1 domain-mode cluster for {CENTRAL}
 
-By using domain mode with a cluster, you can centrally manage and publish configurations for your servers. Domain mode provides a central location to store and publish configurations. Complete the steps in this section to configure a {EAP} 7.1 cluster in domain mode, with with Elasticsearch and the Artemis Java messaging server (JMS) broker resource adapter integrated with {EAP}. 
+By using domain mode with a cluster, you can centrally manage and publish configurations for your servers. Domain mode provides a central location to store and publish configurations. Complete the steps in this section to configure a {EAP} 7.1 cluster in domain mode, with Elasticsearch and the Artemis Java messaging server (JMS) broker resource adapter integrated with {EAP}. 
 
 [NOTE] 
 ====
@@ -15,7 +15,7 @@ These steps describe a basic cluster configuration. For more complex configurati
 * An NFS server with a mounted partition is available.
 
 .Procedure
-. On the the main node of the cluster (where you will run the domain controller), open the `_EAP_HOME_/domain/configuration/domain.xml` file in a text editor.
+. On the the master node of the cluster (where you will run the domain controller), open the `_EAP_HOME_/domain/configuration/domain.xml` file in a text editor.
 . Make the following changes for each server group in the `server-groups` element:
 .. Specify the `server-group name` and `jvm` name.
 .. To enable high availability, change the `profile` to `"full-ha"` and the `socket-binding-group` to `"full-ha-sockets"`.

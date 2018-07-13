@@ -1,13 +1,13 @@
 [id='clustering-bc-configure-host-proc']
-= Configuring {EAP} 7.1 host.xml files for a clustered environment
+= Configuring {EAP} 7.1 host files for a {CENTRAL} clustered environment
 
-After you have installed {EAP} and configured the `domain.xml` file for a clustered environment, you must edit the `host.xml` file on each node of the cluster.
+After you have installed {EAP} and configured the `domain.xml` file for a {CENTRAL} clustered environment, complete these steps in the `host.xml` file on the master node and in the `host-slave.xml` file on each slave node.
 
 .Prerequisite
 {EAP} 7.1 is installed on each node of the cluster.
 
 .Procedure
-. On each node of the cluster, open the `_EAP_HOME_/domain/configuration/host.xml` file in a text editor.
+. Open the `_EAP_HOME_/domain/configuration/host.xml` file or the `_EAP_HOME_/domain/configuration/host-slave.xml` file in a text editor.
 . In the `main-server-group` `<servers>` element, add the servers that will be part of the cluster.
 . Add the the system properties listed in
 ifdef::PAM[]
@@ -16,8 +16,8 @@ endif::PAM[]
 ifdef::DM[]
 <<_cluster_properties_BRMS>>
 endif::DM[]
-to each server in the `main-server-group`.
-+
+. Save the `host.xml` or `host-slave.xml` file.
+
 ifdef::PAM[]
 [id='_cluster_properties_pam']
 .Cluster node properties
@@ -27,13 +27,9 @@ ifdef::PAM[]
 |Value
 |Description
 
-|`org.uberfire.nio.git.dir`
-|_.niogit directory_
-|The location of Git repositories stored under `.niogit`, on an NFS mounted partition accessible to a {EAP} user.
-
 |`jboss.node.name`
 |_node name_
-|Node name unique within the cluster (optional).
+|A node name unique within the cluster (optional).
 
 |`org.uberfire.nio.git.daemon.host`
 |_node name_
@@ -41,7 +37,7 @@ ifdef::PAM[]
 
 |`org.uberfire.nio.git.daemon.port`
 |_port number_
-|Port used by the VFS repo to accept client connections. The port must be unique for each cluster member.
+|The port used by the VFS repo to accept client connections. The port must be unique for each cluster member.
 
 |`org.uberfire.nio.git.ssh.host`
 |_SSH host node name_
@@ -51,14 +47,21 @@ ifdef::PAM[]
 |_port number_
 |The unique port number for ssh access to the GIT repo for a cluster running on physical machines.
 
+|`org.uberfire.nio.git.dir`
+|_.niogit directory_
+|The location of Git repositories stored under `.niogit`, on an NFS mounted partition accessible to a {EAP} user.
+
 |`org.uberfire.nio.git.ssh.hostport` and `org.uberfire.nio.git.daemon.hostport`
 |_SSH host port_ and _daemon host port_
 |In a virtualized environment, the outside port to be used.
 
+|`org.uberfire.nio.git.ssh.cert.dir`
+|_.security directory_
+|The location of the `.security` directory where local certificates will be stored.
+
 |===
 endif::PAM[]
 ifdef::DM[]
-+
 [id='_cluster_properties_BRMS']
 .Cluster Node Properties
 [cols="1,1,2", frame="all", options="header"]
@@ -88,10 +91,11 @@ ifdef::DM[]
 |The name of the SSH host machine in a physical cluster.
 |===
 endif::DM[]
-+
+
 ifdef::PAM[]
-The following examples demonstrate how to configure a three node cluster in the `host.xml` file:
-+
+
+The following examples demonstrate how to configure a three node cluster in the `host.xml` and `host-slave.xml` files:
+
 .Cluster nodeOne Configuration 
 ====
 [source,xml]
@@ -102,17 +106,18 @@ The following examples demonstrate how to configure a three node cluster in the 
  <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
            boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeOne"/>
  <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.host" value="nodeOne"/>
- <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
+ <property name="org.uberfire.nio.git.dir" value="/mnt/jbpm/niogit" 
+           boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone"
            boot-time="false"/>
 </system-properties>
 ----
 ====
 endif::PAM[]
-+
+
 ifdef::PAM[]
 
 .Cluster nodeTwo Configuration
@@ -125,17 +130,16 @@ ifdef::PAM[]
  <property name="org.uberfire.nio.git.daemon.port" value="9419" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.hostport" value="9419"
            boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.port" value="8004" boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.hostport" value="8004" boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
- <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
- <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo"
-           boot-time="false"/>
+<property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
+<property name="org.uberfire.nio.git.ssh.port" value="8004" boot-time="false"/>
+<property name="org.uberfire.nio.git.ssh.hostport" value="8004" boot-time="false"/>
+ <property name="org.uberfire.nio.git.dir" value="/mnt/jbpm/niogit" boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo" boot-time="false"/>
 </system-properties>
 ----
 ====
 endif::PAM[]
-+
+
 ifdef::PAM[]
 
 .Cluster nodeThree Configuration
@@ -148,10 +152,10 @@ ifdef::PAM[]
  <property name="org.uberfire.nio.git.daemon.port" value="9420" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.hostport" value="9420"
            boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.host" value="nodeThree" />
  <property name="org.uberfire.nio.git.ssh.port" value="8005" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.hostport" value="8005" boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.host" value="nodeThree" />
- <property name="org.uberfire.nio.git.dir" value="/tmp/jbpm/niogit"/>
+ <property name="org.uberfire.nio.git.dir" value="/mnt/jbpm/niogit" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodethree"
            boot-time="false"/>
 </system-properties>
@@ -167,19 +171,17 @@ ifdef::DM[]
 <system-properties>
  <property name="jboss.node.name" value="nodeOne" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone"
-           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodeone" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.host" value="nodeOne" />
  <property name="org.uberfire.nio.git.ssh.host" value="nodeOne" />
  <property name="org.uberfire.nio.git.ssh.hostport" value="8003" boot-time="false"/>
- <property name="org.uberfire.nio.git.daemon.hostport" value="9418"
-           boot-time="false"/>
+ <property name="org.uberfire.nio.git.daemon.hostport" value="9418" boot-time="false"/>
 </system-properties>
 ----
 ====
 endif::DM[]
-+
+
 ifdef::DM[]
 
 .Cluster nodeTwo Configuration
@@ -190,8 +192,7 @@ ifdef::DM[]
  <property name="jboss.node.name" value="nodeTwo" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.port" value="9418" boot-time="false"/>
            boot-time="false"/>
- <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo"
-           boot-time="false"/>
+ <property name="org.uberfire.nio.git.ssh.cert.dir" value="/tmp/jbpm/nodetwo" boot-time="false"/>
  <property name="org.uberfire.nio.git.ssh.port" value="8003" boot-time="false"/>
  <property name="org.uberfire.nio.git.daemon.host" value="nodeTwo" />
  <property name="org.uberfire.nio.git.ssh.host" value="nodeTwo" />
@@ -202,7 +203,7 @@ ifdef::DM[]
 ----
 ====
 endif::DM[]
-+
+
 ifdef::DM[]
 
 .Cluster nodeThree Configuration
@@ -226,5 +227,5 @@ ifdef::DM[]
 ----
 ====
 endif::DM[]
-. Save the `host.xml` files.
+
 

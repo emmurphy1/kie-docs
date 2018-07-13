@@ -13,8 +13,8 @@ The Process Automation Manager controller is integrated with {CENTRAL}. However,
 .Procedure
 . Navigate to the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Software Downloads] page in the Red Hat Customer Portal (login required), and select the product and version from the drop-down options:
 
-* Product: {PRODUCT}
-* Version: {PRODUCT_VERSION}
+* *Product: {PRODUCT_SHORT}*
+* *Version: {PRODUCT_VERSION}*
 . Download *{PRODUCT} {PRODUCT_VERSION_LONG} Add Ons* (the `{PRODUCT_FILE}-add-ons.zip` file).
 . Unzip the `{PRODUCT_FILE}-add-ons.zip` file. The `{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7.zip` file is in the unzipped directory.
 . Extract the `{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7.zip` file to a temporary directory. In the following examples this directory is called `__TEMP_DIR__`.
@@ -27,25 +27,25 @@ The Process Automation Manager controller is integrated with {CENTRAL}. However,
 
 . If you want to use a security manager with the controller, copy the contents of the  `__TEMP_DIR__/{PRODUCT_FILE}-add-ons/{PRODUCT_INIT}-{PRODUCT_VERSION}-controller-ee7/SecurityPolicy`
 directory to the `_EAP_HOME_/bin` directory on each node of the cluster.
-. Add {EAP} management users to the main node of the cluster (where you configured the `domain.xml` file) as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_].
-. On each node of the cluster, add {KIE_SERVER} users as described in {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
-. On each node of the cluster, edit the `_EAP_HOME_/domain/configuration/host.xml` file:
-.. Enable the {KIE_SERVER} watcher service system property. (`org.kie.server.controller.templatefile.watcher.enabled`). 
-+
-If the value of this property is set to `true`, a separate thread is started to watch for modifications of the template file. The default interval for these checks is 30000 milliseconds and can be further controlled by the `org.kie.server.controller.templatefile.watcher.interval` system property. If the value of this property is set to `false`, changes to the template file are detected only when the server restarts.
-+
-[source]
-----
-org.kie.server.controller.templatefile.watcher.enabled=true
-----
-.. In the `org.kie.server.controller.templatefile` property, specify the absolute path to the NFS storage where the template configuration is stored:
-+
-[source]
-----
-org.kie.server.controller.templatefile=<absolute_path_to_NFS_storage>
-----
+. Add {EAP} management users to the master node (where you configured the `domain.xml` file) as described in the https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/configuration_guide/[_{EAP} 7.1 Configuration Guide_].
+. On each node of the cluster, add users for the headless Process Automation Manager controller as described in the "Installing the headless Process Automation Manager controller" section of the {URL_INSTALLING_ON_EAP}[_{INSTALLING_ON_EAP}_].
 
-. To deploy the `controller.war` file that you created previously into the server group, complete the following steps:
+. Complete the following steps in the `host.xml` file on the master node and in the `host-slave.xml` file on each slave node:
+.. Open the `_EAP_HOME_/domain/configuration/host.xml` or `_EAP_HOME_/domain/configuration/host-slave.xml` file in a text editor.
+.. In the `main-server-group` `<servers>` element, add the servers that will be part of the cluster.
+.. Add the following properties to the `<system-properties>` element and replace `<NFS_STORAGE>` with the absolute path to the NFS storage where the template configuration is stored.
++
+[source]
+----
+<system-properties>
+  <property name="org.kie.server.controller.templatefile.watcher.enabled" value="true"/>
+  <property name="org.kie.server.controller.templatefile" value="<NFS_STORAGE>"/> 
+</system-properties>
+----
++
+If the value of the `org.kie.server.controller.templatefile.watcher.enabled` property is set to `true`, a separate thread is started to watch for modifications of the template file. The default interval for these checks is 30000 milliseconds and can be further controlled by the `org.kie.server.controller.templatefile.watcher.interval` system property. If the value of this property is set to `false`, changes to the template file are detected only when the server restarts.
+
+. To deploy the `controller.war` file that you created previously into the server group, complete the following steps on the master node:
 .. Log in to the {EAP} `Administration` console of your domain as a `management` user.
 .. Click *Deployments -> Server Groups-> main-server-group* and click *Add*.
 .. In the dialog box, click *Upload a new deployment* and click *Next*.
