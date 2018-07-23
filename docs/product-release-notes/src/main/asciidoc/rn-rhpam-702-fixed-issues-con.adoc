@@ -41,7 +41,7 @@
 * The executable model does not support parsing of a constraint containing a ternary operator. [https://issues.jboss.org/browse/RHPAM-1256[RHPAM-1256]]
 * The `GuidedScoreCardIntegrationJavaClassesOnClassPathTest.testIncrementalCompilation`  test fails on Microsoft Windows or Apple MacIntosh. [https://issues.jboss.org/browse/RHPAM-1121[RHPAM-1121]]
 * In the executable model, type coercion does not work for the numeric boxed type. [https://issues.jboss.org/browse/RHPAM-1239[RHPAM-1239]]
-* SME clarification. [https://issues.jboss.org/browse/RHPAM-1077[RHPAM-1077]]
+* When two or more rules have the same `from` clause that triggers node sharing of the `from` clause, and use fact classes that do not have `hashCode()` and `equals()` methods implemented, a rule can fire unexpectedly. [https://issues.jboss.org/browse/RHPAM-1077[RHPAM-1077]]
 * The executable model does not generate `getter` and `setter` methods for declared types with more than 64 fields. [https://issues.jboss.org/browse/RHPAM-1273[RHPAM-1273]]
 * Support constraints with up to 12 arguments in executable model. [https://issues.jboss.org/browse/RHPAM-1317[RHPAM-1317]]
 * The `WorkflowRuntimeException` wraps only the bottom root cause Exception in `RuleSetNodeInstance`. [https://issues.jboss.org/browse/RHPAM-1198[RHPAM-1189]]
