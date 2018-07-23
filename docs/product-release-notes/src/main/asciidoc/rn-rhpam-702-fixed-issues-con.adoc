@@ -3,8 +3,9 @@
 
 {PRODUCT} 7.0.2 provides increased stability and fixed issues listed in this section.
 
-== Installation
+== Installation and migration
 * {PRODUCT} installation fails with a new {EAP} installation. [https://issues.jboss.org/browse/RHDM-394[RHDM-394]]
+* In batch mode, the migration tool waits for a response to the prompt about Pom migration. [https://issues.jboss.org/browse/RHDM-1001[RHDM-1001]]
 
 == {CENTRAL}
 * Dashbuilder tests fail on Microsoft Windows. [https://issues.jboss.org/browse/RHPAM-832[RHPAM-832]]
@@ -29,6 +30,9 @@
 * It is not possible to migrate a process with a recurring time. [https://issues.jboss.org/browse/RHDM-1122[RHDM-1122]]
 * Task assignment fails if an actor contains a variable with an empty string. [https://issues.jboss.org/browse/RHDM-1209[RHDM-1209]]
 *  `IllegalArgumentException: Unknown node id` error occurs when migrating `MultiInstance`. [https://issues.jboss.org/browse/RHDM-1096[RHDM-1096]]
+*  Project-oriented standalone pages are broken. [https://issues.jboss.org/browse/RHDM-503[RHDM-503]]
+*  In a guided decision table you cannot add a row into table that has a work item. [https://issues.jboss.org/browse/RHDM-666[RHDM-666]]
+
 
 == {KIE_SERVER}
 *  If the row count exceeds 60,000 in the `variableinstancelog` table, the server will not start. [https://issues.jboss.org/browse/RHPAM-1132[RHPAM-1132]]
@@ -44,7 +48,7 @@
 * When two or more rules have the same `from` clause that triggers node sharing of the `from` clause, and use fact classes that do not have `hashCode()` and `equals()` methods implemented, a rule can fire unexpectedly. [https://issues.jboss.org/browse/RHPAM-1077[RHPAM-1077]]
 * The executable model does not generate `getter` and `setter` methods for declared types with more than 64 fields. [https://issues.jboss.org/browse/RHPAM-1273[RHPAM-1273]]
 * Support constraints with up to 12 arguments in executable model. [https://issues.jboss.org/browse/RHPAM-1317[RHPAM-1317]]
-* The `WorkflowRuntimeException` wraps only the bottom root cause Exception in `RuleSetNodeInstance`. [https://issues.jboss.org/browse/RHPAM-1198[RHPAM-1189]]
+* The `WorkflowRuntimeException` wraps only the bottom root cause Exception in `RuleSetNodeInstance`. [https://issues.jboss.org/browse/RHPAM-1189[RHPAM-1189]]
 
 == {PRODUCT} on OpenShift
 * Specify the `KIE_SERVER_PORT` parameter in all templates where the `KIE_SERVER_HOST` parameter can be set. [https://issues.jboss.org/browse/RHPAM-1357[RHPAM-1357]]
