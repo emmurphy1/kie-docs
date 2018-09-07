@@ -43,7 +43,7 @@ For optimal results, install {KIE_SERVER} and the headless {PRODUCT_SHORT} contr
 |The password for the user specified for the `org.kie.server.controller.user` property
 
 |`org.kie.server.id`
-|The ID or name of the {KIE_SERVER} installation, such as `rhdm700-decision-server-1`
+|The ID or name of the {KIE_SERVER} installation, such as `{PRODUCT_INIT}{PRODUCT_VERSION_LONG}-{URL_COMPONENT_KIE_SERVER}-1`
 
 |`org.kie.server.location`
 |The URL of the {KIE_SERVER}, `http://<HOST>:<PORT>/kie-server/services/rest/server`
