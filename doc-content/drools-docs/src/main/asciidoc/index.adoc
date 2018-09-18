@@ -23,11 +23,7 @@ endif::[]
 [discrete]
 = Welcome
 
-Welcome and {PRODUCT} Release Notes
-
 include::{shared-dir}/Welcome-chapter.adoc[leveloffset=+1]
-include::ReleaseNotes-chapter.adoc[leveloffset=+1]
-include::{shared-dir}/ReleaseInformation/CompatibilityMatrix-chapter.adoc[leveloffset=+1]
 
 [discrete]
 = KIE
@@ -62,7 +58,6 @@ include::{shared-dir}/Blueprint/KieBlueprint-chapter.adoc[leveloffset=+1]
 include::{shared-dir}/Android/Android-chapter.adoc[leveloffset=+1]
 include::{shared-dir}/Camel/Camel-chapter.adoc[leveloffset=+1]
 include::{shared-dir}/DroolsServer/DroolsServer-chapter.adoc[leveloffset=+1]
-include::{shared-dir}/RHQ/RHQ-chapter.adoc[leveloffset=+1]
 
 [discrete]
 = {PRODUCT} Workbench
@@ -88,3 +83,8 @@ include::{shared-dir}/KieServer/KieServer-chapter.adoc[leveloffset=+1]
 Examples to help you learn {PRODUCT}
 
 include::Examples-chapter.adoc[leveloffset=+1]
+
+[discrete]
+= {PRODUCT} Release Notes
+
+include::ReleaseNotes-chapter.adoc[leveloffset=+1]
