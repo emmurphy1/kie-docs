@@ -27,4 +27,4 @@ Elasticsearch is a highly scalable open source full-text search and analytics en
 
 The JMS broker resource adapter enables your applications to communicate with any messaging provider. It specifies how components such as message-driven beans, Enterprise JavaBeans, and servlets can send or receive messages.
 
-
+High availability relies on a shared file system, a shared Elasticseach instance, and a shared JMS broker.
