@@ -1,0 +1,35 @@
+[id='ssh-key-create_proc']
+= Creating a public key
+You must create a public key before you add it to the {CENTRAL} SSH keystore.
+
+.Procedure
+. In a terminal, enter the following command where `<user_login>` is your user login.
+COMMENT: is this a user name/-password combination? Should rsa be a variable, <SSH_KEY_FORMAT>?
++
+[source]
+----
+ssh-keygen -t rsa -b 4096 -C "<user_login>"
+----
++
+[NOTE]
+====
+The SSH key formats supported by the keystore are `ssh-rsa`, `ssh-dss`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384` and `ecdsa-sha2-nistp521`.
+====
+
+. When prompted, replace `id_rsa` with the name of your choice, edit the path if desired, and press *Enter*.
+[source,shell]
+Enter a file in which to save the key (/home/<your_login_here>/.ssh/id_rsa): [Press enter]
+
+. When prompted, enter the pass phrase that you want to use.
+[source,shell]
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+
+. Enter the following command to start the SSH agent:
+[source,shell]
+eval "$(ssh-agent -s)"
+Agent pid <any-number-here>
+
+. Add the new SSH private key to the `ssh-agent` where `id_rsa` is the name of your key:
+[source,shell]
+ssh-add ~/.ssh/id_rsa

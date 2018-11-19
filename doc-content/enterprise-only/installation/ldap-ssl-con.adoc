@@ -1,3 +1,13 @@
 [id='ldap-ssl-con']
-= Integrating LDAP and SSL
+= Security integration
+
+== Integrating {PRODUCT} with LDAP and SSL
 With {PRODUCT} you can integrate LDAP and SSL through RH-SSO. For more information, see the https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html-single/server_administration_guide/[_Red Hat Single Sign-On Server Administration Guide_].
+
+== Integrating {PRODUCT} with RH-SSO
+For information about integrating {PRODUCT} with Red Hat Single Sign-On, see * {URL_INTEGRATING_SSO}[_{INTEGRATING_SSO}_].
+
+include::ssh-key_con.adoc[leveloffset=+1]
+include::ssh-keystore-custom_proc.adoc[leveloffset=3]
+include::ssh-key-create_proc.adoc[leveloffset=+2]
+include::ssh-key-reg_proc.adoc[leveloffset=+2]

@@ -1,0 +1,28 @@
+[id='ssh-key-reg']
+= Registering your SSH public key with the {CENTRAL} SSH keystore
+
+After you create an SSH public key, you must register it with the SSH keystore.
+
+.Prerequisites
+* {CENTRAL} is installed.
+* You have an SSH public key that you want to register.
+
+.Procedure
+. In a terminal, enter the `cat` command to display your key contents, where `<id_rsa>` is the name of your SSH public key:
+[source,shell]
+----
+cat ~/.ssh/id_rsa.pub
+----
+. Copy your SSH public key to the clipboard. 
+. Log in to {CENTRAL} and click the gear icon next to your login to open the *Admin* page.
+. Click *SSH Keys* to open the SSH keystore.
+
+. Click *Add SSH Key*.
+. To register the key, in the *New SSH public key* form, enter a name,
+copy the key contents into the Key field, and click *Add SSH Key* .
+
+[NOTE]
+====
+* The *Name* field cannot be empty, this field defines a meaningful name for the user to identify the key on the SSH public keys table.
+* *Key* must be a valid SSH Public key. It cannot be empty and the key format must be supported by the platform.
+====
