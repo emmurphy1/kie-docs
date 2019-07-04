@@ -41,3 +41,5 @@ endif::[]
   Replace HOST:PORT with an address of {CENTRAL} located on second machine.
 
 . Complete the installation.
+. To verify the setup is successful. Access *Execution Servers* page in {CENTRAL}.
+  You should see the connected {KIE_SERVER} under *REMOTE SERVERS*
