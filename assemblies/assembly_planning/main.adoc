@@ -121,6 +121,9 @@ When you integrate {PRODUCT} with RH-SSO, you create an SSO and identity managem
 
 RH-SSO 7.3 is supported with {PRODUCT} on {EAP} {EAP_VERSION}.
 
+include::{enterprise-dir}/installation/reference-implementations.adoc[leveloffset=+1]
+
+
 
 //== Putting it all together
 
