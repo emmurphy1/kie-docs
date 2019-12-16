@@ -37,7 +37,7 @@ include::{enterprise-dir}/project-data/config-project-settings-proc.adoc[levelof
 
 include::{enterprise-dir}/project-data/multiple-branches-project-con.adoc[leveloffset=+1]
 include::{enterprise-dir}/project-data/create-branches-proc.adoc[leveloffset=+2]
-include::{enterprise-dir}/project-data/select-branches-proc.adoc[leveloffset=+2]
+//include::{enterprise-dir}/project-data/select-branches-proc.adoc[leveloffset=+2]
 include::{enterprise-dir}/project-data/delete-branches-proc.adoc[leveloffset=+2]
 include::{enterprise-dir}/project-data/build-deploy-branches-proc.adoc[leveloffset=+2]
 

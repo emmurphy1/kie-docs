@@ -3,6 +3,9 @@
 = Building and deploying projects
 After your project is developed, you can build the project from the specified branch in {CENTRAL} and deploy it to the configured {KIE_SERVER}.
 
+. Prerequisites
+You have a {CENTRAL} project that you want to deploy.
+
 .Procedure
 . In {CENTRAL}, go to *Menu* -> *Design* -> *Projects* and click the project name.
 . In the upper-right corner, click *Deploy* to build the project and deploy it to {KIE_SERVER}.

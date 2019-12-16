@@ -5,10 +5,9 @@ A project can contain data models, business processes, business rules, forms or 
 
 .Procedure
 . In {CENTRAL}, go to *Menu* -> *Design* -> *Projects*.
+. In the *Spaces* window, select a space. The window for the selected space appears.
 . Click *Add Project*.
-. Type `anyName` in the *Name* field of the *Add Project* window and click *Add*. Where `anyName` is any name that you want to name the new project.
+. Enter a name in the *Name* field of the *Add Project* window and click *Add*. The *Assets* view of the project opens.
 +
-.Add the `anyName` project
+.Add a project
 image::getting-started/add-project.png[Adding the `anyName` project window]
-
-The *Assets* view of the project opens when you successfully create the project.

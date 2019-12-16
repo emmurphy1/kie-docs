@@ -9,8 +9,9 @@ Starting with {PRODUCT} {PRODUCT_VERSION}, {CENTRAL} contains additional project
 
 .Procedure
 . To access the project *Settings* tab, in {CENTRAL} go to *Menu* -> *Design* -> *Projects*.
+. Click the space that contains the project.
 . Click the project name.
-. Click *Settings* to view or modify the following project settings:
+. Click the *Settings* tab to view or modify the following project settings:
 
 * *General Settings* - Enables users to set the project's *Name*, *Description*, *Group ID*, *Artifact ID*, *Version* (GAV), and *Development Mode* attributes. It also includes the following options:
 ** *URL* - Use to specify a read-only URL for cloning a project as a git repository.

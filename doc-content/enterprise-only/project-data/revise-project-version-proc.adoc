@@ -6,11 +6,13 @@ You can revise the version number of a project in {PRODUCT} before you build and
 
 .Prerequisites
 * {KIE_SERVER} is deployed and connected to {CENTRAL}.
+* You have a space that contains a project that you want to deploy.
 
 .Procedure
 . In {CENTRAL}, go to *Menu* -> *Design* -> *Projects*.
+. Select the space that contains the project that you want to deploy.
 . Click the project you want to deploy, for example *{PROJECT}*.
-. Click *Deploy*.
+. In the upper-right corner of the screen, click *Deploy*.
 +
 * If there is no container with the project name, a container with default values is automatically created.
 * If an older version of the project is already deployed, go to the project settings and change the project version. When finished, save the change and click *Deploy*. This will deploy a new version of the same project with the latest changes in place, alongside the older version(s).
