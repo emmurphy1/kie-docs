@@ -14,4 +14,4 @@ You can delete any branch except for the *master* branch. {CENTRAL} does not all
 image::getting-started/delete-branch.png[Delete a branch]
 
 . In the *Delete Branch* window, enter the name of the branch that you want to delete.
-. Click *Delete Branch*. The branch is deleted and that branch changes to the master branch.
+. Click *Delete Branch*. The branch is deleted and the project branch switches to the master branch.
