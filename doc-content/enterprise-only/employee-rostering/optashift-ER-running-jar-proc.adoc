@@ -14,7 +14,7 @@ You can run the Employee Rostering starter application from a JAR file included 
 +
 [source,bash]
 ----
-mvn clean install -DskipTests
+mvn clean install
 ----
 +
 . Wait for the build process to complete.
