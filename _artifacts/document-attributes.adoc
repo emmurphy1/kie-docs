@@ -130,6 +130,7 @@ endif::OP[]
 :ARTIFICIAL_INTELLIGENCE: Integrating artificial intelligence with {PRODUCT}
 
 
+
 // Assemblies within titles (excluding single-assembly titles such as release notes and decision architecture, which are listed above)
 :INSTALLING_KIE_ON_WAS: Installing and configuring {KIE_SERVER} on {WEBSPHERE}
 :INSTALLING_KIE_ON_WLS: Installing and configuring {KIE_SERVER} on {WEBLOGIC}
