@@ -1,4 +1,28 @@
 [id='wls-was-jms-configure-con_{context}']
 = Configuring Java Message Service (JMS)
 
-The Java Message Service (JMS) is a Java API that {KIE_SERVER} uses to exchange messages with other application servers such as {WEBLOGIC} and {WEBSPHERE}. You must configure your application server to send and receive JMS messages through {KIE_SERVER} to ensure proper collaboration between the two servers.
+The Java Message Service (JMS) is a Java API that {KIE_SERVER} uses to exchange messages with other application servers such as {WEBLOGIC} and {WEBSPHERE}. You must configure your application server to send and receive JMS messages through {KIE_SERVER} to ensure collaboration between the two servers.
+
+.Procedure
+. Create a JMS server:
+.. In the WebLogic Administration Console, navigate to *Services* -> *Messaging* -> *JMS Servers*.
+.. Click *New* to create a new JMS server.
+.. Enter a name for your JMS server and click *Next*.
+.. Select the target server for the {KIE_SERVER} deployment.
+.. Click *Finish*.
+. To store your JMS resources such as connection factories and queues, create a JMS module:
+.. In the WebLogic Administration Console, navigate to *Services* -> *Messaging* -> *JMS Modules*.
+.. Click *New* to create a module.
+.. Enter a module name and click *Next*.
+.. Select the target server chosen for the {KIE_SERVER} deployment and click *Finish*.
+.. Click the newly created module name and then click *Subdeployments*.
+.. Click *New* to create a subdeployment for your module.
+.. Give your subdeployment a name and click *Next*.
+.. Select the check box to choose the previously created JMS server.
+.. Click *Finish* to complete the subdeployment configuration.
+. To enable messaging with {KIE_SERVER}, create certain JMS connection factories for sending and receiving messages:
+.. In the WebLogic Administration Console, navigate to *Services* -> *Messaging* -> *JMS Modules* to see a list of JMS modules.
+.. Select your previously created module and click *New* to create a new JMS resource.
+.. Select *Connection Factory* and click *Next*.
+.. For each of the following required connection factories, enter the name of the connection factory (for example, `KIE.SERVER.REQUEST`) and the JNDI name (for example, `jms/cf/KIE.SERVER.REQUEST`) and click *Next*. The connection factory automatically selects the servers assigned to the JMS Module as the default.
+.. Click *Finish* to add the connection factory, and repeat for each required factory.
