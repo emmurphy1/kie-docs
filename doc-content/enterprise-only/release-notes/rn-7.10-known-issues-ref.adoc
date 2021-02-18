@@ -186,3 +186,40 @@ Workaround: To reflect the changes, you can collapse and expand the *Properties*
 Issue: The `subscribeToContentChanges` API method fails to reflect the changes that are made in a data type or included models. As a result, save, discard,undo, and redo operations are not available.
 
 Workaround: None.
+
+
+== {OPENSHIFT}
+
+.The label for the subcomponent is incorrectly set in the Operator for images with an SHA digest
+
+Issue: Because the label for the subcomponent is incorrectly set in the Operator, when the operator tries to deploy a pod, it adds the image name as a label and this causes the pod to fail.
+
+Steps to reproduce:
+
+. Create a new {OPENSHIFT} project.
+. Deploy BA Operator 7.10.0-1.
++
+COMMENT: Can we be more specific about what to deploy?
+. Create a KIE application.
+
+Expected result: No errors occur and the pod deploys successfully.
+
+Actual result: You receive an error and the pod fails to deploy.
+
+Workaround:
+
+. Open the KIE application YAML file.
+. Locate the `useImageTags` parameter under `spec:` and set the value to `true`:
++
+[source]
+----
+spec:
+  environment: rhpam-production-immutable
+  useImageTags: true
+----
+
+COMMENT: Can we make environment:  match step 2, above?
+
+Doing this will use an image name that does not have the @ symbol in it.
+
+NOTE: This workaround will disable offline installations.
