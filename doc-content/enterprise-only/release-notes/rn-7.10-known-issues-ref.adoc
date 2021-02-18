@@ -190,36 +190,8 @@ Workaround: None.
 
 == {OPENSHIFT}
 
-.The label for the subcomponent is incorrectly set in the Operator for images with an SHA digest
+.Deployment failures due to invalid labels [https://issues.redhat.com/browse/RHPAM-3471[RHPAM-3471]]
 
-Issue: Because the label for the subcomponent is incorrectly set in the Operator, when the operator tries to deploy a pod, it adds the image name as a label and this causes the pod to fail.
+Issue: A bug in the operator causes the operator to use an image name as a label for deployments. This can cause deployments to fail if the image name contains a special character. In addition, the deployments will no longer have the correct subcomponent label that is used by the metering operator. The results from the metering operator may no longer provide the expected results for {PRODUCT} products.
 
-Steps to reproduce:
-
-. Create a new {OPENSHIFT} project.
-. Deploy BA Operator 7.10.0-1.
-+
-COMMENT: Can we be more specific about what to deploy?
-. Create a KIE application.
-
-Expected result: No errors occur and the pod deploys successfully.
-
-Actual result: You receive an error and the pod fails to deploy.
-
-Workaround:
-
-. Open the KIE application YAML file.
-. Locate the `useImageTags` parameter under `spec:` and set the value to `true`:
-+
-[source]
-----
-spec:
-  environment: rhpam-production-immutable
-  useImageTags: true
-----
-
-COMMENT: Can we make environment:  match step 2, above?
-
-Doing this will use an image name that does not have the @ symbol in it.
-
-NOTE: This workaround will disable offline installations.
+Workaround: A fix has been released to update this bug in the operator. If you are encountering this issue, update to the latest operator.
