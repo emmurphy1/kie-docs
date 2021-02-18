@@ -192,6 +192,8 @@ Workaround: None.
 
 .Deployment failures due to invalid labels [https://issues.redhat.com/browse/RHPAM-3471[RHPAM-3471]]
 
-Issue: A bug in the operator causes the operator to use an image name as a label for deployments. This can cause deployments to fail if the image name contains a special character. In addition, the deployments will no longer have the correct subcomponent label that is used by the metering operator. The results from the metering operator may no longer provide the expected results for {PRODUCT} products.
+Issue: A bug in the operator causes the operator to use an image name as a label for deployments. This can cause deployments to fail if the image name contains a special character.
 
 Workaround: A fix has been released to update this bug in the operator. If you are encountering this issue, update to the latest operator.
+
+NOTE: As a result of this fix, the deployments will no longer have the correct subcomponent label that is used by the metering operator. The results from the metering operator may no longer provide the expected results for {PRODUCT} products.
