@@ -4,9 +4,14 @@ ifdef::context[:parent-context: {context}]
 
 :context: dashbuilder
 
-== Installing on EAP
-// assembly-install-on-eap
+COMMENT: Single source and conditionalize:
+include::{jbpm-dir}/Overview/BAM-section.adoc
 include::{enterprise-dir}/admin-and-config/dashbuilder-runtimes-con.adoc[leveloffset=+2]
+include::{enterprise-dir}/admin-and-config/dashbuilder-runtimes-con.adoc[leveloffset=+2]
+
+== Installing Dashbuilder
+// assembly-install-on-eap
+
 include::{enterprise-dir}/admin-and-config/installing-dashbuilder-proc.adoc[leveloffset=+2]
 include::{enterprise-dir}/admin-and-config/datasets-dashbuilder-runtimes-con.adoc[leveloffset=+2]
 include::{enterprise-dir}/admin-and-config/customizing-dashbuilder-con.adoc[leveloffset=+2]
