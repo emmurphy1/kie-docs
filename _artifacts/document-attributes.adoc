@@ -15,9 +15,9 @@
 
 // Maven info, from https://mvnrepository.com (public repo) or https://repository.jboss.org/nexus/index.html#welcome (Nexus repo)
 ifdef::DM,PAM[]
-:MAVEN_ARTIFACT_VERSION: {COMMUNITY_VERSION_FINAL}-redhat-00004
-:BOM_VERSION: {ENTERPRISE_VERSION_LONG}.redhat-00002
-:OPTAPLANNER_BOM_VERSION: 8.5.0.Final-redhat-00001
+:MAVEN_ARTIFACT_VERSION: {COMMUNITY_VERSION_FINAL}-redhat-00007
+:BOM_VERSION: {ENTERPRISE_VERSION_LONG}.redhat-00005
+:OPTAPLANNER_BOM_VERSION: 8.5.0.Final-redhat-00002
 
 endif::[]
 ifdef::DROOLS,JBPM,OP[]
@@ -203,9 +203,9 @@ endif::OP[]
 :RUNNING_ROSTER_FOR_PLANNER_OPENSHIFT: Deploying and using {PLANNER} on {OPENSHIFT}: an employee rostering starter example
 :RUNNING_ROSTER_FOR_PLANNER_IDE: Using {PLANNER} in an IDE: an employee rostering example
 :RUNNING_VRP_FOR_PLANNER: Deploying and using the {PLANNER} vehicle route planning starter application
-:PLANNER_QUARKUS_TIMETABLE: {PLANNER} on {QUARKUS}: a school time table quick start guide
+:PLANNER_QUARKUS_TIMETABLE: {PLANNER} on {QUARKUS}: a school timetable quick start guide
 :PLANNER_VACCINATION: {PLANNER} on {QUARKUS}: a vaccination appointment scheduler quick start guide
-:PLANNER_SPRINGBOOT_TIMETABLE: {PLANNER} on Spring Boot: a school time table quick start guide
+:PLANNER_SPRINGBOOT_TIMETABLE: {PLANNER} on Spring Boot: a school timetable quick start guide
 :PLANNER_JAVA: {PLANNER} with Java solvers: a cloud balancing quick start guide
 :PLANNER8_MIGRATION: Upgrading your {PLANNER} projects to OptaPlanner 8
 
